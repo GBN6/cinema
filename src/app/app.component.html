@@ -1,11 +1,20 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-
+<header>
+  <div class="header-container">
+    <div class="header-title" >
+      <h1>Fajne Kino</h1>
+    </div>
+    <div class="button-container">
+        <button class="header-button cart" type="button">Koszyk</button>
+        <div class="dropdown">
+          <button class="header-button login-button" type="button">Zaloguj</button>
+          <div class="login-dropdown-content">
+            <a [routerLinkActive]="['active']" class="dropdown-link" routerLink="/my-tickets">Moje Bilety</a>
+            <a [routerLinkActive]="['active']" class="dropdown-link" routerLink="/to-watch">Chcę obejrzeć</a>
+            <a [routerLinkActive]="['active']" class="dropdown-link" routerLink="/settings">Ustawienia</a>
+            <a [routerLinkActive]="['active']" class="dropdown-link" routerLink="/dogs">Wyloguj</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</header>
 <router-outlet></router-outlet>

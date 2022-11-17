@@ -1,0 +1,78 @@
+::ng-deep :root {
+    --color-dark: #212121;
+    --color-grey: #323232;
+    --color-cyan: #14FFEC;
+    --color-cyan-darker: #0D7377;
+    --color-light: #EEEEEE;
+}
+
+header {
+    background-color: var(--color-dark);
+    border-bottom: 2px solid var(--color-grey);
+}
+
+h1 {
+    color: var(--color-cyan);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    -webkit-box-pack: justify;
+    font-size: 3rem;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 140rem;
+    padding: 3rem;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
+}
+
+.header-button {
+    color: var(--color-light);
+    background-color: inherit;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.header-button:hover {
+    background-color: var(--color-grey);
+}
+.dropdown {
+    position: relative;
+}
+
+.dropdown-link {
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown:hover .login-dropdown-content {
+    display: block;  
+}
+
+.login-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--color-grey);
+    min-width: 4rem;
+    z-index: 1;
+}
+
+.login-dropdown-content a {
+    float: none;
+    color: black;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    color: var(--color-light);
+    font-size: 2rem;
+    padding: 1.5rem;
+    border: 1px solid var(--color-light);
+  }
+
