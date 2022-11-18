@@ -8,13 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  // dates: string[]
+  dates: string[] = []
 
   today: number = Date.now()
 
   constructor() { }
 
   ngOnInit(): void {
+    for (let x = 0; x < 7; x++) {
+      this.dates.push()
+    }
   }
 
 }
