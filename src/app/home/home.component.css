@@ -1,6 +1,8 @@
 .home-container {
-    position: relative;
     text-align: center;
+    margin: 0 auto;
+    max-width: 80vw;
+    margin-bottom: 10rem;
 }
 
 .dates {
@@ -20,6 +22,7 @@
     flex-direction: column;
     gap: 10rem;
     border: 1px solid black;
+    margin-bottom: 5rem;
 }
 
 .movie-description {
@@ -78,4 +81,5 @@
     font-size: 2rem;
     text-align: center;
     border-top: 2px solid black;
+    margin-top: 3rem;
   }
