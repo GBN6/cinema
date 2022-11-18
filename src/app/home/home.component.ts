@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { movie } from '../movies';
 
 
 @Component({
@@ -8,16 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  dates: string[] = []
+  dates: string[] = ['18/11', '19/11', '20/11', '21/11', '22/11', '23/11', '24/11']
 
   today: number = Date.now()
 
+  movies = movie
   constructor() { }
 
   ngOnInit(): void {
-    for (let x = 0; x < 7; x++) {
-      this.dates.push()
-    }
+    console.log(movie)
+    console.log(this.dates)
   }
 
 }

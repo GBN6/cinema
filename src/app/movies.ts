@@ -1,11 +1,11 @@
 export interface Movies {
     id: number;
     title: string;
-    genere: string;
+    genre: string;
     length: string;
     ageRest: string;
     description: string;
-    hours: number[];
+    hours: string[];
     score: string;
     director: string;
     actors: string[];
@@ -13,7 +13,7 @@ export interface Movies {
     premier: boolean;
   }
   
-  export const movie: Movies = [
+  export const movie: Movies[] = [
     {
       id: 1,
       title: 'Black Panther: Wakanda Forever',

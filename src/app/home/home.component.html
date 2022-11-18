@@ -1,5 +1,27 @@
 <div class="home-container">
-    <p>{{today | date:'d/M'}}</p>
+    <div class="dates">
+        <div class="date-container" *ngFor="let date of dates">
+            <button type="button" class="date-button">{{date}} </button>
+        </div>
+    </div>
+    <div class="movies">
+        <div class="movie-container" *ngFor="let movie of movies" > 
+            <div class="movie-poster">POSTER</div>
+            <div class="movie-description">
+                <div class="movie-title">{{movie.title}}</div>
+                <div class="movie-info"><span>{{movie.genre}} |</span><span>{{movie.length}} |</span> <span>{{movie.ageRest}} </span> </div>
+                <button type="button" class="show-info-button">Więcej</button>
+                <div class="movie-hours">
+                    <div class="movie-hour" *ngFor="let hour of movie.hours">
+                        <button type="button" class="movie-hour-button">{{hour}} </button>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-score">
+                {{movie.score}}
+            </div>
+        </div>
+    </div>
 </div>
 
 
