@@ -9,7 +9,8 @@
             <div class="movie-poster">POSTER</div>
             <div class="movie-description">
                 <div class="movie-title">{{movie.title}}</div>
-                <div class="movie-info"><span>{{movie.genre}} |</span><span>{{movie.length}} |</span> <span>{{movie.ageRest}} </span> </div>
+                <div class="movie-info"><span>{{movie.genre}} |</span><span>{{movie.length}} |</span> <span>{{movie.ageRest}} </span></div>
+                <div class="movie-desc">{{movie.description}} </div>
                 <button type="button" class="show-info-button">Więcej</button>
                 <div class="movie-hours">
                     <div class="movie-hour" *ngFor="let hour of movie.hours">
