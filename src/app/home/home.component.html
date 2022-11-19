@@ -11,7 +11,14 @@
                 <div class="movie-title">{{movie.title}}</div>
                 <div class="movie-info"><span>{{movie.genre}} |</span><span>{{movie.length}} |</span> <span>{{movie.ageRest}} </span></div>
                 <div class="movie-desc">{{movie.description}} </div>
-                <button type="button" class="show-info-button">Więcej</button>
+                <button type="button" class="show-info-button" (click)="showMoreInfo()" >Więcej</button>
+                <div class="more-info">
+                    <div class="director">Reżyser: {{movie.director}}</div>
+                    <div class="actors" >
+                        Aktorzy: <div class="actor" *ngFor="let actor of movie.actors">{{actor}} |</div>
+                    </div>
+                    <div class="box-office">Box office: {{movie.boxOff}} mln$</div>
+                </div>
                 <div class="movie-hours">
                     <div class="movie-hour" *ngFor="let hour of movie.hours">
                         <button type="button" class="movie-hour-button">{{hour}} </button>

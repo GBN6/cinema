@@ -18,7 +18,7 @@ export interface Movies {
   
   export const movie: Movies[] = [
     {
-      id: 1,
+      id: 0,
       img: 'assets/wakanda_poster.jpg',
       title: 'Black Panther: Wakanda Forever',
       genre: 'Action, Super hero',

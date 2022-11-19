@@ -85,6 +85,15 @@
     background-color: inherit;
 }
 
+.more-info {
+    display: none;
+}
+
+.actors {
+    display: flex;
+    gap: 1rem;
+}
+
 .movie-poster {
     padding: 2rem;
 }

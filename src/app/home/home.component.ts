@@ -17,10 +17,26 @@ export class HomeComponent implements OnInit {
   dates: string[] = ['18/11', '19/11', '20/11', '21/11', '22/11', '23/11', '24/11']
 
 
+  showMoreInfo() {
+    const showInfo = document.querySelector<HTMLElement>('.show-info-button');
+    const moreInfo = document.querySelector<HTMLElement>('.more-info')
+
+    if (showInfo?.textContent === 'Więcej') {
+      showInfo.textContent = 'Schowaj';
+      moreInfo!.style.display = 'block';
+    } else {
+      showInfo!.textContent = 'Więcej';
+      moreInfo!.style.display = 'none';
+    }
+
+  }
+
   today: number = Date.now()
 
   movies = movie
   constructor() { }
+
+
 
   ngOnInit(): void {
     console.log(movie)
