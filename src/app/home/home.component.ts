@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { movie } from '../movies';
-
+import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +11,11 @@ import { movie } from '../movies';
 })
 export class HomeComponent implements OnInit {
 
+  instagram = faInstagram;
+  youtube = faYoutube;
+  facebook = faFacebookF;
   dates: string[] = ['18/11', '19/11', '20/11', '21/11', '22/11', '23/11', '24/11']
+
 
   today: number = Date.now()
 

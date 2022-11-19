@@ -1,5 +1,8 @@
+
+
 export interface Movies {
     id: number;
+    img: string;
     title: string;
     genre: string;
     length: string;
@@ -16,6 +19,7 @@ export interface Movies {
   export const movie: Movies[] = [
     {
       id: 1,
+      img: 'assets/wakanda_poster.jpg',
       title: 'Black Panther: Wakanda Forever',
       genre: 'Action, Super hero',
       length: '130 min',
@@ -30,6 +34,7 @@ export interface Movies {
     },
     {
         id: 1,
+        img: 'assets/apokawixa_poster.jpeg',
         title: 'Apokawixa',
         genre: 'Horro',
         length: '110 min',

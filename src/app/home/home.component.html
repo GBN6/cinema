@@ -1,12 +1,12 @@
 <div class="home-container">
     <div class="dates">
-        <div class="date-container" *ngFor="let date of dates">
-            <button type="button" class="date-button">{{date}} </button>
-        </div>
+        <button type="button" class="date-button" *ngFor="let date of dates">{{date}} </button>
     </div>
     <div class="movies">
         <div class="movie-container" *ngFor="let movie of movies" > 
-            <div class="movie-poster">POSTER</div>
+            <div class="movie-poster">
+                <img class="poster-img" src={{movie.img}}>
+            </div>
             <div class="movie-description">
                 <div class="movie-title">{{movie.title}}</div>
                 <div class="movie-info"><span>{{movie.genre}} |</span><span>{{movie.length}} |</span> <span>{{movie.ageRest}} </span></div>
@@ -27,8 +27,18 @@
 
 
 <div class="footer-container">
-    <div class="footer-licks-container">
-       <a href="#"> <i class="fa-brands fa-facebook-f"></i> </a>
+    <div class="footer-links-container">
+       <div class="icons">
+           <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="icon-link" ><fa-icon [icon]="facebook"></fa-icon></a>
+           <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="icon-link" ><fa-icon [icon]="instagram"></fa-icon></a>
+           <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="icon-link" ><fa-icon [icon]="youtube"></fa-icon></a>
+       </div>
+       <div class="text-links">
+        <a href="#" class="link-txt" >O nas |</a>
+        <a href="#" class="link-txt">Praca |</a>
+        <a href="#" class="link-txt">Regulamin |</a>
+        <a href="#"class="link-txt">Wynajem sal </a>
+       </div>
     </div>
     <div class="copyright">
         Ale Kino! 2022
