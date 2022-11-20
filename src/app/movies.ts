@@ -41,8 +41,8 @@ export const movie: Movies[] = [
     hours: ['12.30', '16.30', '18.30'],
     score: '6/10',
     director: 'James Cameron',
-    actors: ['Maciek', 'Janek', 'Ktos', 'Leszek'],
-    boxOff: 200,
+    actors: ['Artut', 'Ziemowit', 'Wiesiek', 'Leszek'],
+    boxOff: 10,
     premier: false,
   },
 ];
