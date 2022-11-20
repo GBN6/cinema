@@ -85,8 +85,9 @@
     background-color: inherit;
 }
 
-.more-info {
-    display: none;
+.movie-hours button:hover {
+    background-color: rgb(0, 89, 255);
+    color: white;
 }
 
 .actors {

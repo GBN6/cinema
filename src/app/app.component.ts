@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cinema';
+  loggedIn: boolean = false
+  cart = faCartShopping;
+
+  logIn(event: Event) {
+    (event.target as HTMLElement).textContent = 'Grzegorz'
+    this.loggedIn = true;
+  }
+
 }
