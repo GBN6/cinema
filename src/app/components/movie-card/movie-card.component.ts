@@ -17,7 +17,6 @@ export class MovieCardComponent implements OnInit {
     if (buttonText === "Więcej") {
       (event.target as HTMLElement).textContent= 'Schowaj'
       this.selectedMovie = movie;
-      console.log(this.selectedMovie)
     } else {
       (event.target as HTMLElement).textContent= 'Więcej'
       this.selectedMovie = undefined
@@ -28,7 +27,6 @@ export class MovieCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.movie)
   }
 
 }
