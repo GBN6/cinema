@@ -1,0 +1,39 @@
+<div class="form-container">
+    <div class="movie-title">
+        Black Panther: Wakanda Forever, 19.11/2022, godz. 15.30
+    </div>
+    <div class="selected-seats">
+        <div class="one-ticket">
+            <div class="seat">
+                Rząd E Miejsce 6
+            </div>
+            <div class="seat-price">
+                22 PLN
+            </div>
+        </div>
+        <div class="all">
+            Razem 22 PLN
+        </div>
+    </div>
+    <form class="user-form">
+        <input type="text" required maxlength="15" placeholder="Imię*">
+        <input type="text" required maxlength="15" placeholder="Nazwisko*">
+        <input type="tel" required patter="[0-9]{3}-[0-9]{3}-[0-9]{3}" placeholder="Numer Telefonu">
+        <input type="email" placeholder="Adres e-mail*">
+        <input type="email" placeholder="Powtórz adres email*">
+        <label class="switch">
+            Chcę otrzymywać informację o zniżkach, promocjach itp 
+            <input type="checkbox" checked>
+            <span class="slider-round"></span>
+        </label>
+        <input type="text" max="6" placeholder="Kod zniżkowy">
+    </form>
+    <div class="order-button">
+        <button type="submit" class="order">
+            Zamawiam!
+        </button>
+    </div>
+    <div class="return-to-seats">
+        <a [routerLinkActive]="['active']" class="router-link" routerLink="/seats">Wróć do wyboru miejsc</a>
+    </div>
+</div>

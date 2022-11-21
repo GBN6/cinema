@@ -1,0 +1,48 @@
+.form-container {
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    position: relative;
+}
+
+.movie-title {
+    font-size: 3rem;
+    font-weight: 600;
+}
+.selected-seats {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.one-ticket {
+    display: flex;
+    justify-content: space-between;
+}
+
+.all {
+    text-align: right;
+    width: 100%;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 2rem;
+}
+
+.form-container form input {
+    padding: 1rem;
+    border:2px solid var(--color-border-grey);
+    border-radius: 5px;
+}
+
+
+.order {
+    padding: 2rem;
+    border-radius: 5px;
+  }

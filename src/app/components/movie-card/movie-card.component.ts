@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Movies } from 'src/app/movies';
+import { newUser } from 'src/app/user';
 
 @Component({
   selector: 'app-movie-card',
@@ -9,7 +10,7 @@ import { Movies } from 'src/app/movies';
 export class MovieCardComponent implements OnInit {
 
   @Input() movie: any;
-
+  user = newUser;
   selectedMovie?: Movies;
 
   showMoreInfo(event: Event, movie: Movies) {

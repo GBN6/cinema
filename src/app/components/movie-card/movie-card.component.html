@@ -17,11 +17,15 @@
             </div>
             <div class="movie-hours">
                 <div class="movie-hour" *ngFor="let hour of movie.hours">
-                    <button type="button" class="movie-hour-button">{{hour}} </button>
+                    <a [routerLinkActive]="['active']" class="router-link" routerLink="/form"><button type="button" class="movie-hour-button">{{hour}} </button></a>
                 </div>
             </div>
         </div>
         <div class="movie-score">
             {{movie.score}}
+            <div class="user-buttons" *ngIf="user.loggedIn">
+                <button type="button" class="rate-movie-button">Oceń ten film!</button>
+                <button type="button" class="want-to-see-button">Chcę zoaczyć</button>
+            </div>
         </div>
     </div>
