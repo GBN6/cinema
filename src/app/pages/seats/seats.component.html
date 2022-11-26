@@ -1,1 +1,24 @@
-<p>seats works!</p>
+<div class="seat-selection-container">
+    <div class="movie-title">TITLE</div>
+    <div class="screen">SCREEN</div>
+    <div class="seats-grid">
+        <div *ngFor="let row of rows" class="row">
+            <div class="seat">{{ row }}</div>
+            <span class="seat" *ngFor="let col of cols" [ngClass]="getStatus(row + col)">
+                {{ col }}
+            </span>
+        </div>
+
+    </div>
+    <div class="ticket-selection-container">
+        <div class="selected-seat">Rzad E Miejsce 6</div>
+        <select name="ticket-grade" id="ticket">
+            <option value="normal">Normalny</option>
+            <option value="discount">Ulgowy</option>
+            <option value="Family">Rodzinny</option>
+            <option value="Voucher">Voucher</option>
+        </select>
+    </div>
+    <div class="delete-seat">TRASHCAN</div>
+    <div class="ticket-price">TICKET PRICE</div>
+</div>
