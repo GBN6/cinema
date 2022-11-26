@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Movies } from 'src/app/movies';
 import { newUser } from 'src/app/user';
+import { SelectedMovieService } from 'src/app/selected-movie.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -25,7 +26,12 @@ export class MovieCardComponent implements OnInit {
   }
 
 
-  constructor() { }
+  constructor(private movieService: SelectedMovieService) { }
+
+  handleSelectedMovie(movie: {id:number, name: string}, hour:string) {
+    this.movieService.selectedMovie = movie;
+    this.movieService.selectedHour = hour;
+  }
 
   ngOnInit(): void {
   }

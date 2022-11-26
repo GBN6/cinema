@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { movie } from '../../movies';
+import { SelectedMovieService } from 'src/app/selected-movie.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,12 +21,13 @@ export class HomeComponent implements OnInit {
   }
 
   
-  constructor() { }
+  constructor(private movieService: SelectedMovieService) { }
 
 
 
   ngOnInit(): void {
     this.getDates(7)
+    this.movieService.selectedDate = (this.week[0]).toLocaleDateString('en-GB');
   }
 
 }

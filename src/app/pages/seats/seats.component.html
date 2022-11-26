@@ -1,5 +1,7 @@
 <div class="seat-selection-container">
-    <div class="movie-title">TITLE</div>
+    <div class="movie-title">
+        {{ title }}, {{ date }}, {{ hour }}
+    </div>
     <div class="screen">SCREEN</div>
     <div class="seats-grid">
         <div *ngFor="let row of rows" class="row">
@@ -18,7 +20,8 @@
             <option value="Family">Rodzinny</option>
             <option value="Voucher">Voucher</option>
         </select>
+        <div class="delete-seat">TRASHCAN</div>
+        <div class="ticket-price">TICKET PRICE</div>
     </div>
-    <div class="delete-seat">TRASHCAN</div>
-    <div class="ticket-price">TICKET PRICE</div>
+    
 </div>
