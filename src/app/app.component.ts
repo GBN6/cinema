@@ -1,21 +1,17 @@
-import { Component } from '@angular/core';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import { newUser } from './user';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'cinema';
-  cart = faCartShopping;
-  user = newUser;
 
-  logIn(event: Event) {
-    (event.target as HTMLElement).textContent = newUser.name
-    newUser.loggedIn = true;
-    console.log(newUser.loggedIn)
+  ngOnInit(): void {
+    
   }
+
+
 
 }

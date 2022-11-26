@@ -8,6 +8,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { SeatsComponent } from './pages/seats/seats.component';
 import { FormComponent } from './pages/form/form.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { FormComponent } from './pages/form/form.component';
     MovieCardComponent,
     SeatsComponent,
     FormComponent,
+    FooterComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
