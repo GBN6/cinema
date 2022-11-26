@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
 
   movies = movie;
   week: Date[] = []
+  clickedIndex = 0;
 
   getDates (n: number) {
     for (let i: number = 0; i < n; i++) {
@@ -17,12 +18,13 @@ export class HomeComponent implements OnInit {
       today.setDate(today.getDate() + i);
       this.week.push(today)
     }
-    console.log(this.week)
+  }
+  changeState(index: number) {
+    this.clickedIndex = index;
   }
 
   
   constructor(private movieService: SelectedMovieService) { }
-
 
 
   ngOnInit(): void {
