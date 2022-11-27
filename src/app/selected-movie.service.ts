@@ -20,6 +20,8 @@ export class SelectedMovieService {
 
   selectedDate:string = ''
 
+  selectedReservedSeats:string[] = []
+
   constructor() {
     console.log('selectedMovie init!')
    }

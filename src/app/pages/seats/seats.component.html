@@ -5,23 +5,25 @@
     <div class="screen">SCREEN</div>
     <div class="seats-grid">
         <div *ngFor="let row of rows" class="row">
-            <div class="seat">{{ row }}</div>
-            <span class="seat" *ngFor="let col of cols" [ngClass]="getStatus(row + col)">
+            <div class="row seat">{{ row }}</div>
+            <span class="seat" *ngFor="let col of cols" (click)="seatClicked(row + col)" [ngClass]="getStatus(row + col)">
                 {{ col }}
             </span>
         </div>
 
     </div>
-    <div class="ticket-selection-container">
-        <div class="selected-seat">Rzad E Miejsce 6</div>
-        <select name="ticket-grade" id="ticket">
-            <option value="normal">Normalny</option>
-            <option value="discount">Ulgowy</option>
-            <option value="Family">Rodzinny</option>
-            <option value="Voucher">Voucher</option>
-        </select>
-        <div class="delete-seat">TRASHCAN</div>
-        <div class="ticket-price">TICKET PRICE</div>
+    <div class="ticket-selection-container" *ngIf="selected.length">
+        <div class="selected-seats" *ngFor="let seat of selected">
+            <div class="selected-seat">Rzad {{ seat.charAt(0) }} Miejsce {{ seat.slice(1) }}</div>
+            <select name="ticket-grade" id="ticket" (change)="handleTicketPrice($event.target)" >
+                <option [value]="'Normalny'">Normalny</option>
+                <option [value]="'Ulgowy'">Ulgowy</option>
+                <option [value]="'Rodzinny'">Rodzinny</option>
+                <option [value]="'Voucher'">Voucher</option>
+            </select>
+            <div class="delete-seat"><fa-icon [icon]="trashCanIcon"></fa-icon></div>
+            <div class="ticket-price"> {{ticketPrice}} PLN</div>
+        </div>
     </div>
     
 </div>
