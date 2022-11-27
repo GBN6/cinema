@@ -17,29 +17,35 @@
     </div>
     <div class="">
         <form action="" novalidate>
+            <div class="name-container">
+                <div class="user-input">
+                    <input type="text" id="name" class="input" name="user-name" placeholder="Imię" required>
+                    <p class="error"></p>
+                </div>
+                <div class="user-input">
+                    <input type="text" id="country" class="input" name="user-last-name" placeholder="Nazwisko" minlength="3" maxlength="20" required>
+                    <p class="error"></p>
+                </div>
+            </div>
             <div class="user-input">
-                <label for="">Imię </label>
-                <input type="text" id="name" class="input" name="user-name" placeholder="imię" required>
+                <input type="tel" id="phone" class="input" name="user-phone" placeholder="Nr telefonu" pattern="[0-9]{9}">
                 <p class="error"></p>
             </div>
             <div class="user-input">
-                <label for="">Nazwisko </label>
-                <input type="text" id="country" class="input" name="user-last-name" minlength="3" maxlength="20" required>
+                <input type="email" id="email" class="input" name="user-email" placeholder="Email" required>
                 <p class="error"></p>
             </div>
             <div class="user-input">
-                <label for="">Numer Telefonu </label>
-                <input type="tel" id="phone" class="input" name="user-phone" pattern="[0-9]{9}">
+                <input type="email" id="confirm-email" class="input" placeholder="Potwierdz email" name="user-email" required>
                 <p class="error"></p>
             </div>
-            <div class="user-input">
-                <label for="">Adres Email </label>
-                <input type="email" id="email" class="input" name="user-email" required>
-                <p class="error"></p>
+            <div class="toggle-switch">
+                <input type="checkbox" id="switch" />
+                <label for="switch"></label>
+                <div class="toggle-text">Chce otrzymywac informacje o znizkach, promocjach itp</div>
             </div>
             <div class="user-input">
-                <label for="">Potweirdź Adres Email </label>
-                <input type="email" id="confirm-email" class="input" name="user-email" required>
+                <input type="text" id="voucher-code" class="input" placeholder="Kod znizkowy" name="voucher-code">
                 <p class="error"></p>
             </div>
             <button type="submit" class="order">Zamawiam</button>
