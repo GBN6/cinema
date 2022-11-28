@@ -12,15 +12,11 @@
         </div>
 
     </div>
-    <div class="ticket-selection-container" *ngIf="selected.length">
-        <div class="selected-seats" *ngFor="let seat of selected">
-            <div class="selected-seat">Rzad {{ seat.charAt(0) }} Miejsce {{ seat.slice(1) }}</div>
-            <select [(ngModel)]="mySelect" name="ticket-grade" id="ticket" >
-                <option *ngFor="let ticket of ticketPrice" [value]="ticket.price">{{ticket.choice}}</option>
-            </select>
-            <div class="delete-seat"><fa-icon [icon]="trashCanIcon"></fa-icon></div>
-            <div class="ticket-price">{{mySelect}}PLN</div>
+    <div class="ticket-selection-container">
+        <div *ngFor="let seat of selected">
+            <app-ticket-selection *ngIf="selected.length" [selected]="seat"></app-ticket-selection>
         </div>
     </div>
+
     
 </div>

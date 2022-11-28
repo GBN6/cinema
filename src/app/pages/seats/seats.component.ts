@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectedMovieService } from 'src/app/selected-movie.service';
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-seats',
   templateUrl: './seats.component.html',
@@ -19,7 +19,6 @@ export class SeatsComponent implements OnInit {
   hour = this.movieService.selectedHour;
   date = this.movieService.selectedDate;
 
-  trashCanIcon = faTrashCan;
 
   getStatus(seatPos: string) {
     if (this.reserved.indexOf(seatPos) !== -1) {
@@ -42,43 +41,6 @@ export class SeatsComponent implements OnInit {
     console.log(this.selected);
   }
 
-  // handleTicketPrice(event: any) {
-  //   let value = event.value;
-  //   switch (value) {
-  //     case 'Normalny':
-  //       return 22;
-  //     case 'Ulgowy':
-  //       return 11;
-  //     case 'Rodzinny':
-  //       return 50;
-  //     case 'Voucher':
-  //       return 0;
-  //     default:
-  //       return 22;
-  //   }
-  // }
-
-  mySelect = null;
-
-  ticketPrice = [
-    {
-      choice: 'Normalny',
-      price: 22
-    },
-    {
-      choice: 'Ulgowy',
-      price: 11
-    },
-    {
-      choice: 'Rodzinny',
-      price: 50
-    },
-    {
-      choice: 'Voucher',
-      price: 0
-    },
-
-  ]
 
   ngOnInit(): void {
     console.log(this.movieService.selectedMovie);

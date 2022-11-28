@@ -11,6 +11,7 @@ import { SeatsComponent } from './pages/seats/seats.component';
 import { FormComponent } from './pages/form/form.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { TicketSelectionComponent } from './components/ticket-selection/ticket-selection.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     FormComponent,
     FooterComponent,
     NavbarComponent,
+    TicketSelectionComponent,
   ],
   imports: [
     BrowserModule,

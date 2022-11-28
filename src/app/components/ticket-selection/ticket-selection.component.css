@@ -1,0 +1,17 @@
+.selected-seats {
+    display: flex;
+    gap: 4rem;
+}
+
+.selected-seat {
+    width: 15rem;
+}
+
+.reserved { 
+    background-color: var(--color-border-grey);
+    cursor: auto;
+}
+
+.selected { 
+    background-color: rgb(40, 214, 40);
+}
