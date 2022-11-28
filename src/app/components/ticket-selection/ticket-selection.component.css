@@ -7,11 +7,6 @@
     width: 15rem;
 }
 
-.reserved { 
-    background-color: var(--color-border-grey);
-    cursor: auto;
-}
-
-.selected { 
-    background-color: rgb(40, 214, 40);
+#ticket {
+    width: 10rem;
 }
