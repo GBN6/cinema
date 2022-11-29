@@ -27,10 +27,8 @@ export class SelectedMovieService {
     name: '',
     hour: '',
     reservedSeats: [],
-    selectedSeats: this.mapSavedSeats()
+    selectedSeats: []
   }
-
-
 
   addSeat(seat: string) {
     this.selectedMovie.selectedSeats.push(seat)
@@ -53,18 +51,16 @@ export class SelectedMovieService {
     return this.saveSelectedSeats;
   }
 
-  mapSavedSeats(): string[] {
+  mapSavedSeats() {
     let result:string[] = []
     this.saveSelectedSeats.forEach((seat) => {
       if (seat.id === this.selectedMovie.id && seat.hour === this.selectedMovie.hour) {
         result.push(seat.seatPos)
-      } else {
-        
-      }
+      } 
     })
-    console.log(result)
-    return result; 
-  }
+    this.selectedMovie.selectedSeats = result
+    console.log(this.selectedMovie.selectedSeats)
+    }
 
   constructor() {
    }

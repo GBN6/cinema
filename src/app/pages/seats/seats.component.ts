@@ -43,6 +43,8 @@ export class SeatsComponent implements OnInit {
         this.movieService.addSavedSeats({id, hour, seatPos})
       } 
     }
+    console.log(this.movieService.getSavedSeats())
+    console.log(this.movieService.selectedMovie.selectedSeats)
   }
 
 
