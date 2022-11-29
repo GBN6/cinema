@@ -6,7 +6,7 @@
     <div class="seats-grid">
         <div *ngFor="let row of rows" class="row">
             <div class="row seat">{{ row }}</div>
-            <span class="seat" *ngFor="let col of cols" (click)="seatClicked(row + col)" [ngClass]="getStatus(row + col)">
+            <span class="seat" *ngFor="let col of cols" (click)="seatClicked(row + col, id, hour)" [ngClass]="getStatus(row + col)">
                 {{ col }}
             </span>
         </div>
@@ -16,6 +16,9 @@
         <div *ngFor="let seat of selected" class="selected-ticket" >
             <app-ticket-selection *ngIf="selected.length" [selected]="seat"></app-ticket-selection>
         </div>
+    </div>
+    <div class="navigation-links">
+        <a *ngIf="selected.length" [routerLinkActive]="['active']" class="router-link" routerLink="/form"><button type="button" class="order-btn">Przejdz do zamówienia</button></a>
     </div>
 
     

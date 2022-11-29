@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SelectedMovieService } from 'src/app/selected-movie.service';
 
 @Component({
   selector: 'app-form',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private movieService: SelectedMovieService) { }
+
+  title = this.movieService.selectedMovie.name;
+  hour = this.movieService.selectedMovie.hour;
+  date = this.movieService.selectedDate
 
   ngOnInit(): void {
   }

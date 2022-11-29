@@ -1,8 +1,17 @@
 import { Injectable } from '@angular/core';
 
+interface savedSeats {
+  id: number;
+  hour: string;
+  seatPos: string;
+}
+
 interface selectedMovie {
   id: number;
   name: string;
+  hour: string;
+  reservedSeats: string[]
+  selectedSeats: string[]
 }
 
 
@@ -10,19 +19,53 @@ interface selectedMovie {
   providedIn: 'root'
 })
 export class SelectedMovieService {
+  selectedDate: string = ''
+  private saveSelectedSeats: savedSeats[] = []
 
   selectedMovie:selectedMovie = {
     id: 0,
-    name: ''
+    name: '',
+    hour: '',
+    reservedSeats: [],
+    selectedSeats: this.mapSavedSeats()
   }
-  
-  selectedHour:string = ''
 
-  selectedDate:string = ''
 
-  selectedReservedSeats:string[] = []
+
+  addSeat(seat: string) {
+    this.selectedMovie.selectedSeats.push(seat)
+  }
+
+  getSelectedSeats(): string[] {
+    return this.selectedMovie.selectedSeats
+  }
+
+  removeSeat(seat: string) {
+    let index = this.selectedMovie.selectedSeats.indexOf(seat);
+    this.selectedMovie.selectedSeats.splice(index, 1);
+  }
+
+  addSavedSeats(item: savedSeats) {
+    this.saveSelectedSeats.push(item)
+  }
+
+  getSavedSeats(): savedSeats[] {
+    return this.saveSelectedSeats;
+  }
+
+  mapSavedSeats(): string[] {
+    let result:string[] = []
+    this.saveSelectedSeats.forEach((seat) => {
+      if (seat.id === this.selectedMovie.id && seat.hour === this.selectedMovie.hour) {
+        result.push(seat.seatPos)
+      } else {
+        
+      }
+    })
+    console.log(result)
+    return result; 
+  }
 
   constructor() {
-    console.log('selectedMovie init!')
    }
 }

@@ -28,10 +28,11 @@ export class MovieCardComponent implements OnInit {
 
   constructor(private movieService: SelectedMovieService) { }
 
-  handleSelectedMovie(movie: {id:number, name: string}, hour:string, reservedSeats:string[]) {
-    this.movieService.selectedMovie = movie;
-    this.movieService.selectedHour = hour;
-    this.movieService.selectedReservedSeats = reservedSeats;
+  handleSelectedMovie(movie: {id:number, name: string, hour:string, reservedSeats:string[]}) {
+    this.movieService.selectedMovie.id = movie.id;
+    this.movieService.selectedMovie.name = movie.name;
+    this.movieService.selectedMovie.hour = movie.hour;
+    this.movieService.selectedMovie.reservedSeats = movie.reservedSeats;
   }
 
   ngOnInit(): void {
