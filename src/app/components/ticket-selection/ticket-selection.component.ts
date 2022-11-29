@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { SelectedSeatService } from 'src/app/selected-seat.service';
 
 @Component({
   selector: 'app-ticket-selection',
@@ -10,7 +11,7 @@ export class TicketSelectionComponent implements OnInit {
 
   @Input() selected:string = ''
 
-  mySelect = null;
+  constructor (private seatService: SelectedSeatService) {}
 
   ticketSelection = ['Normalny', 'Ulgowy', 'Voucher']
   ticketPrice = 22;
@@ -35,7 +36,9 @@ export class TicketSelectionComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  removeTicket(seat:string) {
+    this.seatService.removeSeat(seat)
+  }
 
   ngOnInit(): void {
   }

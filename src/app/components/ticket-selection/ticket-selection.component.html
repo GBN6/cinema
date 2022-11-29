@@ -3,6 +3,6 @@
     <select name="ticket-grade" id="ticket" (change)="handleTicketPrice($event.target)" >
         <option *ngFor="let ticket of ticketSelection" [value]="ticket">{{ticket}}</option>
     </select>
-    <div class="delete-seat"><fa-icon [icon]="trashCanIcon"></fa-icon></div>
+    <div class="delete-seat" (click)="removeTicket(selected)" ><fa-icon [icon]="trashCanIcon"></fa-icon></div>
     <div class="ticket-price">{{ ticketPrice }} PLN</div>
 </div>
