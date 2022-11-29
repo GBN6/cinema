@@ -58,11 +58,15 @@
 
 /* // DISPLAYED TICKETS */
 
-.ticket-selection-container{
+.all-selected-tickets{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60%;
+    width: 50%;
     gap: 1rem;
     margin-bottom: 4rem;
+}
+
+.selected-ticket {
+    width: 100%;
 }

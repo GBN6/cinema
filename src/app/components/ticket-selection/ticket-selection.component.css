@@ -3,10 +3,16 @@
     gap: 4rem;
 }
 
-.selected-seat {
-    width: 15rem;
+.ticket-price {
+    align-self: center;
+    justify-items: center;
+    flex: 0.5 1 0;
 }
 
-#ticket {
-    width: 10rem;
+.delete-seat {
+    align-self: center;
+}
+
+.selected-seat, #ticket {
+    flex: 1 1 0;
 }

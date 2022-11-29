@@ -1,8 +1,8 @@
 <div class="selected-seats">
-    <div class="selected-seat">Rzad {{ selected.charAt(0) }} Miejsce {{ selected.slice(1) }}</div>
+    <div class="selected-seat">Rząd {{ selected.charAt(0) }} Miejsce {{ selected.slice(1) }}</div>
     <select name="ticket-grade" id="ticket" (change)="handleTicketPrice($event.target)" >
         <option *ngFor="let ticket of ticketSelection" [value]="ticket">{{ticket}}</option>
     </select>
     <div class="delete-seat"><fa-icon [icon]="trashCanIcon"></fa-icon></div>
-    <div class="ticket-price">{{ ticketPrice }}PLN</div>
+    <div class="ticket-price">{{ ticketPrice }} PLN</div>
 </div>

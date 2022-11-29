@@ -12,8 +12,8 @@ export class TicketSelectionComponent implements OnInit {
 
   mySelect = null;
 
-  ticketSelection = ['Normalny', 'Ulgowy', 'Rodzinny', 'Voucher']
-  ticketPrice = 0;
+  ticketSelection = ['Normalny', 'Ulgowy', 'Voucher']
+  ticketPrice = 22;
 
   trashCanIcon = faTrashCan;
 
@@ -25,9 +25,6 @@ export class TicketSelectionComponent implements OnInit {
         break;
       case 'Ulgowy':
         this.ticketPrice = 11;
-        break;
-      case 'Rodzinny':
-        this.ticketPrice = 50;
         break;
       case 'Voucher':
         this.ticketPrice = 0;
