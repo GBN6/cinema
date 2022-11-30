@@ -1,26 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectedMovieService } from 'src/app/selected-movie.service';
+import { TicketType } from 'src/app/components/ticket-selection/ticket-selection.component';
+import { TicketsService } from 'src/app/tickets.service';
 @Component({
   selector: 'app-seats',
   templateUrl: './seats.component.html',
   styleUrls: ['./seats.component.css'],
 })
 export class SeatsComponent implements OnInit {
-  constructor(private movieService: SelectedMovieService) {}
+  constructor(
+    private movieService: SelectedMovieService,
+    private ticketService: TicketsService
+  ) {}
 
   rows: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
   cols: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
-
   reserved = this.movieService.selectedMovie.reservedSeats;
 
-
-  id = this.movieService.selectedMovie.id
+  id = this.movieService.selectedMovie.id;
   title = this.movieService.selectedMovie.name;
   hour = this.movieService.selectedMovie.hour;
-  date = this.movieService.selectedDate
+  date = this.movieService.selectedDate;
 
-  selected = this.movieService.selectedMovie.selectedSeats
+  selected = this.movieService.selectedMovie.selectedSeats;
 
   getStatus(seatPos: string) {
     if (this.reserved.indexOf(seatPos) !== -1) {
@@ -31,23 +34,31 @@ export class SeatsComponent implements OnInit {
     return 'freeSeat';
   }
 
-  seatClicked(seatPos: string, id: number, hour: string) {
+  seatClicked(seatPos: string, id: number, hour: string, title: string) {
     let index = this.selected.indexOf(seatPos);
     if (index !== -1) {
       // seat already selected, remove
-      this.movieService.removeSeat(seatPos)
+      this.movieService.removeSeat(seatPos);
     } else {
       //push to selected array only if it is not reserved
       if (this.reserved.indexOf(seatPos) === -1) {
         this.movieService.addSeat(seatPos);
-        this.movieService.addSavedSeats({id, hour, seatPos})
-      } 
+        this.ticketService.addTicket({
+          id: Math.random(),
+          title: title,
+          date: this.date,
+          hour: hour,
+          seat: { positon: seatPos, type: '', price: 0},
+        });
+      }
     }
-    console.log(this.movieService.getSavedSeats())
-    console.log(this.movieService.selectedMovie.selectedSeats)
+    console.log(this.ticketService.getTickets())
+    console.log(this.movieService.selectedMovie.selectedSeats);
   }
 
-
-  ngOnInit(): void {
+  handleTicketType(ticket: TicketType) {
+    console.log(ticket);
   }
+
+  ngOnInit(): void {}
 }

@@ -1,6 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { SelectedMovieService } from 'src/app/selected-movie.service';
+
+export interface TicketType {
+  seatPostiotion: string;
+  type: string;
+  price: number;
+}
 
 @Component({
   selector: 'app-ticket-selection',
@@ -11,29 +17,30 @@ export class TicketSelectionComponent implements OnInit {
 
   @Input() selected:string = ''
 
+  @Output() ticketType = new EventEmitter<TicketType>()
+
+
   constructor (private movieService: SelectedMovieService) {}
 
   ticketSelection = ['Normalny', 'Ulgowy', 'Voucher']
-  ticketPrice = 22;
+  
 
   trashCanIcon = faTrashCan;
 
-  handleTicketPrice(event: any) {
-    let value = event.value;
-    switch (value) {
-      case 'Normalny':
-        this.ticketPrice = 22;
-        break;
-      case 'Ulgowy':
-        this.ticketPrice = 11;
-        break;
-      case 'Voucher':
-        this.ticketPrice = 0;
-        break;
-      default:
-        this.ticketPrice = 22;
-        break;
+  selectedTicket = ''
+
+  selectTicketPrice(value: string) {
+    if (value === 'Normalny') {
+      return 22
+    }  else if (value === 'Ulgowy') {
+      return 11
+    } else {
+      return 0
     }
+  }
+
+  emitTicketPrice(seatPostiotion: string, ticketType: string, ticketPrice: number) {
+    this.ticketType.emit({seatPostiotion: seatPostiotion ,type: ticketType, price: ticketPrice});
   }
 
   removeTicket(seat:string) {

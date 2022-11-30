@@ -33,7 +33,6 @@ export class MovieCardComponent implements OnInit {
     this.movieService.selectedMovie.name = movie.name;
     this.movieService.selectedMovie.hour = movie.hour;
     this.movieService.selectedMovie.reservedSeats = movie.reservedSeats;
-    this.movieService.mapSavedSeats()
   }
 
   ngOnInit(): void {
