@@ -28,7 +28,7 @@ export class TicketSelectionComponent implements OnInit {
 
   trashCanIcon = faTrashCan;
 
-  selectedTicket =  ''
+  selectedTicket = this.ticketService.getTicketType(this.selected)
 
   selectTicketPrice(value: string) {
     if (value === 'Normalny') {

@@ -36,9 +36,9 @@ export class TicketsService {
         ticket.title === this.movieService.selectedMovie.name &&
         ticket.hour === this.movieService.selectedMovie.hour
       ) {
-        this.selectedTickets.splice(index, 1)
+        this.selectedTickets.splice(index, 1);
       }
-    } )
+    });
   }
 
   updateSeatTypeAndPrice(seat: string, type: string, price: number) {
@@ -54,17 +54,22 @@ export class TicketsService {
     });
   }
 
-  // getTicketType(seat: string): string {
-  //   this.selectedTickets.map((ticket) => {
-  //     if (
-  //       ticket.seat.positon === seat &&
-  //       ticket.title === this.movieService.selectedMovie.name &&
-  //       ticket.hour === this.movieService.selectedMovie.hour
-  //     ) {
-  //       return ticket.seat.type;
-  //     } else return 'Normalny'
-  //   });
-  // }
+  getTicketType(seat: string): string {
+    let type = '';
+    for (let ticket of this.selectedTickets) {
+      if (
+        ticket.seat.positon === seat &&
+        ticket.title === this.movieService.selectedMovie.name &&
+        ticket.hour === this.movieService.selectedMovie.hour
+      ) {
+        type = ticket.seat.type;
+      } else {
+        type = 'Normalny';
+      }
+    }
+    console.log(type);
+    return type;
+  }
 
   mapTickets() {
     let result: string[] = [];
