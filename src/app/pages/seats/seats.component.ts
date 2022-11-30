@@ -39,6 +39,7 @@ export class SeatsComponent implements OnInit {
     if (index !== -1) {
       // seat already selected, remove
       this.movieService.removeSeat(seatPos);
+      this.ticketService.removeTicket(seatPos)
     } else {
       //push to selected array only if it is not reserved
       if (this.reserved.indexOf(seatPos) === -1) {
@@ -62,3 +63,6 @@ export class SeatsComponent implements OnInit {
 
   ngOnInit(): void {}
 }
+
+
+// (ticketType)="handleTicketType($event)"
