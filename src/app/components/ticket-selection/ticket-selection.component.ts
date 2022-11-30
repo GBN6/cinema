@@ -16,6 +16,7 @@ export interface TicketType {
 })
 export class TicketSelectionComponent implements OnInit {
   @Input() selected: string = '';
+  @Input() index: number = 0
 
   // @Output() ticketType = new EventEmitter<TicketType>()
 
@@ -28,7 +29,8 @@ export class TicketSelectionComponent implements OnInit {
 
   trashCanIcon = faTrashCan;
 
-  selectedTicket = this.ticketService.getTicketType(this.selected)
+  selectedTicket: string = 'Normalny';
+  // this.ticketService.getTicketType(this.selected)
 
   selectTicketPrice(value: string) {
     if (value === 'Normalny') {
@@ -53,5 +55,8 @@ export class TicketSelectionComponent implements OnInit {
     this.ticketService.removeTicket(seat)
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.ticketService.getTicketType(this.selected))
+    console.log(this.selected)
+  }
 }

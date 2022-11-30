@@ -53,8 +53,6 @@ export class SeatsComponent implements OnInit {
         });
       }
     }
-    console.log(this.ticketService.getTickets())
-    console.log(this.movieService.selectedMovie.selectedSeats);
   }
 
   handleTicketType(ticket: TicketType) {

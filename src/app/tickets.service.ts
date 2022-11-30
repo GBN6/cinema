@@ -56,18 +56,15 @@ export class TicketsService {
 
   getTicketType(seat: string): string {
     let type = '';
-    for (let ticket of this.selectedTickets) {
+    this.selectedTickets.map((ticket) => {
       if (
         ticket.seat.positon === seat &&
         ticket.title === this.movieService.selectedMovie.name &&
         ticket.hour === this.movieService.selectedMovie.hour
       ) {
-        type = ticket.seat.type;
-      } else {
-        type = 'Normalny';
+        type = ticket.seat.type
       }
-    }
-    console.log(type);
+    });
     return type;
   }
 
@@ -82,8 +79,6 @@ export class TicketsService {
       }
     });
     this.movieService.selectedMovie.selectedSeats = result;
-    console.log(this.movieService.getSelectedSeats());
-    console.log(this.getTickets());
   }
 
   constructor(private movieService: SelectedMovieService) {}
