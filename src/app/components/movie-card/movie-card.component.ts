@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Movies } from 'src/app/movies';
 import { newUser } from 'src/app/user';
 import { SelectedMovieService } from 'src/app/selected-movie.service';
+import { TicketsService } from 'src/app/tickets.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -26,13 +27,14 @@ export class MovieCardComponent implements OnInit {
   }
 
 
-  constructor(private movieService: SelectedMovieService) { }
+  constructor(private movieService: SelectedMovieService, private ticketService: TicketsService) { }
 
   handleSelectedMovie(movie: {id:number, name: string, hour:string, reservedSeats:string[]}) {
     this.movieService.selectedMovie.id = movie.id;
     this.movieService.selectedMovie.name = movie.name;
     this.movieService.selectedMovie.hour = movie.hour;
     this.movieService.selectedMovie.reservedSeats = movie.reservedSeats;
+    this.ticketService.mapTickets();
   }
 
   ngOnInit(): void {

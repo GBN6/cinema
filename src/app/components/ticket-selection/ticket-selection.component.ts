@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { SelectedMovieService } from 'src/app/selected-movie.service';
+import { TicketsService } from 'src/app/tickets.service';
 
 export interface TicketType {
   seatPostiotion: string;
@@ -20,7 +21,7 @@ export class TicketSelectionComponent implements OnInit {
   @Output() ticketType = new EventEmitter<TicketType>()
 
 
-  constructor (private movieService: SelectedMovieService) {}
+  constructor (private movieService: SelectedMovieService, private ticketService: TicketsService) {}
 
   ticketSelection = ['Normalny', 'Ulgowy', 'Voucher']
   

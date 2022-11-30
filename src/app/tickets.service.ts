@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { SelectedMovieService } from './selected-movie.service';
 
 interface seat {
   positon: string
@@ -33,16 +34,17 @@ export class TicketsService {
 
   }
 
-  // mapTickets() {
-  //   let result:string[] = []
-  //   this.selectedTickets.forEach((seat) => {
-  //     if (seat.id === this.selectedTickets.id && seat.hour === this.selectedTickets.hour) {
-  //       result.push(seat.seatPos)
-  //     } 
-  //   })
-  //   this.selectedTickets.selectedSeats = result
-  //   console.log(this.selectedTickets.selectedSeats)
-  //   }
+  mapTickets() {
+    let result:string[] = []
+    this.selectedTickets.forEach((seat) => {
+      if (seat.title === this.movieService.selectedMovie.name && seat.hour === this.movieService.selectedMovie.hour) {
+        result.push(seat.seat.positon)
+      } 
+    })
+    this.movieService.selectedMovie.selectedSeats = result
+    console.log(this.movieService.getSelectedSeats())
+    console.log(this.getTickets())
+    }
 
-  constructor() { }
+  constructor(private movieService: SelectedMovieService) { }
 }
