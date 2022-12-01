@@ -29,8 +29,7 @@ export class TicketSelectionComponent implements OnInit {
 
   trashCanIcon = faTrashCan;
 
-  selectedTicket: string = 'Normalny';
-  // this.ticketService.getTicketType(this.selected)
+  selectedTicket: string = '';
 
   selectTicketPrice(value: string) {
     if (value === 'Normalny') {
@@ -56,7 +55,6 @@ export class TicketSelectionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.ticketService.getTicketType(this.selected))
-    console.log(this.selected)
+    this.selectedTicket = this.ticketService.getTicketType(this.selected)
   }
 }

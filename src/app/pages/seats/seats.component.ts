@@ -59,7 +59,10 @@ export class SeatsComponent implements OnInit {
     console.log(ticket);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.movieService.getSelectedSeats())
+    console.log(this.ticketService.getTickets())
+  }
 }
 
 

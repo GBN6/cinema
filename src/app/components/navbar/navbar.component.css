@@ -57,6 +57,28 @@ h1 {
 .header-button:hover {
     background-color: var(--color-light-grey);
 }
+
+.header-button.cart {
+    position: relative;
+}
+
+.cart-ammount {
+    position: absolute;
+    top: 2rem;
+    right: -1rem;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50px;
+    background-color: #32E0C4;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
 .dropdown {
     position: relative;
     align-self: center;

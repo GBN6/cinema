@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { SelectedMovieService } from './selected-movie.service';
 
 interface seat {
@@ -20,6 +21,9 @@ interface tickets {
 })
 export class TicketsService {
   private selectedTickets: tickets[] = [];
+
+  private ticketsAmmountSubject$$ = new Subject<number>();
+  ticketAmount = this.ticketsAmmountSubject$$.asObservable();
 
   addTicket(item: tickets) {
     this.selectedTickets.push(item);

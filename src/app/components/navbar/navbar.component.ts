@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { TicketsService } from 'src/app/tickets.service';
 import { newUser } from 'src/app/user';
 
 @Component({
@@ -9,6 +10,7 @@ import { newUser } from 'src/app/user';
 })
 export class NavbarComponent implements OnInit {
 
+  ticketsInCart = 0
   cart = faCartShopping;
   user = newUser;
 
@@ -18,9 +20,14 @@ export class NavbarComponent implements OnInit {
     console.log(newUser.loggedIn)
   }
 
-  constructor() { }
+  constructor(private ticketService: TicketsService) { }
 
   ngOnInit(): void {
+    // this.ticketsInCart = this.ticketService.getTickets().length
+  }
+  ngOnChange() {
+    this.ticketsInCart = this.ticketService.getTickets().length
+    console.log('onchange', this.ticketService)
   }
 
 }

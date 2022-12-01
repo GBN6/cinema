@@ -3,9 +3,9 @@
         {{ title }}, {{ date }}, {{ hour }}
     </div>
     <div class="selected-seats">
-        <div class="one-ticket">
+        <div class="one-ticket" *ngFor="let ticket of tickets">
             <div class="seat">
-                Rząd E Miejsce 6
+                Rząd {{ ticket.seat.positon.charAt(0) }} Miejsce {{ ticket.seat.positon.slice(1) }}
             </div>
             <div class="seat-price">
                 22 PLN
