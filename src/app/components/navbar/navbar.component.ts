@@ -25,9 +25,9 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     // this.ticketsInCart = this.ticketService.getTickets().length
   }
+
   ngOnChange() {
     this.ticketsInCart = this.ticketService.getTickets().length
     console.log('onchange', this.ticketService)
   }
-
 }
