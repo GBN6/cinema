@@ -34,16 +34,7 @@ export class MovieCardComponent implements OnInit {
     private moviesService: MoviesService
   ) {}
 
-  handleSelectedMovie(movie: {
-    id: number;
-    name: string;
-    hour: string;
-    reservedSeats: string[];
-  }, show: Show) {
-    this.movieService.selectedMovie.id = movie.id;
-    this.movieService.selectedMovie.name = movie.name;
-    this.movieService.selectedMovie.hour = movie.hour;
-    this.movieService.selectedMovie.reservedSeats = movie.reservedSeats;
+  handleSelectedMovie(show: Show) {
     this.ticketService.mapTickets();
     this.movieService.addSubjectMovie(this.movie)
     this.movieService.addSubjectShow(show)

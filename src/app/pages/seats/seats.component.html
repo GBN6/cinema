@@ -1,12 +1,12 @@
 <div class="seat-selection-container">
-    <div class="movie-title" *ngIf="title" >
+    <div class="movie-title" *ngIf="movie.title" >
         {{ movie.title }}, {{ date }}, {{ show.hour }}
     </div>
     <div class="screen">SCREEN</div>
     <div class="seats-grid">
         <div *ngFor="let row of rows" class="row">
             <div class="row seat">{{ row }}</div>
-            <span class="seat" *ngFor="let col of cols" (click)="seatClicked(row + col, id, hour, title)" [ngClass]="getStatus(row + col)">
+            <span class="seat" *ngFor="let col of cols" (click)="seatClicked(row + col, movie.id, show.hour, movie.title)" [ngClass]="getStatus(row + col)">
                 {{ col }}
             </span>
         </div>

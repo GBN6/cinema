@@ -3,7 +3,10 @@ import { SelectedMovieService } from 'src/app/selected-movie.service';
 import { TicketType } from 'src/app/components/ticket-selection/ticket-selection.component';
 import { TicketsService } from 'src/app/tickets.service';
 import { Movies } from 'src/app/movies';
-import { Show } from 'src/app/movies.service';
+import { MoviesService, Show } from 'src/app/movies.service';
+import { Screen } from 'src/app/movies.service';
+import { mergeMap, tap } from 'rxjs';
+
 @Component({
   selector: 'app-seats',
   templateUrl: './seats.component.html',
@@ -12,19 +15,11 @@ import { Show } from 'src/app/movies.service';
 export class SeatsComponent implements OnInit {
   constructor(
     private movieService: SelectedMovieService,
-    private ticketService: TicketsService
+    private ticketService: TicketsService,
+    private moviesService: MoviesService
   ) {}
 
-  rows: string[] = [...Array(5).keys()].map((i) => String.fromCharCode(i + 65));
-  cols: number[] = [...Array(10).keys()].map((i) => i);
-
-  reserved = this.movieService.selectedMovie.reservedSeats;
-
-  id = this.movieService.selectedMovie.id;
-  title = this.movieService.selectedMovie.name;
-  hour = this.movieService.selectedMovie.hour;
   date = this.movieService.selectedDate;
-
   selected = this.movieService.selectedMovie.selectedSeats;
 
   movie: Movies = {
@@ -45,12 +40,27 @@ export class SeatsComponent implements OnInit {
   show: Show = {
     filmId: 0,
     hour: '',
+    screen: '',
     id: 0,
     reservedSeats: [''],
+    priceList: [],
   };
 
+  // screen: Screen[] = [];
+
+  screen: Screen = {
+    colu: 0,
+    id: 0,
+    name: '',
+    rows: 0,
+    specialSeats: [],
+  };
+
+  rows: string[] = [...Array().keys()].map((i) => String.fromCharCode(i + 65));
+  cols: number[] = [...Array().keys()].map((i) => i);
+
   getStatus(seatPos: string) {
-    if (this.reserved.indexOf(seatPos) !== -1) {
+    if (this.show.reservedSeats.indexOf(seatPos) !== -1) {
       return 'reserved';
     } else if (this.selected.indexOf(seatPos) !== -1) {
       return 'selected';
@@ -66,7 +76,7 @@ export class SeatsComponent implements OnInit {
       this.ticketService.removeTicket(seatPos);
     } else {
       //push to selected array only if it is not reserved
-      if (this.reserved.indexOf(seatPos) === -1) {
+      if (this.show.reservedSeats.indexOf(seatPos) === -1) {
         this.movieService.addSeat(seatPos);
         this.ticketService.addTicket({
           id: Math.random(),
@@ -77,6 +87,7 @@ export class SeatsComponent implements OnInit {
         });
       }
     }
+    console.log(this.ticketService.getTickets());
   }
 
   handleTicketType(ticket: TicketType) {
@@ -90,6 +101,17 @@ export class SeatsComponent implements OnInit {
     this.movieService.selectedShow$$.subscribe((show) => {
       this.show = show;
     });
+
+    this.moviesService
+      .getScreen(this.show.screen)
+      .pipe(
+        tap((item) => console.log(item)),
+        mergeMap((item) => item)
+      )
+      .subscribe((item) => {
+        console.log(item)
+        this.screen = item
+      });
   }
 
   ngOnDestroy() {}
