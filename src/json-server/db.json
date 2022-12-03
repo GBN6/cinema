@@ -11,12 +11,28 @@
       "id": 2
     }
   ],
+  "screen" : [
+    {
+      "id": 0,
+      "name": "A",
+      "rows": 9,
+      "colu": 15,
+      "specialSeats": ["C8", "D10"]
+    }
+
+  ],
   "show": [
     {
         "id": 0,
         "hour": "12.30",
         "screen": "B", 
         "reservedSeats": ["A3", "C4", "H5"],
+        "priceList":[
+          {
+            "type": "Normalny",
+            "price": 20
+          }
+        ],
         "filmId": 0
     },    
     {

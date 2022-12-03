@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ReplaySubject, Subject } from 'rxjs';
 import { Movies } from 'src/app/movies';
+import { Show } from './movies.service';
 
 interface selectedMovie {
   id: number;
@@ -18,6 +19,7 @@ export class SelectedMovieService {
   selectedDate: string = ''
 
   selectedMovie$$ = new ReplaySubject<Movies>(1)
+  selectedShow$$ = new ReplaySubject<Show>(1)
 
   selectedMovie:selectedMovie = {
     id: 0,
@@ -40,8 +42,11 @@ export class SelectedMovieService {
     this.selectedMovie.selectedSeats.splice(index, 1);
   }
 
-  addSubject(item: Movies) {
+  addSubjectMovie(item: Movies) {
     this.selectedMovie$$.next(item) 
+  }
+  addSubjectShow(item: Show){
+    this.selectedShow$$.next(item)
   }
 
   constructor() {
