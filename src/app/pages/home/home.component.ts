@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { movie } from '../../movies';
 import { SelectedMovieService } from 'src/app/selected-movie.service';
+import { MoviesService } from 'src/app/movies.service';
+import { Movies } from '../../movies';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,7 +10,7 @@ import { SelectedMovieService } from 'src/app/selected-movie.service';
 })
 export class HomeComponent implements OnInit {
 
-  movies = movie;
+  movies: Movies[] = []
   week: Date[] = []
   clickedIndex = 0;
 
@@ -24,10 +26,15 @@ export class HomeComponent implements OnInit {
   }
 
   
-  constructor(private movieService: SelectedMovieService) { }
+  constructor(private movieService: SelectedMovieService, private moviesService: MoviesService) { }
 
 
   ngOnInit(): void {
+
+    this.moviesService.getMovies().subscribe(response => {
+      this.movies = response;
+    })
+
     this.getDates(7)
     this.movieService.selectedDate = (this.week[0]).toLocaleDateString('en-GB');
   }
