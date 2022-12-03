@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SelectedMovieService } from 'src/app/selected-movie.service';
 import { TicketType } from 'src/app/components/ticket-selection/ticket-selection.component';
 import { TicketsService } from 'src/app/tickets.service';
+import { Movies } from 'src/app/movies';
 @Component({
   selector: 'app-seats',
   templateUrl: './seats.component.html',
@@ -24,6 +25,8 @@ export class SeatsComponent implements OnInit {
   date = this.movieService.selectedDate;
 
   selected = this.movieService.selectedMovie.selectedSeats;
+
+  subject: any 
 
   getStatus(seatPos: string) {
     if (this.reserved.indexOf(seatPos) !== -1) {
@@ -60,8 +63,12 @@ export class SeatsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.movieService.getSelectedSeats())
-    console.log(this.ticketService.getTickets())
+    this.movieService.selectedMovie$$.subscribe((movie) => this.subject = movie)
+    console.log(this.subject)
+  }
+
+  ngOnDestroy() {
+    // this.movieService.selectedMovie$$.unsubscribe()
   }
 }
 

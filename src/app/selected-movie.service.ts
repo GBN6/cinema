@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { ReplaySubject, Subject } from 'rxjs';
+import { Movies } from 'src/app/movies';
 
 interface selectedMovie {
   id: number;
@@ -14,6 +16,8 @@ interface selectedMovie {
 })
 export class SelectedMovieService {
   selectedDate: string = ''
+
+  selectedMovie$$ = new ReplaySubject<Movies>(1)
 
   selectedMovie:selectedMovie = {
     id: 0,
@@ -34,6 +38,10 @@ export class SelectedMovieService {
   removeSeat(seat: string) {
     let index = this.selectedMovie.selectedSeats.indexOf(seat);
     this.selectedMovie.selectedSeats.splice(index, 1);
+  }
+
+  addSubject(item: Movies) {
+    this.selectedMovie$$.next(item) 
   }
 
   constructor() {

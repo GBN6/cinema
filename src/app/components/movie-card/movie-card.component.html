@@ -16,8 +16,8 @@
                 <div class="box-office"> Box office: {{selectedMovie.boxOff}} mln$</div>
             </div>
             <div class="movie-hours">
-                <div class="movie-hour" *ngFor="let hour of movie.hours">
-                    <a [routerLinkActive]="['active']" class="router-link" routerLink="/seats"><button type="button" class="movie-hour-button" (click)="handleSelectedMovie({id: movie.id, name: movie.title, hour: hour.hour, reservedSeats: hour.reservedSeats})" >{{hour.hour}} </button></a>
+                <div class="movie-hour" *ngFor="let show of shows">
+                    <a [routerLinkActive]="['active']" class="router-link" routerLink="/seats"><button type="button" class="movie-hour-button" (click)="handleSelectedMovie({id: movie.id, name: movie.title, hour: show.hour, reservedSeats: show.reservedSeats})" >{{show.hour}} </button></a>
                 </div>
             </div>
         </div>

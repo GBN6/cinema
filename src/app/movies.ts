@@ -11,7 +11,6 @@ export interface Movies {
   length: string;
   ageRest: string;
   description: string;
-  hours:Hours[];
   score: string;
   director: string;
   actors: string[];
