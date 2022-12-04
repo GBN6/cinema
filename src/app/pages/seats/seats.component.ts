@@ -56,14 +56,20 @@ export class SeatsComponent implements OnInit {
     specialSeats: [],
   };
 
-  rows: string[] = [...Array().keys()].map((i) => String.fromCharCode(i + 65));
-  cols: number[] = [...Array().keys()].map((i) => i);
+  rows: string[] = [];
+  cols: number[] = [];
+
+  styleGrid(number: number) {
+    return { 'grid-template-columns': `repeat(${number}, 1fr)` };
+  }
 
   getStatus(seatPos: string) {
     if (this.show.reservedSeats.indexOf(seatPos) !== -1) {
       return 'reserved';
     } else if (this.selected.indexOf(seatPos) !== -1) {
       return 'selected';
+    } else if (this.screen.specialSeats.indexOf(seatPos) !== -1) {
+      return 'special';
     }
     return 'freeSeat';
   }
@@ -105,16 +111,19 @@ export class SeatsComponent implements OnInit {
     this.moviesService
       .getScreen(this.show.screen)
       .pipe(
-        tap((item) => console.log(item)),
+        tap((item) => item),
         mergeMap((item) => item)
       )
       .subscribe((item) => {
-        console.log(item)
-        this.screen = item
+        this.screen = item;
+        this.rows = [...Array(this.screen.rows).keys()].map((i) =>
+          String.fromCharCode(i + 65)
+        );
+        this.cols = [...Array(this.screen.colu).keys()].map((i) => i);
       });
+
   }
 
   ngOnDestroy() {}
 }
 
-// (ticketType)="handleTicketType($event)"

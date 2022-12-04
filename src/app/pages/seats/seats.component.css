@@ -50,8 +50,27 @@
     cursor: auto;
 }
 
+.special {
+    background-color: rgb(250, 222, 61);
+}
+
 .selected { 
     background-color: rgb(40, 214, 40);
+}
+
+.legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.legend-square {
+    width: 20px;
+    height: 20px;
+}
+
+.legend-square.special {
+    margin-left: 1rem;
 }
 
 
