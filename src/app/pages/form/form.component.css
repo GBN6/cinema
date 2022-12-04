@@ -54,6 +54,13 @@
     border-radius: 5px;
   }
 
+.ticekt-movie-title{
+  font-weight: 900;
+}
+
+.form-container form input.error {
+  border: 2px solid rgb(253, 86, 86);
+}
 
   /* TOGGLE SWITCH CSS */
 .toggle-switch {

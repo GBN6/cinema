@@ -38,7 +38,11 @@ export class TicketSelectionComponent implements OnInit {
     let price = 0
     this.ticketSelection.forEach((ticket) =>{
       if (ticket.type === value) {
-        price = ticket.price + 5
+        if (this.isSelectedSeatSpecial()) {
+          price = ticket.price + 5
+        } else {
+          price = ticket.price
+        }
       }
     })
     return price

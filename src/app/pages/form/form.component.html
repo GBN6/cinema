@@ -4,41 +4,58 @@
     </div>
     <div class="selected-seats">
         <div class="one-ticket" *ngFor="let ticket of tickets">
-            <div class="ticekt-movie-title">{{ticket.title}}</div>
             <div class="seat">
-                Rząd {{ ticket.seat.positon.charAt(0) }} Miejsce {{ ticket.seat.positon.slice(1) }}
+               <div class="ticekt-movie-title">{{ticket.title}}: </div>
+               <div class="ticekt-date">{{ticket.date}}, {{ ticket.hour }} </div>
+               <div class="ticket-position">Rząd {{ ticket.seat.positon.charAt(0) }} Miejsce {{ ticket.seat.positon.slice(1) }} <span *ngIf="ticket.seat.special">VIP</span></div>
             </div>
             <div class="seat-price">
-                22 PLN
+                {{ticket.seat.price}} PLN
             </div>
         </div>
         <div class="all">
-            Razem 22 PLN
+            {{ getFullPrice() }} PLN
         </div>
     </div>
     <div class="">
-        <form action="" novalidate>
+        <form [formGroup]="userForm" novalidate>
             <div class="name-container">
                 <div class="user-input">
-                    <input type="text" id="name" class="input" name="user-name" placeholder="Imię" required>
-                    <p class="error"></p>
+                    <input [class.error]="userForm.controls.userName.touched && userForm.controls.userName.errors" formControlName="userName" type="text" id="name" class="input" name="user-name" placeholder="Imię" required>
+                    <ng-container *ngIf="userForm.controls.userName.errors as errors">
+                        <ng-container *ngIf="userForm.controls.userName.touched">
+                          <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+                        </ng-container>
+                    </ng-container>
                 </div>
                 <div class="user-input">
-                    <input type="text" id="country" class="input" name="user-last-name" placeholder="Nazwisko" minlength="3" maxlength="20" required>
-                    <p class="error"></p>
+                    <input [class.error]="userForm.controls.userLastName.touched && userForm.controls.userLastName.errors"  formControlName="userLastName" type="text" id="country" class="input" name="user-last-name" placeholder="Nazwisko" minlength="3" maxlength="20" required>
+                    <ng-container *ngIf="userForm.controls.userLastName.errors as errors">
+                        <ng-container *ngIf="userForm.controls.userLastName.touched">
+                          <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+                        </ng-container>
+                    </ng-container>
                 </div>
             </div>
             <div class="user-input">
-                <input type="tel" id="phone" class="input" name="user-phone" placeholder="Nr telefonu" pattern="[0-9]{9}">
-                <p class="error"></p>
+                <input formControlName="userPhoneNumber" type="tel" id="phone" class="input" name="user-phone" placeholder="Nr telefonu" pattern="[0-9]{9}">
+                
             </div>
             <div class="user-input">
-                <input type="email" id="email" class="input" name="user-email" placeholder="Email" required>
-                <p class="error"></p>
+                <input [class.error]="userForm.controls.userMail.touched && userForm.controls.userMail.errors" formControlName="userMail" type="email" id="email" class="input" name="user-email" placeholder="Email" required>
+                <ng-container *ngIf="userForm.controls.userMail.errors as errors">
+                    <ng-container *ngIf="userForm.controls.userMail.touched">
+                      <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+                    </ng-container>
+                </ng-container>
             </div>
             <div class="user-input">
-                <input type="email" id="confirm-email" class="input" placeholder="Potwierdz email" name="user-email" required>
-                <p class="error"></p>
+                <input [class.error]="userForm.controls.userMailConfirmation.touched && userForm.controls.userMailConfirmation.errors" formControlName="userMailConfirmation" type="email" id="confirm-email" class="input" placeholder="Potwierdz email" name="user-email" required>
+                <ng-container *ngIf="userForm.controls.userMailConfirmation.errors as errors">
+                    <ng-container *ngIf="userForm.controls.userMailConfirmation.touched">
+                      <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+                    </ng-container>
+                </ng-container>
             </div>
             <div class="toggle-switch">
                 <input type="checkbox" id="switch" />
