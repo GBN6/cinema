@@ -58,6 +58,15 @@
     background-color: rgb(40, 214, 40);
 }
 
+.bigger {
+    background-color: steelblue;
+    grid-column: auto / span 2;
+}
+
+.bigger + .seat {
+    display: none;
+}
+
 .legend {
     display: flex;
     align-items: center;
@@ -70,6 +79,10 @@
 }
 
 .legend-square.special {
+    margin-left: 1rem;
+}
+
+.legend-square.bigger {
     margin-left: 1rem;
 }
 

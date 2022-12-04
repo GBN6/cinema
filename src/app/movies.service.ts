@@ -22,6 +22,7 @@ export interface Screen {
   rows: number
   colu: number
   specialSeats: string[]
+  biggerSeats: string[]
 }
 
 @Injectable({

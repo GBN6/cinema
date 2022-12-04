@@ -31,6 +31,7 @@ export class SeatsComponent implements OnInit {
     name: '',
     rows: 0,
     specialSeats: [],
+    biggerSeats: []
   };
 
   rows: string[] = [];
@@ -47,6 +48,8 @@ export class SeatsComponent implements OnInit {
       return 'selected';
     } else if (this.screen.specialSeats.indexOf(seatPos) !== -1) {
       return 'special';
+    } else if (this.screen.biggerSeats.indexOf(seatPos) !== -1) {
+      return 'bigger';
     }
     return 'freeSeat';
   }
