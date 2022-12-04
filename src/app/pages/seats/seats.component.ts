@@ -30,8 +30,7 @@ export class SeatsComponent implements OnInit {
     id: 0,
     name: '',
     rows: 0,
-    specialSeats: [],
-    biggerSeats: []
+    specialSeats: []
   };
 
   rows: string[] = [];
@@ -48,11 +47,13 @@ export class SeatsComponent implements OnInit {
       return 'selected';
     } else if (this.screen.specialSeats.indexOf(seatPos) !== -1) {
       return 'special';
-    } else if (this.screen.biggerSeats.indexOf(seatPos) !== -1) {
-      return 'bigger';
-    }
+    } 
     return 'freeSeat';
   }
+
+  // else if (this.screen.biggerSeats.indexOf(seatPos) !== -1) {
+  //   return 'bigger';
+  // }
 
   seatClicked(seatPos: string, id: number, hour: string, title: string) {
     let index = this.selected.indexOf(seatPos);

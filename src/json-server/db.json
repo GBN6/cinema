@@ -17,8 +17,7 @@
       "name": "A",
       "rows": 6,
       "colu": 12,
-      "specialSeats": ["F6", "F5", "F7", "E7", "E8", "E6"],
-      "biggerSeats": ["F2"]
+      "specialSeats": ["F6", "F5", "F7", "E7", "E8", "E6"]
     },
     {
       "id": 1,
