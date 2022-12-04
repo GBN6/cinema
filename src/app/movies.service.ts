@@ -43,6 +43,5 @@ export class MoviesService {
 
   getScreen(name: string) {
     return this.http.get<Screen[]>(`http://localhost:3000/screen?q=${name}`)
-
   }
 }

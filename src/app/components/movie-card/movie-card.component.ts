@@ -35,9 +35,11 @@ export class MovieCardComponent implements OnInit {
   ) {}
 
   handleSelectedMovie(show: Show) {
-    this.ticketService.mapTickets();
     this.movieService.addSubjectMovie(this.movie)
     this.movieService.addSubjectShow(show)
+    this.ticketService.updateSelectedMovie()
+    this.ticketService.updateSelectedShow()
+    this.ticketService.mapTickets()
   }
 
   ngOnInit(): void {

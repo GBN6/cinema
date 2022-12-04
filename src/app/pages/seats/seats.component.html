@@ -18,7 +18,7 @@
     </div>
     <div class="all-selected-tickets">
         <div *ngFor="let seat of selected; let i = index" class="selected-ticket" >
-            <app-ticket-selection *ngIf="selected.length" [index]="i" [selected]="seat"></app-ticket-selection>
+            <app-ticket-selection *ngIf="selected.length" [index]="i" [specialSeats]="screen.specialSeats" [selected]="seat"></app-ticket-selection>
         </div>
     </div>
     <div class="navigation-links">

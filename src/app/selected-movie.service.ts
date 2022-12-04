@@ -7,48 +7,81 @@ interface selectedMovie {
   id: number;
   name: string;
   hour: string;
-  reservedSeats: string[]
-  selectedSeats: string[]
+  reservedSeats: string[];
+  selectedSeats: string[];
 }
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SelectedMovieService {
-  selectedDate: string = ''
+  selectedDate: string = '';
 
-  selectedMovie$$ = new ReplaySubject<Movies>(1)
-  selectedShow$$ = new ReplaySubject<Show>(1)
+  private selectedMovie$$ = new ReplaySubject<Movies>(1);
+  private selectedShow$$ = new ReplaySubject<Show>(1);
 
-  selectedMovie:selectedMovie = {
-    id: 0,
-    name: '',
-    hour: '',
-    reservedSeats: [],
-    selectedSeats: []
+  selectedSeats: string[] = [];
+
+  getSelectedMovie(): Movies {
+    let movie = {
+      id: 0,
+      img: '',
+      title: '',
+      genre: '',
+      length: '',
+      ageRest: '',
+      description: '',
+      score: '',
+      director: '',
+      actors: [''],
+      boxOff: 0,
+      premier: false,
+    };
+    this.selectedMovie$$.subscribe((response) => {
+      movie = response;
+    });
+    return movie;
+  }
+
+  getSelectedShow(): Show {
+    let show = {
+      filmId: 0,
+      hour: '',
+      screen: '',
+      id: 0,
+      reservedSeats: [''],
+      priceList: [
+        {
+          type: '',
+          price: 0,
+        },
+      ],
+    };
+    this.selectedShow$$.subscribe((response) => {
+      show = response;
+    });
+    return show;
   }
 
   addSeat(seat: string) {
-    this.selectedMovie.selectedSeats.push(seat)
+    this.selectedSeats.push(seat);
   }
 
   getSelectedSeats(): string[] {
-    return this.selectedMovie.selectedSeats
+    return this.selectedSeats;
   }
 
   removeSeat(seat: string) {
-    let index = this.selectedMovie.selectedSeats.indexOf(seat);
-    this.selectedMovie.selectedSeats.splice(index, 1);
+    let index = this.selectedSeats.indexOf(seat);
+    this.selectedSeats.splice(index, 1);
   }
 
   addSubjectMovie(item: Movies) {
-    this.selectedMovie$$.next(item) 
+    this.selectedMovie$$.next(item);
   }
-  addSubjectShow(item: Show){
-    this.selectedShow$$.next(item)
+  addSubjectShow(item: Show) {
+    this.selectedShow$$.next(item);
   }
 
-  constructor() {
-   }
+  constructor() {}
 }

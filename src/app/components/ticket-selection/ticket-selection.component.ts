@@ -1,7 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { Movies } from 'src/app/movies';
 import { SelectedMovieService } from 'src/app/selected-movie.service';
 import { TicketsService } from 'src/app/tickets.service';
+
+import { PriceList } from 'src/app/movies.service';
+import { tick } from '@angular/core/testing';
 
 export interface TicketType {
   seatPostiotion: string;
@@ -17,36 +21,32 @@ export interface TicketType {
 export class TicketSelectionComponent implements OnInit {
   @Input() selected: string = '';
   @Input() index: number = 0
-
-  // @Output() ticketType = new EventEmitter<TicketType>()
+  @Input() specialSeats: string[] = []
 
   constructor(
     private movieService: SelectedMovieService,
     private ticketService: TicketsService
   ) {}
 
-  ticketSelection = ['Normalny', 'Ulgowy', 'Voucher'];
+  ticketSelection: PriceList[] = [];
 
   trashCanIcon = faTrashCan;
 
   selectedTicket: string = '';
 
   selectTicketPrice(value: string) {
-    if (value === 'Normalny') {
-      return 22;
-    } else if (value === 'Ulgowy') {
-      return 11;
-    } else {
-      return 0;
-    }
+    let price = 0
+    this.ticketSelection.forEach((ticket) =>{
+      if (ticket.type === value) {
+        price = ticket.price + 5
+      }
+    })
+    return price
   }
 
-  // emitTicketPrice(seatPostiotion: string, ticketType: string, ticketPrice: number) {
-  //   this.ticketType.emit({seatPostiotion: seatPostiotion ,type: ticketType, price: ticketPrice});
-  // }
 
   handleTicketTypeChange(seat: string, type: string, price: number) {
-    this.ticketService.updateSeatTypeAndPrice(seat, type, price);
+    this.ticketService.updateSeatTypeAndPrice( seat, type, price);
   }
 
   removeTicket(seat: string) {
@@ -54,7 +54,12 @@ export class TicketSelectionComponent implements OnInit {
     this.ticketService.removeTicket(seat)
   }
 
+  isSelectedSeatSpecial() {
+    return this.specialSeats.includes(this.selected)
+  }
+
   ngOnInit(): void {
     this.selectedTicket = this.ticketService.getTicketType(this.selected)
+    this.ticketSelection = this.movieService.getSelectedShow().priceList
   }
 }

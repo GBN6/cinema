@@ -20,33 +20,10 @@ export class SeatsComponent implements OnInit {
   ) {}
 
   date = this.movieService.selectedDate;
-  selected = this.movieService.selectedMovie.selectedSeats;
+  selected = this.movieService.selectedSeats;
 
-  movie: Movies = {
-    id: 0,
-    img: '',
-    title: '',
-    genre: '',
-    length: '',
-    ageRest: '',
-    description: '',
-    score: '',
-    director: '',
-    actors: [''],
-    boxOff: 0,
-    premier: false,
-  };
-
-  show: Show = {
-    filmId: 0,
-    hour: '',
-    screen: '',
-    id: 0,
-    reservedSeats: [''],
-    priceList: [],
-  };
-
-  // screen: Screen[] = [];
+  movie = this.movieService.getSelectedMovie();
+  show = this.movieService.getSelectedShow();
 
   screen: Screen = {
     colu: 0,
@@ -83,31 +60,31 @@ export class SeatsComponent implements OnInit {
     } else {
       //push to selected array only if it is not reserved
       if (this.show.reservedSeats.indexOf(seatPos) === -1) {
-        this.movieService.addSeat(seatPos);
-        this.ticketService.addTicket({
-          id: Math.random(),
-          title: title,
-          date: this.date,
-          hour: hour,
-          seat: { positon: seatPos, type: '', price: 0 },
-        });
+        if (this.screen.specialSeats.indexOf(seatPos) !== -1) {
+          this.movieService.addSeat(seatPos);
+          this.ticketService.addTicket({
+            id: Math.random(),
+            title: title,
+            date: this.date,
+            hour: hour,
+            seat: { positon: seatPos, type: '', price: 0, special: true },
+          });
+        } else {
+          this.movieService.addSeat(seatPos);
+          this.ticketService.addTicket({
+            id: Math.random(),
+            title: title,
+            date: this.date,
+            hour: hour,
+            seat: { positon: seatPos, type: '', price: 0, special: false },
+          });
+        }
       }
+      console.log(this.ticketService.getTickets());
     }
-    console.log(this.ticketService.getTickets());
-  }
-
-  handleTicketType(ticket: TicketType) {
-    console.log(ticket);
   }
 
   ngOnInit(): void {
-    this.movieService.selectedMovie$$.subscribe((movie) => {
-      this.movie = movie;
-    });
-    this.movieService.selectedShow$$.subscribe((show) => {
-      this.show = show;
-    });
-
     this.moviesService
       .getScreen(this.show.screen)
       .pipe(
@@ -121,9 +98,7 @@ export class SeatsComponent implements OnInit {
         );
         this.cols = [...Array(this.screen.colu).keys()].map((i) => i);
       });
-
   }
 
   ngOnDestroy() {}
 }
-

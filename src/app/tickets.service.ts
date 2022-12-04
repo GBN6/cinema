@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Movies } from './movies';
+import { Show } from './movies.service';
 import { SelectedMovieService } from './selected-movie.service';
 
 interface seat {
   positon: string;
   type: string;
   price: number;
+  special: boolean
 }
 
 interface tickets {
@@ -22,8 +25,19 @@ interface tickets {
 export class TicketsService {
   private selectedTickets: tickets[] = [];
 
-  private ticketsAmmountSubject$$ = new Subject<number>();
-  ticketAmount = this.ticketsAmmountSubject$$.asObservable();
+  selectedMovie: Movies;
+  selectedShow: Show;
+
+  // private ticketsAmmountSubject$$ = new Subject<number>();
+  // ticketAmount = this.ticketsAmmountSubject$$.asObservable();
+
+  updateSelectedMovie() {
+    this.selectedMovie = this.movieService.getSelectedMovie();
+  }
+
+  updateSelectedShow() {
+    this.selectedShow = this.movieService.getSelectedShow();
+  }
 
   addTicket(item: tickets) {
     this.selectedTickets.push(item);
@@ -37,8 +51,8 @@ export class TicketsService {
     this.selectedTickets.forEach((ticket, index) => {
       if (
         ticket.seat.positon === seat &&
-        ticket.title === this.movieService.selectedMovie.name &&
-        ticket.hour === this.movieService.selectedMovie.hour
+        ticket.title === this.selectedMovie.title &&
+        ticket.hour === this.selectedShow.hour
       ) {
         this.selectedTickets.splice(index, 1);
       }
@@ -49,8 +63,8 @@ export class TicketsService {
     this.selectedTickets.map((ticket) => {
       if (
         ticket.seat.positon === seat &&
-        ticket.title === this.movieService.selectedMovie.name &&
-        ticket.hour === this.movieService.selectedMovie.hour
+        ticket.title === this.selectedMovie.title &&
+        ticket.hour === this.selectedShow.hour
       ) {
         ticket.seat.type = type;
         ticket.seat.price = price;
@@ -63,10 +77,10 @@ export class TicketsService {
     this.selectedTickets.map((ticket) => {
       if (
         ticket.seat.positon === seat &&
-        ticket.title === this.movieService.selectedMovie.name &&
-        ticket.hour === this.movieService.selectedMovie.hour
+        ticket.title === this.selectedMovie.title &&
+        ticket.hour === this.selectedShow.hour
       ) {
-        type = ticket.seat.type
+        type = ticket.seat.type;
       }
     });
     return type;
@@ -76,14 +90,17 @@ export class TicketsService {
     let result: string[] = [];
     this.selectedTickets.forEach((seat) => {
       if (
-        seat.title === this.movieService.selectedMovie.name &&
-        seat.hour === this.movieService.selectedMovie.hour
+        seat.title === this.selectedMovie.title &&
+        seat.hour === this.selectedShow.hour
       ) {
         result.push(seat.seat.positon);
       }
     });
-    this.movieService.selectedMovie.selectedSeats = result;
+    this.movieService.selectedSeats = result;
   }
 
-  constructor(private movieService: SelectedMovieService) {}
+  constructor(private movieService: SelectedMovieService) {
+    this.selectedMovie = this.movieService.getSelectedMovie();
+    this.selectedShow = this.movieService.getSelectedShow();
+  }
 }

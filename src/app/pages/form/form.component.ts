@@ -11,8 +11,8 @@ export class FormComponent implements OnInit {
 
   constructor(private movieService: SelectedMovieService, private ticketService: TicketsService ) { }
 
-  title = this.movieService.selectedMovie.name;
-  hour = this.movieService.selectedMovie.hour;
+  // title = this.movieService.selectedMovie.name;
+  // hour = this.movieService.selectedMovie.hour;
   date = this.movieService.selectedDate
 
   tickets = this.ticketService.getTickets();

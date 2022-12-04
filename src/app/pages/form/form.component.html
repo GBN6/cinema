@@ -1,9 +1,10 @@
 <div class="form-container">
     <div class="movie-title">
-        {{ title }}, {{ date }}, {{ hour }}
+        Podsumowanie
     </div>
     <div class="selected-seats">
         <div class="one-ticket" *ngFor="let ticket of tickets">
+            <div class="ticekt-movie-title">{{ticket.title}}</div>
             <div class="seat">
                 Rząd {{ ticket.seat.positon.charAt(0) }} Miejsce {{ ticket.seat.positon.slice(1) }}
             </div>
