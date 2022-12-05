@@ -4,16 +4,16 @@
     </div>
     <div class="selected-seats">
         <div class="one-ticket" *ngFor="let ticket of tickets">
-            <div class="seat">
+            <div class="seat" *ngIf="ticket.seat.price">
                <div class="ticekt-movie-title">{{ticket.title}}: </div>
                <div class="ticekt-date">{{ticket.date}}, {{ ticket.hour }} </div>
                <div class="ticket-position">Rząd {{ ticket.seat.positon.charAt(0) }} Miejsce {{ ticket.seat.positon.slice(1) }} <span *ngIf="ticket.seat.special">VIP</span></div>
             </div>
-            <div class="seat-price">
+            <div class="seat-price" *ngIf="ticket.seat.price">
                 {{ticket.seat.price}} PLN
             </div>
         </div>
-        <div class="all">
+        <div class="all" *ngIf="getFullPrice()">
             {{ getFullPrice() }} PLN
         </div>
     </div>
@@ -24,7 +24,9 @@
                     <input [class.error]="userForm.controls.userName.touched && userForm.controls.userName.errors" formControlName="userName" type="text" id="name" class="input" name="user-name" placeholder="Imię" required>
                     <ng-container *ngIf="userForm.controls.userName.errors as errors">
                         <ng-container *ngIf="userForm.controls.userName.touched">
+                            <p *ngIf="errors['pattern']">Tylko litery</p>
                           <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+                          <p *ngIf="errors['maxlength'] as maxLength">Max liczba znaków to {{maxLength.requiredLength}}</p>
                         </ng-container>
                     </ng-container>
                 </div>
@@ -32,20 +34,31 @@
                     <input [class.error]="userForm.controls.userLastName.touched && userForm.controls.userLastName.errors"  formControlName="userLastName" type="text" id="country" class="input" name="user-last-name" placeholder="Nazwisko" minlength="3" maxlength="20" required>
                     <ng-container *ngIf="userForm.controls.userLastName.errors as errors">
                         <ng-container *ngIf="userForm.controls.userLastName.touched">
+                            <p *ngIf="errors['pattern']">Tylko litery</p>
                           <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+                          <p *ngIf="errors['maxlength'] as maxLength">Max liczba znaków to {{maxLength.requiredLength}}</p>
                         </ng-container>
                     </ng-container>
                 </div>
             </div>
             <div class="user-input">
-                <input formControlName="userPhoneNumber" type="tel" id="phone" class="input" name="user-phone" placeholder="Nr telefonu" pattern="[0-9]{9}">
-                
+                <input [class.error]="userForm.controls.userPhoneNumber.touched && userForm.controls.userPhoneNumber.errors" formControlName="userPhoneNumber" type="tel" id="phone" class="input" name="user-phone" placeholder="Nr telefonu" pattern="[0-9]{9}">
+                <ng-container *ngIf="userForm.controls.userPhoneNumber.errors as errors">
+                    <ng-container *ngIf="userForm.controls.userPhoneNumber.touched">
+                        <p *ngIf="errors['pattern']" class="text-danger">Podaj NUMER telefonu</p>
+                        <p *ngIf="errors['minlength'] as minLength">
+                            Podałeś {{ minLength.actualLength}} znaków, minimum to {{minLength.requiredLength}}
+                        </p>
+                      <p *ngIf="errors['maxlength']">Te pole jest obowiązkowe!</p>
+                    </ng-container>
+                </ng-container>
             </div>
             <div class="user-input">
                 <input [class.error]="userForm.controls.userMail.touched && userForm.controls.userMail.errors" formControlName="userMail" type="email" id="email" class="input" name="user-email" placeholder="Email" required>
                 <ng-container *ngIf="userForm.controls.userMail.errors as errors">
                     <ng-container *ngIf="userForm.controls.userMail.touched">
                       <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+                      <p *ngIf="errors['pattern']">Podaj prawidłowy email</p>
                     </ng-container>
                 </ng-container>
             </div>
@@ -54,6 +67,7 @@
                 <ng-container *ngIf="userForm.controls.userMailConfirmation.errors as errors">
                     <ng-container *ngIf="userForm.controls.userMailConfirmation.touched">
                       <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+                      <p *ngIf="errors['pattern']">Podaj prawidłowy email</p>
                     </ng-container>
                 </ng-container>
             </div>

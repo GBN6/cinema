@@ -38,6 +38,14 @@
     gap: 2rem;
 }
 
+form p {
+  color: rgb(255, 92, 92);
+}
+
+.form-container form input.ng-valid {
+  border: 2px solid rgb(35, 223, 35);
+}
+
 .form-container form input {
     padding: 1rem;
     border:2px solid var(--color-border-grey);

@@ -29,8 +29,8 @@
     {
       "id": 2,
       "name": "C",
-      "rows": 10,
-      "colu": 15,
+      "rows": 12,
+      "colu": 16,
       "specialSeats": ["J8", "J9",  "J10", "J7"]
     }
   ],
