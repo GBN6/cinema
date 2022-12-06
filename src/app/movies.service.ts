@@ -2,6 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Movies } from './movies';
 
+export interface Blik {
+  id: number
+  code: number
+}
+
 export interface Show {
   id: number
   hour: string
@@ -43,5 +48,9 @@ export class MoviesService {
 
   getScreen(name: string) {
     return this.http.get<Screen[]>(`http://localhost:3000/screen?q=${name}`)
+  }
+
+  getBlikCodes() {
+    return this.http.get<Blik[]>('http://localhost:3000/blik')
   }
 }

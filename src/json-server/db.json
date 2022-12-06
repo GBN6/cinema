@@ -1,4 +1,22 @@
 {
+  "blik": [
+    {
+      "id": 0,
+      "code": 123456 
+    },
+    {
+      "id": 1,
+      "code": 765890
+    },
+    {
+      "id": 2,
+      "code": 119283 
+    },
+    {
+      "id": 3,
+      "code": 229348 
+    }
+  ],
   "users": [
     {
       "email": "example@mail.com",

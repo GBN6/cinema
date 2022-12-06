@@ -5,16 +5,23 @@ import {
   Validators,
   FormGroup,
   ValidatorFn,
+  AbstractControlDirective,
+  AbstractControl,
+  ValidationErrors,
+  EmailValidator,
+  FormControl,
 } from '@angular/forms';
 import { SelectedMovieService } from 'src/app/selected-movie.service';
 import { TicketsService } from 'src/app/tickets.service';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { Blik, MoviesService } from 'src/app/movies.service';
 
-// const emailChecker = (form: FormGroup): ValidatorFn => {
-//   const email = form.get('email').value;
-//   const confirm = form.get('confirm').value;
+const emailConfirm: ValidatorFn = (control: AbstractControl) => {
+  const email = control.get('userMail')
+  const confirmEmail = control.get('userMailConfirmation')
+  return email?.value === confirmEmail?.value ? null : {emailMismatch: true} 
+};
 
-//   return email === confirm ? null : { emailConfirm: 'Email confirm mismatch' };
-// };
 
 @Component({
   selector: 'app-form',
@@ -23,16 +30,29 @@ import { TicketsService } from 'src/app/tickets.service';
 })
 export class FormComponent implements OnInit {
   constructor(
-    private movieService: SelectedMovieService,
+    private movieSelectedService: SelectedMovieService,
     private ticketService: TicketsService,
-    private fb: NonNullableFormBuilder
+    private fb: NonNullableFormBuilder,
+    private moviesService: MoviesService
   ) {
     this.userForm.valueChanges.subscribe(console.log);
+    this.blikControl.valueChanges.subscribe(console.log)
   }
 
-  date = this.movieService.selectedDate;
+  codes: Blik[] = []
+
+  date = this.movieSelectedService.selectedDate;
 
   tickets = this.ticketService.getTickets();
+
+  blikControl = new FormControl('', {
+    validators: [
+      Validators.required,
+      Validators.pattern('^[0-9]*$'),
+      Validators.minLength(6),
+      Validators.maxLength(6),
+    ]
+  })
 
   userForm = this.fb.group({
     userName: this.fb.control('', {
@@ -73,7 +93,9 @@ export class FormComponent implements OnInit {
         Validators.pattern('^[a-zA-Z0-9]{7}$'),
       ],
     }),
-  });
+  }, {validators: [
+    emailConfirm
+  ]});
 
   getFullPrice() {
     return this.tickets.reduce((total, price) => {
@@ -81,5 +103,32 @@ export class FormComponent implements OnInit {
     }, 0);
   }
 
-  ngOnInit(): void {}
+  submitForm() {
+    this.userForm.markAllAsTouched();
+    if (this.userForm.invalid) {
+      return;
+    }
+    // handle...
+    console.log(this.userForm.value);
+    const modal = document.querySelector('#modal') as HTMLElement
+    modal.style.display = 'block'
+
+    this.moviesService.getBlikCodes().subscribe((response) => {
+      this.codes = response
+      console.log(this.codes)
+    })
+  }
+
+  closeModal() {
+    const modal = document.querySelector('#modal') as HTMLElement
+    modal.style.display = 'none'
+  }
+
+  ngOnInit(): void {
+  }
+
+  checkBLikCode(code: number ) {
+    return this.codes
+  }
+
 }

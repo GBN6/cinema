@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="">
-        <form [formGroup]="userForm" novalidate>
+        <form [formGroup]="userForm" (ngSubmit)="submitForm()">
             <div class="name-container">
                 <div class="user-input">
                     <input [class.error]="userForm.controls.userName.touched && userForm.controls.userName.errors" formControlName="userName" type="text" id="name" class="input" name="user-name" placeholder="Imię" required>
@@ -63,12 +63,17 @@
                 </ng-container>
             </div>
             <div class="user-input">
-                <input [class.error]="userForm.controls.userMailConfirmation.touched && userForm.controls.userMailConfirmation.errors" formControlName="userMailConfirmation" type="email" id="confirm-email" class="input" placeholder="Potwierdz email" name="user-email" required>
+                <input [class.error]="userForm.controls.userMailConfirmation.touched && userForm.controls.userMailConfirmation.errors || userForm.errors" formControlName="userMailConfirmation" type="email" id="confirm-email" class="input" placeholder="Potwierdz email" name="user-email" required>
                 <ng-container *ngIf="userForm.controls.userMailConfirmation.errors as errors">
                     <ng-container *ngIf="userForm.controls.userMailConfirmation.touched">
                       <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
                       <p *ngIf="errors['pattern']">Podaj prawidłowy email</p>
-                    </ng-container>
+                    </ng-container>                
+                </ng-container>
+                <ng-container *ngIf="userForm.errors as errors">
+                    <ng-container *ngIf="userForm.controls.userMailConfirmation.touched">
+                        <p *ngIf="errors['emailMismatch']">Adresy email się różnią!</p>
+                      </ng-container>  
                 </ng-container>
             </div>
             <div class="toggle-switch">
@@ -86,5 +91,28 @@
     </div>
     <div class="return-to-seats">
         <a [routerLinkActive]="['active']" class="router-link" routerLink="/seats">Wróć do wyboru miejsc</a>
+    </div>
+</div>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <h1>Wprowadź kod blik</h1>
+        <form>
+            <input [formControl]="blikControl" [class.error]="blikControl.touched && blikControl.errors" class="blik-input" placeholder="Kod Blik">
+            <ng-container *ngIf="blikControl.errors as errors">
+                <ng-container *ngIf="blikControl.touched">
+                    <p *ngIf="errors['pattern']" class="text-danger">Tylko cyfry</p>
+                    <p *ngIf="errors['minlength'] as minLength">
+                        Podałeś {{ minLength.actualLength}} liczb, minimum to {{minLength.requiredLength}}
+                    </p>
+                    <p *ngIf="errors['maxlength'] as maxLength">Max liczba cyfr to {{maxLength.requiredLength}}</p>
+                    <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+                </ng-container>
+            </ng-container>
+            <div class="modal-nav">
+                <button class="modal-btn blik-btn">Potwierdź</button>
+                <button type="button" class="modal-btn close-modal" (click)="closeModal()" >Wyjdź</button>
+            </div>
+        </form>
     </div>
 </div>
