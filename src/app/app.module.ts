@@ -13,6 +13,7 @@ import { FormComponent } from './pages/form/form.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TicketSelectionComponent } from './components/ticket-selection/ticket-selection.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TicketSelectionComponent } from './components/ticket-selection/ticket-s
     FooterComponent,
     NavbarComponent,
     TicketSelectionComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

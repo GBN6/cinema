@@ -66,7 +66,7 @@ form input.ng-valid.input.ng-touched {
 
 .order:disabled {
     background-color: #888;
-    border: 1px solid rgb(255, 92, 92);;
+    border: 2px solid rgb(255, 92, 92);;
 }
 
 .return-to-seats {
@@ -123,7 +123,7 @@ form input.ng-valid.input.ng-touched {
   }
   
   input:checked + label {
-    background: green;
+    background: rgb(35, 223, 35);
   }
   
   input:checked + label:after {
@@ -137,7 +137,7 @@ form input.ng-valid.input.ng-touched {
 
   /* MODAL  */
   .modal {
-    display: block; /* Hidden by default */
+    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 100px; /* Location of the box */
@@ -160,6 +160,9 @@ form input.ng-valid.input.ng-touched {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .modal-content h1 {
+    margin-bottom: 2rem;
   }
 
   .modal-content form {

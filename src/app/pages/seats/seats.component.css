@@ -67,8 +67,6 @@
     display: none;
 }
 
-
-
 .legend {
     display: flex;
     align-items: center;
@@ -90,6 +88,10 @@
 
 .legend-square.bigger {
     margin-left: 1rem;
+}
+
+.legend span {
+    margin-left: 0.5rem;
 }
 
 .order-btn {

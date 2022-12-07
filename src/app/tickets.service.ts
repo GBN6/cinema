@@ -11,7 +11,7 @@ interface seat {
   special: boolean
 }
 
-interface tickets {
+export interface tickets {
   id: number;
   title: string;
   date: string;
@@ -80,7 +80,9 @@ export class TicketsService {
         ticket.title === this.selectedMovie.title &&
         ticket.hour === this.selectedShow.hour
       ) {
-        type = ticket.seat.type;
+        if (ticket.seat.type !== ''){
+          type = ticket.seat.type;
+        }
       }
     });
     return type;
@@ -97,6 +99,16 @@ export class TicketsService {
       }
     });
     this.movieService.selectedSeats = result;
+  }
+
+  isTicketTypeSlected() {
+    let ticketTypeSelected = false
+    this.getTickets().forEach((ticket) => {
+      if (ticket.seat.type !== '') {
+        ticketTypeSelected = true
+      }
+    })
+    return ticketTypeSelected
   }
 
   constructor(private movieService: SelectedMovieService) {

@@ -77,7 +77,7 @@
                 </ng-container>
             </div>
             <div class="toggle-switch">
-                <input type="checkbox" id="switch" />
+                <input formControlName="userNewsletter" type="checkbox" id="switch" />
                 <label for="switch"></label>
                 <div class="toggle-text">Chce otrzymywac informacje o znizkach, promocjach itp</div>
             </div>
@@ -103,7 +103,7 @@
                 <ng-container *ngIf="blikControl.touched">
                     <p *ngIf="errors['pattern']" class="text-danger">Tylko cyfry</p>
                     <p *ngIf="errors['minlength'] as minLength">
-                        Podałeś {{ minLength.actualLength}} liczb, minimum to {{minLength.requiredLength}}
+                        Podałeś {{ minLength.actualLength}} liczb, BLIK składa się z {{minLength.requiredLength}}
                     </p>
                     <p *ngIf="errors['maxlength'] as maxLength">Max liczba cyfr to {{maxLength.requiredLength}}</p>
                     <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>

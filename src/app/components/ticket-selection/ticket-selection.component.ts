@@ -28,6 +28,7 @@ export class TicketSelectionComponent implements OnInit {
     private ticketService: TicketsService
   ) {}
 
+  ticketsTyped: boolean = false
   ticketSelection: PriceList[] = [];
 
   trashCanIcon = faTrashCan;
@@ -63,7 +64,7 @@ export class TicketSelectionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.selectedTicket = this.ticketService.getTicketType(this.selected)
     this.ticketSelection = this.movieService.getSelectedShow().priceList
+    this.selectedTicket = this.ticketService.getTicketType(this.selected)
   }
 }
