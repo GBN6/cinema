@@ -12,8 +12,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { SelectedMovieService } from 'src/app/selected-movie.service';
-import { TicketsService } from 'src/app/tickets.service';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { tickets, TicketsService } from 'src/app/tickets.service';
 import { Blik, MoviesService } from 'src/app/movies.service';
 
 const emailConfirm: ValidatorFn = (control: AbstractControl) => {
@@ -43,7 +42,7 @@ export class FormComponent implements OnInit {
 
   date = this.movieSelectedService.selectedDate;
 
-  tickets = this.ticketService.getTickets();
+  tickets: tickets[] = [] 
 
   blikControl = new FormControl('', {
     validators: [
@@ -79,13 +78,13 @@ export class FormComponent implements OnInit {
     userMail: this.fb.control('', {
       validators: [
         Validators.required,
-        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,7}$'),
       ],
     }),
     userMailConfirmation: this.fb.control('', {
       validators: [
         Validators.required,
-        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,7}$'),
       ],
     }),
     discountCode: this.fb.control('', {
@@ -96,12 +95,6 @@ export class FormComponent implements OnInit {
   }, {validators: [
     emailConfirm
   ]});
-
-  getFullPrice() {
-    return this.tickets.reduce((total, price) => {
-      return (total += price.seat.price);
-    }, 0);
-  }
 
   submitForm() {
     this.userForm.markAllAsTouched();
@@ -124,7 +117,16 @@ export class FormComponent implements OnInit {
     modal.style.display = 'none'
   }
 
+  getFullPrice() {
+    return this.tickets.reduce((total, price) => {
+      return (total += price.seat.price);
+    }, 0);
+  }
+
+
   ngOnInit(): void {
+    this.tickets = this.ticketService.getTickets();
+    console.log(this.tickets)
   }
 
   checkBLikCode(code: number ) {

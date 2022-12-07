@@ -6,8 +6,8 @@
         <div class="one-ticket" *ngFor="let ticket of tickets">
             <div class="seat" *ngIf="ticket.seat.price">
                <div class="ticekt-movie-title">{{ticket.title}}: </div>
-               <div class="ticekt-date">{{ticket.date}}, {{ ticket.hour }} </div>
-               <div class="ticket-position">Rząd {{ ticket.seat.positon.charAt(0) }} Miejsce {{ ticket.seat.positon.slice(1) }} <span *ngIf="ticket.seat.special">VIP</span></div>
+               <div class="ticekt-date">{{ticket.date}}, {{ ticket.hour }}</div>
+               <div class="ticket-position">Rząd {{ ticket.seat.positon.charAt(0) }} Miejsce {{ ticket.seat.positon.slice(1) }}, Rodzaj: {{ ticket.seat.type }}  <span *ngIf="ticket.seat.special">VIP</span></div>
             </div>
             <div class="seat-price" *ngIf="ticket.seat.price">
                 {{ticket.seat.price}} PLN
@@ -21,7 +21,7 @@
         <form [formGroup]="userForm" (ngSubmit)="submitForm()">
             <div class="name-container">
                 <div class="user-input">
-                    <input [class.error]="userForm.controls.userName.touched && userForm.controls.userName.errors" formControlName="userName" type="text" id="name" class="input" name="user-name" placeholder="Imię" required>
+                    <input [class.error]="userForm.controls.userName.touched && userForm.controls.userName.errors" formControlName="userName" id="name" class="input" name="user-name" placeholder="Imię">
                     <ng-container *ngIf="userForm.controls.userName.errors as errors">
                         <ng-container *ngIf="userForm.controls.userName.touched">
                             <p *ngIf="errors['pattern']">Tylko litery</p>
@@ -31,7 +31,7 @@
                     </ng-container>
                 </div>
                 <div class="user-input">
-                    <input [class.error]="userForm.controls.userLastName.touched && userForm.controls.userLastName.errors"  formControlName="userLastName" type="text" id="country" class="input" name="user-last-name" placeholder="Nazwisko" minlength="3" maxlength="20" required>
+                    <input [class.error]="userForm.controls.userLastName.touched && userForm.controls.userLastName.errors"  formControlName="userLastName" id="country" class="input" name="user-last-name" placeholder="Nazwisko">
                     <ng-container *ngIf="userForm.controls.userLastName.errors as errors">
                         <ng-container *ngIf="userForm.controls.userLastName.touched">
                             <p *ngIf="errors['pattern']">Tylko litery</p>
@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="user-input">
-                <input [class.error]="userForm.controls.userPhoneNumber.touched && userForm.controls.userPhoneNumber.errors" formControlName="userPhoneNumber" type="tel" id="phone" class="input" name="user-phone" placeholder="Nr telefonu" pattern="[0-9]{9}">
+                <input [class.error]="userForm.controls.userPhoneNumber.touched && userForm.controls.userPhoneNumber.errors" formControlName="userPhoneNumber" type="tel" id="phone" class="input" name="user-phone" placeholder="Nr telefonu">
                 <ng-container *ngIf="userForm.controls.userPhoneNumber.errors as errors">
                     <ng-container *ngIf="userForm.controls.userPhoneNumber.touched">
                         <p *ngIf="errors['pattern']" class="text-danger">Podaj NUMER telefonu</p>
@@ -54,7 +54,7 @@
                 </ng-container>
             </div>
             <div class="user-input">
-                <input [class.error]="userForm.controls.userMail.touched && userForm.controls.userMail.errors" formControlName="userMail" type="email" id="email" class="input" name="user-email" placeholder="Email" required>
+                <input [class.error]="userForm.controls.userMail.touched && userForm.controls.userMail.errors" formControlName="userMail" type="email" id="email" class="input" name="user-email" placeholder="Email">
                 <ng-container *ngIf="userForm.controls.userMail.errors as errors">
                     <ng-container *ngIf="userForm.controls.userMail.touched">
                       <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
@@ -63,7 +63,7 @@
                 </ng-container>
             </div>
             <div class="user-input">
-                <input [class.error]="userForm.controls.userMailConfirmation.touched && userForm.controls.userMailConfirmation.errors || userForm.errors" formControlName="userMailConfirmation" type="email" id="confirm-email" class="input" placeholder="Potwierdz email" name="user-email" required>
+                <input [class.error]="userForm.controls.userMailConfirmation.touched && userForm.controls.userMailConfirmation.errors || userForm.errors" formControlName="userMailConfirmation" type="email" id="confirm-email" class="input" placeholder="Potwierdz email" name="user-email">
                 <ng-container *ngIf="userForm.controls.userMailConfirmation.errors as errors">
                     <ng-container *ngIf="userForm.controls.userMailConfirmation.touched">
                       <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
@@ -85,12 +85,12 @@
                 <input type="text" id="voucher-code" class="input" placeholder="Kod znizkowy" name="voucher-code">
                 <p class="error"></p>
             </div>
-            <button type="submit" class="order">Zamawiam</button>
+            <button type="submit" [disabled]="!userForm.valid" class="order">Zamawiam</button>
             <h1></h1>
         </form>
     </div>
     <div class="return-to-seats">
-        <a [routerLinkActive]="['active']" class="router-link" routerLink="/seats">Wróć do wyboru miejsc</a>
+        <a [routerLinkActive]="['active']" class="router-link" routerLink="/seats"> &#9754; Wróć do wyboru miejsc</a>
     </div>
 </div>
 
@@ -110,7 +110,7 @@
                 </ng-container>
             </ng-container>
             <div class="modal-nav">
-                <button class="modal-btn blik-btn">Potwierdź</button>
+                <button  class="modal-btn blik-btn">Potwierdź</button>
                 <button type="button" class="modal-btn close-modal" (click)="closeModal()" >Wyjdź</button>
             </div>
         </form>

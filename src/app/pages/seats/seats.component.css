@@ -67,10 +67,16 @@
     display: none;
 }
 
+
+
 .legend {
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid var(--color-border-grey);
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    background-color: var(--color-light-grey);
 }
 
 .legend-square {
@@ -84,6 +90,16 @@
 
 .legend-square.bigger {
     margin-left: 1rem;
+}
+
+.order-btn {
+    padding: 1rem 3rem;
+    background-color: rgb(255, 215, 0, 0.6);
+    border-radius: 20px;
+    font-weight: 900;
+    border: 2px solid rgb(255, 215, 0);
+    color: var(--color-dark);
+    margin-bottom: 2rem;
 }
 
 

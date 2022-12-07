@@ -42,7 +42,7 @@ form p {
   color: rgb(255, 92, 92);
 }
 
-.form-container form input.ng-valid {
+form input.ng-valid.input.ng-touched {
   border: 2px solid rgb(35, 223, 35);
 }
 
@@ -60,7 +60,24 @@ form p {
 .order {
     padding: 2rem;
     border-radius: 5px;
-  }
+    background-color: rgb(255, 215, 0, 0.6);
+    border: 2px solid rgb(255, 215, 0);
+}
+
+.order:disabled {
+    background-color: #888;
+    border: 1px solid rgb(255, 92, 92);;
+}
+
+.return-to-seats {
+  margin-bottom: 2rem;
+  text-decoration: underline;
+}
+.return-to-seats a {
+  text-decoration: underline;
+  color: rgb(66, 66, 252);
+  font-size: 2rem;
+}
 
 .ticekt-movie-title{
   font-weight: 900;

@@ -80,7 +80,7 @@ export class SeatsComponent implements OnInit {
             title: title,
             date: this.date,
             hour: hour,
-            seat: { positon: seatPos, type: '', price: 0, special: false },
+            seat: { positon: seatPos, type: 'Normalny', price: 0, special: false },
           });
         }
       }
