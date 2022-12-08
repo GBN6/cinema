@@ -97,7 +97,7 @@ export class FormComponent implements OnInit {
     emailConfirm
   ]});
 
-  submitForm() {
+  submitUserForm() {
     this.userForm.markAllAsTouched();
     if (this.userForm.invalid) {
       return;
@@ -113,6 +113,15 @@ export class FormComponent implements OnInit {
     })
   }
 
+  submitPayment() {
+    this.blikControl.markAllAsTouched();
+    if (this.blikControl.invalid) {
+      return
+    }
+
+    console.log(this.blikControl.value)
+  }
+
   closeModal() {
     const modal = document.querySelector('#modal') as HTMLElement
     modal.style.display = 'none'
@@ -124,14 +133,13 @@ export class FormComponent implements OnInit {
     }, 0);
   }
 
+  checkBLikCode(code: number ) {
+    return this.codes
+  }
+
 
   ngOnInit(): void {
     this.tickets = this.ticketService.getTickets();
-    console.log(this.tickets)
-  }
-
-  checkBLikCode(code: number ) {
-    return this.codes
   }
 
 }

@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="">
-        <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+        <form [formGroup]="userForm" (ngSubmit)="submitUserForm()">
             <div class="name-container">
                 <div class="user-input">
                     <input [class.error]="userForm.controls.userName.touched && userForm.controls.userName.errors" formControlName="userName" id="name" class="input" name="user-name" placeholder="Imię">
@@ -97,7 +97,7 @@
 <div id="modal" class="modal">
     <div class="modal-content">
         <h1>Wprowadź kod blik</h1>
-        <form>
+        <form (ngSubmit)="submitPayment()">
             <input [formControl]="blikControl" [class.error]="blikControl.touched && blikControl.errors" class="blik-input" placeholder="Kod Blik">
             <ng-container *ngIf="blikControl.errors as errors">
                 <ng-container *ngIf="blikControl.touched">

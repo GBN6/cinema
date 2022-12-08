@@ -46,7 +46,7 @@ form input.ng-valid.input.ng-touched {
   border: 2px solid rgb(35, 223, 35);
 }
 
-.form-container form input {
+form input {
     padding: 1rem;
     border:2px solid var(--color-border-grey);
     border-radius: 5px;
@@ -57,7 +57,7 @@ form input.ng-valid.input.ng-touched {
 }
 
 
-.order {
+.order, .blik-btn {
     padding: 2rem;
     border-radius: 5px;
     background-color: rgb(255, 215, 0, 0.6);
@@ -83,7 +83,7 @@ form input.ng-valid.input.ng-touched {
   font-weight: 900;
 }
 
-.form-container form input.error {
+form input.error {
   border: 2px solid rgb(253, 86, 86);
 }
 
@@ -137,7 +137,7 @@ form input.ng-valid.input.ng-touched {
 
   /* MODAL  */
   .modal {
-    display: none; /* Hidden by default */
+    display: block; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 100px; /* Location of the box */
@@ -190,5 +190,4 @@ form input.ng-valid.input.ng-touched {
   .modal-btn {
     padding: 1rem 3rem;
     border-radius: 20px;
-    border: 2px solid var(--color-border-grey);
   }
