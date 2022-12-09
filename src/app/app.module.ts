@@ -14,6 +14,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TicketSelectionComponent } from './components/ticket-selection/ticket-selection.component';
 import { LoginComponent } from './pages/login/login.component';
+import { SummarizeComponent } from './pages/summarize/summarize.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LoginComponent } from './pages/login/login.component';
     NavbarComponent,
     TicketSelectionComponent,
     LoginComponent,
+    SummarizeComponent,
   ],
   imports: [
     BrowserModule,

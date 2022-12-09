@@ -15,12 +15,23 @@ import { SelectedMovieService } from 'src/app/selected-movie.service';
 import { tickets, TicketsService } from 'src/app/tickets.service';
 import { Blik, MoviesService } from 'src/app/movies.service';
 import { Router } from '@angular/router';
+import { OrderService } from 'src/app/order.service';
 
 const emailConfirm: ValidatorFn = (control: AbstractControl) => {
   const email = control.get('userMail')
   const confirmEmail = control.get('userMailConfirmation')
   return email?.value === confirmEmail?.value ? null : {emailMismatch: true} 
 };
+
+export interface UserFormValue {
+  userName: string
+  userLastName: string
+  userPhoneNumber?: string
+  userMail: string
+  userMailConfirmation: string
+  userNewsletter: boolean 
+  discountCode?: string
+}
 
 
 @Component({
@@ -34,6 +45,7 @@ export class FormComponent implements OnInit {
     private ticketService: TicketsService,
     private fb: NonNullableFormBuilder,
     private moviesService: MoviesService,
+    private orderService: OrderService,
     private router: Router
   ) {
     this.userForm.valueChanges.subscribe(console.log);
@@ -121,6 +133,7 @@ export class FormComponent implements OnInit {
       return
     }
 
+    this.orderService.addOrder(this.userForm.getRawValue())
     this.router.navigate(['/summarize']);
     console.log(this.blikControl.value)
   }

@@ -4,7 +4,7 @@ import { Movies } from './movies';
 import { Show } from './movies.service';
 import { SelectedMovieService } from './selected-movie.service';
 
-interface seat {
+export interface seat {
   positon: string;
   type: string;
   price: number;
