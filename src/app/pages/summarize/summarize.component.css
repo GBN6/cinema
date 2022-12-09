@@ -1,0 +1,25 @@
+.summarize-container {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.summarize {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.qr-img-container {
+    width: 200px;
+}
+
+.summarize a {
+    text-decoration: underline;
+    font-weight: 900;
+    color: rgb(66, 66, 252);
+}

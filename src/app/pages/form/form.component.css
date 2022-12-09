@@ -191,3 +191,6 @@ form input.error {
     padding: 1rem 3rem;
     border-radius: 20px;
   }
+  .close-modal {
+    border: 2px solid var(--color-border-grey);
+  }

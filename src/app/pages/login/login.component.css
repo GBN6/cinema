@@ -24,6 +24,7 @@ h1 {
     gap: 2rem;
 }
 .login form input {
+    width: 90%;
     padding: 1rem;
     border-radius: 20px;
     border: 2px solid var(--color-border-grey);

@@ -14,6 +14,7 @@ import {
 import { SelectedMovieService } from 'src/app/selected-movie.service';
 import { tickets, TicketsService } from 'src/app/tickets.service';
 import { Blik, MoviesService } from 'src/app/movies.service';
+import { Router } from '@angular/router';
 
 const emailConfirm: ValidatorFn = (control: AbstractControl) => {
   const email = control.get('userMail')
@@ -32,7 +33,8 @@ export class FormComponent implements OnInit {
     private movieSelectedService: SelectedMovieService,
     private ticketService: TicketsService,
     private fb: NonNullableFormBuilder,
-    private moviesService: MoviesService
+    private moviesService: MoviesService,
+    private router: Router
   ) {
     this.userForm.valueChanges.subscribe(console.log);
     this.blikControl.valueChanges.subscribe(console.log)
@@ -119,6 +121,7 @@ export class FormComponent implements OnInit {
       return
     }
 
+    this.router.navigate(['/summarize']);
     console.log(this.blikControl.value)
   }
 
