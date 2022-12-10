@@ -60,10 +60,11 @@ export class FormComponent implements OnInit {
   })
 
   handleUserData(userFormData: UserData) {
-    console.log(userFormData)
+    this.orderService.addOrder(userFormData, this.ticketService.getTickets())
   }
 
   submitPayment() {
+
     this.blikControl.markAllAsTouched();
     if (this.blikControl.invalid) {
       return

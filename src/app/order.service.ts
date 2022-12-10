@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserFormValue } from './pages/form/form.component';
+import { UserData } from './components/user-form/user-form.component';
+import { tickets } from './tickets.service';
 
 export interface Order {
   id: number
@@ -36,8 +38,50 @@ export class OrderService {
 
   constructor(private http: HttpClient) { }
 
-  addOrder(item: Partial<UserFormValue>) {
-    this.http.post<any>(this.orderUrl, item).subscribe((data) => 
+  addOrder(userData: UserData, tickets: tickets[] ) {
+
+    const { userName, userLastName, userMail, discountCode, userPhoneNumber, userInvoiceForm } = userData
+
+    const orderDTO = {
+      id: 0,
+      userName,
+      userLastName,
+      userMail,
+      discountCode,
+      userPhoneNumber,
+      userInvoiceForm,
+      paiedAt: new Date().getTime().toString(),
+      ticket: tickets
+    }
+
+    this.http.post<any>(this.orderUrl, orderDTO).subscribe((data) => 
     this.orderId = data.id)
   }
 }
+
+
+
+// {
+//   "id": 0,
+//   "userName": "",
+//   "userLastName": "",
+//   "userEmail": "",
+//   "invoice": [
+//     {
+//       "id": 0,
+//       "address": [
+//         {
+//           "id": 0,
+//           "street": "",
+//           "local": "",
+//           "postcode": "",
+//           "city": ""
+//         }
+//       ],
+//       "nip": ""
+//     }
+//   ],
+//   "date": "",
+//   "paied": true,
+//   "userId": 0
+// }
