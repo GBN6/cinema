@@ -16,12 +16,7 @@ import { tickets, TicketsService } from 'src/app/tickets.service';
 import { Blik, MoviesService } from 'src/app/movies.service';
 import { Router } from '@angular/router';
 import { OrderService } from 'src/app/order.service';
-
-const emailConfirm: ValidatorFn = (control: AbstractControl) => {
-  const email = control.get('userMail')
-  const confirmEmail = control.get('userMailConfirmation')
-  return email?.value === confirmEmail?.value ? null : {emailMismatch: true} 
-};
+import { UserData } from 'src/app/components/user-form/user-form.component';
 
 export interface UserFormValue {
   userName: string
@@ -43,12 +38,9 @@ export class FormComponent implements OnInit {
   constructor(
     private movieSelectedService: SelectedMovieService,
     private ticketService: TicketsService,
-    private fb: NonNullableFormBuilder,
-    private moviesService: MoviesService,
     private orderService: OrderService,
     private router: Router
   ) {
-    this.userForm.valueChanges.subscribe(console.log);
     this.blikControl.valueChanges.subscribe(console.log)
   }
 
@@ -67,64 +59,8 @@ export class FormComponent implements OnInit {
     ]
   })
 
-  userForm = this.fb.group({
-    userName: this.fb.control('', {
-      validators: [
-        Validators.required,
-        Validators.pattern('[a-zA-Z ]*'),
-        Validators.maxLength(50),
-      ],
-    }),
-    userLastName: this.fb.control('', {
-      validators: [
-        Validators.required,
-        Validators.pattern('[a-zA-Z ]*'),
-        Validators.maxLength(50),
-      ],
-    }),
-    userPhoneNumber: this.fb.control('', {
-      validators: [
-        Validators.pattern('^[0-9]*$'),
-        Validators.minLength(9),
-        Validators.maxLength(9),
-      ],
-    }),
-    userMail: this.fb.control('', {
-      validators: [
-        Validators.required,
-        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,7}$'),
-      ],
-    }),
-    userNewsletter: this.fb.control(false),
-    userMailConfirmation: this.fb.control('', {
-      validators: [
-        Validators.required,
-        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,7}$'),
-      ],
-    }),
-    discountCode: this.fb.control('', {
-      validators: [
-        Validators.pattern('^[a-zA-Z0-9]{7}$'),
-      ],
-    }),
-  }, {validators: [
-    emailConfirm
-  ]});
-
-  submitUserForm() {
-    this.userForm.markAllAsTouched();
-    if (this.userForm.invalid) {
-      return;
-    }
-    // handle...
-    console.log(this.userForm.value);
-    const modal = document.querySelector('#modal') as HTMLElement
-    modal.style.display = 'block'
-
-    this.moviesService.getBlikCodes().subscribe((response) => {
-      this.codes = response
-      console.log(this.codes)
-    })
+  handleUserData(userFormData: UserData) {
+    console.log(userFormData)
   }
 
   submitPayment() {
@@ -132,8 +68,6 @@ export class FormComponent implements OnInit {
     if (this.blikControl.invalid) {
       return
     }
-
-    this.orderService.addOrder(this.userForm.getRawValue())
     this.router.navigate(['/summarize']);
     console.log(this.blikControl.value)
   }
@@ -149,13 +83,7 @@ export class FormComponent implements OnInit {
     }, 0);
   }
 
-  checkBLikCode(code: number ) {
-    return this.codes
-  }
-
-
   ngOnInit(): void {
     this.tickets = this.ticketService.getTickets();
   }
-
 }
