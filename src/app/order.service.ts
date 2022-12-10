@@ -50,7 +50,7 @@ export class OrderService {
       discountCode,
       userPhoneNumber,
       userInvoiceForm,
-      paiedAt: new Date().getTime().toString(),
+      paiedAt: new Date().toString(),
       ticket: tickets
     }
 
