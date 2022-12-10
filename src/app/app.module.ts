@@ -15,6 +15,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { TicketSelectionComponent } from './components/ticket-selection/ticket-selection.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SummarizeComponent } from './pages/summarize/summarize.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SummarizeComponent } from './pages/summarize/summarize.component';
     TicketSelectionComponent,
     LoginComponent,
     SummarizeComponent,
+    UserFormComponent,
   ],
   imports: [
     BrowserModule,
