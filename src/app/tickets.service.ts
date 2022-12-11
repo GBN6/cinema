@@ -13,6 +13,7 @@ export interface seat {
 
 export interface tickets {
   id: number;
+  showId: number;
   title: string;
   date: string;
   hour: string;
@@ -30,6 +31,10 @@ export class TicketsService {
 
   // private ticketsAmmountSubject$$ = new Subject<number>();
   // ticketAmount = this.ticketsAmmountSubject$$.asObservable();
+
+  clearSelectedTickets() {
+    this.selectedTickets = []
+  }
 
   updateSelectedMovie() {
     this.selectedMovie = this.movieService.getSelectedMovie();

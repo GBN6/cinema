@@ -17,31 +17,33 @@
             {{ getFullPrice() }} PLN
         </div>
     </div>
-    <app-user-form (userDataForm)="handleUserData($event)" ></app-user-form>
+    <app-user-form (openModal)="handleModalFlag($event)" (userDataForm)="handleUserDataForm($event)" ></app-user-form>
     <div class="return-to-seats">
         <a [routerLinkActive]="['active']" class="router-link" routerLink="/seats"> &#9754; Wróć do wyboru miejsc</a>
     </div>
 </div>
 
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <h1>Wprowadź kod blik</h1>
-        <form (ngSubmit)="submitPayment()">
-            <input [formControl]="blikControl" [class.error]="blikControl.touched && blikControl.errors" class="blik-input" placeholder="Kod Blik">
-            <ng-container *ngIf="blikControl.errors as errors">
-                <ng-container *ngIf="blikControl.touched">
-                    <p *ngIf="errors['pattern']" class="text-danger">Tylko cyfry</p>
-                    <p *ngIf="errors['minlength'] as minLength">
-                        Podałeś {{ minLength.actualLength}} liczb, BLIK składa się z {{minLength.requiredLength}}
-                    </p>
-                    <p *ngIf="errors['maxlength'] as maxLength">Max liczba cyfr to {{maxLength.requiredLength}}</p>
-                    <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+<ng-container *ngIf="modalFlag">
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h1>Wprowadź kod blik</h1>
+            <form (ngSubmit)="submitPayment()">
+                <input [formControl]="blikControl" [class.error]="blikControl.touched && blikControl.errors" class="blik-input" placeholder="Kod Blik">
+                <ng-container *ngIf="blikControl.errors as errors">
+                    <ng-container *ngIf="blikControl.touched">
+                        <p *ngIf="errors['pattern']" class="text-danger">Tylko cyfry</p>
+                        <p *ngIf="errors['minlength'] as minLength">
+                            Podałeś {{ minLength.actualLength}} liczb, BLIK składa się z {{minLength.requiredLength}}
+                        </p>
+                        <p *ngIf="errors['maxlength'] as maxLength">Max liczba cyfr to {{maxLength.requiredLength}}</p>
+                        <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+                    </ng-container>
                 </ng-container>
-            </ng-container>
-            <div class="modal-nav">
-                <button  class="modal-btn blik-btn">Potwierdź</button>
-                <button type="button" class="modal-btn close-modal" (click)="closeModal()" >Wyjdź</button>
-            </div>
-        </form>
+                <div class="modal-nav">
+                    <button  class="modal-btn blik-btn">Potwierdź</button>
+                    <button type="button" class="modal-btn close-modal" (click)="closeModal()" >Wyjdź</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+</ng-container>

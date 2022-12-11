@@ -28,6 +28,81 @@
           }
         }
       ]
+    },
+    {
+      "id": 2,
+      "paiedAt": "Sun Dec 11 2022 15:52:09 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": 0.8015610288519939,
+          "showId": 0,
+          "title": "Black Panther: Wakanda Forever",
+          "date": "11/12/2022",
+          "hour": "12.30",
+          "seat": {
+            "positon": "A0",
+            "type": "Ulgowy",
+            "price": 15,
+            "special": false
+          }
+        },
+        {
+          "id": 0.4233065625252217,
+          "showId": 0,
+          "title": "Black Panther: Wakanda Forever",
+          "date": "11/12/2022",
+          "hour": "12.30",
+          "seat": {
+            "positon": "A1",
+            "type": "Normalny",
+            "price": 30,
+            "special": false
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "userName": "Grzegorz",
+      "userLastName": "Bandyra",
+      "userMail": "grzegorzbandyra@gmail.com",
+      "discountCode": "",
+      "userPhoneNumber": "",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paiedAt": "Sun Dec 11 2022 16:10:08 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": 0.6629094522256909,
+          "showId": 0,
+          "title": "Black Panther: Wakanda Forever",
+          "date": "11/12/2022",
+          "hour": "12.30",
+          "seat": {
+            "positon": "E7",
+            "type": "Voucher",
+            "price": 20,
+            "special": false
+          }
+        },
+        {
+          "id": 0.9294242397993575,
+          "showId": 0,
+          "title": "Black Panther: Wakanda Forever",
+          "date": "11/12/2022",
+          "hour": "12.30",
+          "seat": {
+            "positon": "E8",
+            "type": "Ulgowy",
+            "price": 15,
+            "special": false
+          }
+        }
+      ]
     }
   ],
   "blik": [
@@ -64,7 +139,7 @@
     {
       "id": 0,
       "name": "A",
-      "rows": 6,
+      "rows": 8,
       "colu": 12,
       "specialSeats": [
         "F6",
@@ -107,8 +182,15 @@
       "screen": "B",
       "reservedSeats": [
         "A3",
-        "C4",
-        "H5"
+        "E2",
+        "E1",
+        "C5",
+        "E4",
+        "B7",
+        "C7",
+        "A0",
+        "A1",
+        "E8"
       ],
       "priceList": [
         {
@@ -131,23 +213,23 @@
       "hour": "16.30",
       "screen": "A",
       "reservedSeats": [
-        "A10",
-        "B15",
-        "B16",
-        "C12",
-        "F1"
+        "A3",
+        "C4",
+        "H5",
+        "F4",
+        "H6"
       ],
       "priceList": [
         {
           "type": "Normalny",
-          "price": 50
-        },
-        {
-          "type": "Senior",
-          "price": 25
+          "price": 30
         },
         {
           "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
           "price": 20
         }
       ],
@@ -187,10 +269,10 @@
       "screen": "A",
       "hour": "10.30",
       "reservedSeats": [
-        "H5",
-        "H6",
-        "I3",
-        "I7"
+        "F5",
+        "F4",
+        "D0",
+        "C9"
       ],
       "priceList": [
         {

@@ -39,6 +39,7 @@ const emailConfirm: ValidatorFn = (control: AbstractControl) => {
 export class UserFormComponent implements OnInit {
 
   @Output() userDataForm = new EventEmitter<UserData>();
+  @Output() openModal = new EventEmitter<boolean>()
 
   userForm = this.fb.group(
     {
@@ -147,13 +148,11 @@ export class UserFormComponent implements OnInit {
     }
     // handle...
     console.log(this.userForm.value);
-    const modal = document.querySelector('#modal') as HTMLElement;
-    modal.style.display = 'block';
     this.userDataForm.emit(this.userForm.getRawValue())
+    this.openModal.emit(true);
   }
 
   constructor(private fb: NonNullableFormBuilder) {
-    this.userForm.valueChanges.subscribe(console.log);
   }
 
   ngOnInit(): void {}

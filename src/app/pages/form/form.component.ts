@@ -44,6 +44,8 @@ export class FormComponent implements OnInit {
     this.blikControl.valueChanges.subscribe(console.log)
   }
 
+  modalFlag = false;
+
   codes: Blik[] = []
 
   date = this.movieSelectedService.selectedDate;
@@ -59,22 +61,28 @@ export class FormComponent implements OnInit {
     ]
   })
 
-  handleUserData(userFormData: UserData) {
+  handleModalFlag(status: boolean) {
+    this.modalFlag = status
+  }
+
+  handleUserDataForm (userFormData: UserData ) {
     this.orderService.addOrder(userFormData, this.ticketService.getTickets())
   }
 
   submitPayment() {
-
     this.blikControl.markAllAsTouched();
     if (this.blikControl.invalid) {
       return
     }
+
     this.router.navigate(['/summarize']);
+    this.orderService.addToReservedSeats(this.ticketService.getTickets())
+    this.movieSelectedService.clearSelectedSeats();
+    this.ticketService.clearSelectedTickets();
   }
 
   closeModal() {
-    const modal = document.querySelector('#modal') as HTMLElement
-    modal.style.display = 'none'
+    this.modalFlag =!this.modalFlag
   }
 
   getFullPrice() {

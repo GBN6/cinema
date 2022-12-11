@@ -22,6 +22,10 @@ export class SelectedMovieService {
 
   selectedSeats: string[] = [];
 
+  clearSelectedSeats() {
+    this.selectedSeats = []
+  }
+
   getSelectedMovie(): Movies {
     let movie = {
       id: 0,

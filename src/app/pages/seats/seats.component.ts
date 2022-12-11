@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectedMovieService } from 'src/app/selected-movie.service';
-import { TicketType } from 'src/app/components/ticket-selection/ticket-selection.component';
 import { TicketsService } from 'src/app/tickets.service';
-import { Movies } from 'src/app/movies';
 import { MoviesService, Show } from 'src/app/movies.service';
 import { Screen } from 'src/app/movies.service';
 import { mergeMap, tap } from 'rxjs';
@@ -68,6 +66,7 @@ export class SeatsComponent implements OnInit {
           this.movieService.addSeat(seatPos);
           this.ticketService.addTicket({
             id: Math.random(),
+            showId: this.show.id,
             title: title,
             date: this.date,
             hour: hour,
@@ -77,6 +76,7 @@ export class SeatsComponent implements OnInit {
           this.movieService.addSeat(seatPos);
           this.ticketService.addTicket({
             id: Math.random(),
+            showId: this.show.id,
             title: title,
             date: this.date,
             hour: hour,
