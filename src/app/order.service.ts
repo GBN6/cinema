@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserFormValue } from './pages/form/form.component';
 import { UserData } from './components/user-form/user-form.component';
 import { tickets } from './tickets.service';
+import { ReplaySubject } from 'rxjs';
 
 export interface Order {
   id: number
@@ -34,6 +35,12 @@ export interface Address {
 })
 export class OrderService {
   private orderUrl = 'http://localhost:3000/orders'
+  private orderEmail$$ = new ReplaySubject<string>(1)
+
+  get orderEmail$() {
+    return this.orderEmail$$.asObservable();
+  }
+
   orderId? :number = 0
 
   constructor(private http: HttpClient) { }
@@ -53,6 +60,8 @@ export class OrderService {
       paiedAt: new Date().toString(),
       ticket: tickets
     }
+
+    this.orderEmail$$.next(userMail)
 
     this.http.post<any>(this.orderUrl, orderDTO).subscribe((data) => 
     this.orderId = data.id)

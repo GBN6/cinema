@@ -23,3 +23,9 @@
     font-weight: 900;
     color: rgb(66, 66, 252);
 }
+
+.order-email {
+    text-decoration: underline;
+    font-weight: 900;
+    color: rgb(66, 66, 252);
+}

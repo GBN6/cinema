@@ -70,7 +70,6 @@ export class FormComponent implements OnInit {
       return
     }
     this.router.navigate(['/summarize']);
-    console.log(this.blikControl.value)
   }
 
   closeModal() {
