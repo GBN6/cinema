@@ -100,7 +100,7 @@ export class SeatsComponent implements OnInit {
         this.rows = [...Array(this.screen.rows).keys()].map((i) =>
           String.fromCharCode(i + 65)
         );
-        this.cols = [...Array(this.screen.colu).keys()].map((i) => i);
+        this.cols = [...Array(this.screen.colu).keys()].map((i) => i + 1);
       });
   }
 

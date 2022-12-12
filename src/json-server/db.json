@@ -1,4 +1,40 @@
 {
+  "users": [
+    {
+      "id": 0,
+      "userName": "Grzegorz",
+      "userLastName": "Bandyra",
+      "userEmail": "grzegorzbandyra@gmail.com",
+      "userPassword": "losowe",
+      "role": "User",
+      "userPhoneNumber": "600700800",
+      "userInvoiceDetails": [
+        {
+          "userNIP": "",
+          "userStreet": "",
+          "userPostCode": "",
+          "userCity": ""
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "userName": "Jan",
+      "userLastName": "Kowalski",
+      "userEmail": "kowalski@gmail.com",
+      "userPassword": "fajne",
+      "role": "User",
+      "userPhoneNumber": "900800700",
+      "userInvoiceDetails": [
+        {
+          "userNIP": "1234567890",
+          "userStreet": "Losowa Ulica 5/15",
+          "userPostCode": "12-123",
+          "userCity": "Warszawa"
+        }
+      ]
+    }
+  ],
   "orders": [
     {
       "id": 1,
@@ -28,81 +64,6 @@
           }
         }
       ]
-    },
-    {
-      "id": 2,
-      "paiedAt": "Sun Dec 11 2022 15:52:09 GMT+0100 (czas środkowoeuropejski standardowy)",
-      "ticket": [
-        {
-          "id": 0.8015610288519939,
-          "showId": 0,
-          "title": "Black Panther: Wakanda Forever",
-          "date": "11/12/2022",
-          "hour": "12.30",
-          "seat": {
-            "positon": "A0",
-            "type": "Ulgowy",
-            "price": 15,
-            "special": false
-          }
-        },
-        {
-          "id": 0.4233065625252217,
-          "showId": 0,
-          "title": "Black Panther: Wakanda Forever",
-          "date": "11/12/2022",
-          "hour": "12.30",
-          "seat": {
-            "positon": "A1",
-            "type": "Normalny",
-            "price": 30,
-            "special": false
-          }
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "userName": "Grzegorz",
-      "userLastName": "Bandyra",
-      "userMail": "grzegorzbandyra@gmail.com",
-      "discountCode": "",
-      "userPhoneNumber": "",
-      "userInvoiceForm": {
-        "userNIP": "",
-        "userStreet": "",
-        "userPostCode": "",
-        "userCity": ""
-      },
-      "paiedAt": "Sun Dec 11 2022 16:10:08 GMT+0100 (czas środkowoeuropejski standardowy)",
-      "ticket": [
-        {
-          "id": 0.6629094522256909,
-          "showId": 0,
-          "title": "Black Panther: Wakanda Forever",
-          "date": "11/12/2022",
-          "hour": "12.30",
-          "seat": {
-            "positon": "E7",
-            "type": "Voucher",
-            "price": 20,
-            "special": false
-          }
-        },
-        {
-          "id": 0.9294242397993575,
-          "showId": 0,
-          "title": "Black Panther: Wakanda Forever",
-          "date": "11/12/2022",
-          "hour": "12.30",
-          "seat": {
-            "positon": "E8",
-            "type": "Ulgowy",
-            "price": 15,
-            "special": false
-          }
-        }
-      ]
     }
   ],
   "blik": [
@@ -121,18 +82,6 @@
     {
       "id": 3,
       "code": 229348
-    }
-  ],
-  "users": [
-    {
-      "email": "example@mail.com",
-      "password": "$2a$10$b6KPn94LvMib2b94IFxvWe8QGC78FRxIdCvd7rJadfjgJWGn5Muii",
-      "id": 1
-    },
-    {
-      "email": "example2@mail.com",
-      "password": "$2a$10$6Uot0s9.4HoSg.pfjJykduVnQpJ3R/lX18hLvLZEWSmiyhvCf7aQC",
-      "id": 2
     }
   ],
   "screen": [
@@ -185,12 +134,17 @@
         "E2",
         "E1",
         "C5",
-        "E4",
         "B7",
         "C7",
-        "A0",
         "A1",
-        "E8"
+        "E8",
+        "C1",
+        "C2",
+        "C3",
+        "A5",
+        "A6",
+        "A8",
+        "A9"
       ],
       "priceList": [
         {
@@ -217,7 +171,11 @@
         "C4",
         "H5",
         "F4",
-        "H6"
+        "H6",
+        "C7",
+        "C8",
+        "C9",
+        "C10"
       ],
       "priceList": [
         {
@@ -271,7 +229,7 @@
       "reservedSeats": [
         "F5",
         "F4",
-        "D0",
+        "D1",
         "C9"
       ],
       "priceList": [

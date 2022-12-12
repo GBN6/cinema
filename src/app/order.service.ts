@@ -70,7 +70,7 @@ export class OrderService {
     };
 
     this.orderEmail$$.next(userMail);
-    console.log(orderDTO)
+    console.log(orderDTO);
 
     this.http
       .post<any>(this.orderUrl, orderDTO)
@@ -78,7 +78,8 @@ export class OrderService {
   }
 
   addToReservedSeats(tickets: tickets[]) {
-    let copyTickets = [...tickets];
+    const copyTickets = [...tickets];
+    console.log(copyTickets)
     if (copyTickets.length === 0) return;
     this.getCurrentReservedSeats(copyTickets[0].showId).subscribe(
       ({ reservedSeats }) => {
@@ -86,18 +87,19 @@ export class OrderService {
           .patch(`${this.showUrl}/${copyTickets[0].showId}`, {
             reservedSeats: [...reservedSeats, copyTickets[0].seat.positon],
           })
-          .subscribe();
-        copyTickets.splice(0, 1)
-        this.addToReservedSeats(copyTickets)
+          .subscribe((data) => {
+            console.log(data)
+            copyTickets.splice(0, 1) 
+            this.addToReservedSeats(copyTickets)});
       }
     );
+    
   }
 
   private getCurrentReservedSeats(number: number) {
     return this.http.get<Show>(`${this.showUrl}/${number}`);
   }
 }
-
 
 // {
 //   "id": 0,

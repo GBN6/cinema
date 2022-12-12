@@ -41,7 +41,6 @@ export class FormComponent implements OnInit {
     private orderService: OrderService,
     private router: Router
   ) {
-    this.blikControl.valueChanges.subscribe(console.log)
   }
 
   modalFlag = false;
@@ -75,10 +74,10 @@ export class FormComponent implements OnInit {
       return
     }
 
-    this.router.navigate(['/summarize']);
     this.orderService.addToReservedSeats(this.ticketService.getTickets())
     this.movieSelectedService.clearSelectedSeats();
     this.ticketService.clearSelectedTickets();
+    this.router.navigate(['/summarize']);
   }
 
   closeModal() {

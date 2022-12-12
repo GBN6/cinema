@@ -18,7 +18,6 @@ export class SummarizeComponent implements OnInit {
   ngOnInit(): void {
     const sub = this.orderService.orderEmail$.subscribe((response) => {
       this.email = response
-      console.log(this.email)
     })
     this.subscribe.add(sub)
   }
