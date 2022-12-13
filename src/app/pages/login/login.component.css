@@ -11,7 +11,8 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    padding: 4rem;
+    padding: 4rem 1rem;
+    width: 300px;
 }
 h1 {
     align-self: center;
@@ -23,6 +24,7 @@ h1 {
     align-items: center;
     gap: 2rem;
 }
+
 .login form input {
     width: 90%;
     padding: 1rem;
@@ -30,6 +32,10 @@ h1 {
     border: 2px solid var(--color-border-grey);
 }
 
+.login form p {
+    font-weight: 800;
+    color: rgb(255, 92, 92);
+}
 .login-btn {
     padding: 1rem 3rem;
     background-color: rgb(255, 215, 0, 0.6);

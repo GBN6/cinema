@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { TicketsService } from 'src/app/tickets.service';
-import { newUser } from 'src/app/user';
 import { LoginService, User } from 'src/app/login.service';
 import { Subscription } from 'rxjs';
 
@@ -14,14 +13,14 @@ export class NavbarComponent implements OnInit {
 
   ticketsInCart = 0
   cart = faCartShopping;
-  user = newUser;
 
   private subscriptions = new Subscription();
 
   loggedIn = false
   userLoggedIn: Partial<User> = {} 
 
-  constructor(private ticketService: TicketsService, private loginAuth: LoginService) { }
+  constructor(private ticketService: TicketsService, private loginAuth: LoginService) { 
+  }
 
   getUser() {
     const sub = this.loginAuth.user$.subscribe((response) => {
@@ -30,10 +29,16 @@ export class NavbarComponent implements OnInit {
     this.subscriptions.add(sub)
   }
 
+  getLoginStatus() {
+    const sub = this.loginAuth.isUserLoggedIn$.subscribe((response) => {
+      this.loggedIn = response
+    })
+    this.subscriptions.add(sub)
+  }
+
   ngOnInit(): void {
-    this.loggedIn = this.loginAuth.isUserAuthenticated()
-    console.log(this.loggedIn)
-    this.loginAuth.user$.subscribe(console.log)
+    this.getUser()
+    this.getLoginStatus()
   }
 
   ngOnChange() {

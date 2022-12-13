@@ -5,6 +5,9 @@
             <form [formGroup]="loginForm" (ngSubmit)="onLogIn()">
                 <input formControlName="userEmail" placeholder="Email">
                 <input formControlName="userPassword" placeholder="Hasło" type="password">
+                <ng-container *ngIf="invalidUser">
+                    <p>Blędny email lub hasło użytkownika</p>
+                </ng-container>
                 <button class="login-btn">Zaloguj</button>
                 <button type="button" class="forgot-btn" (click)="passwordRecover()" >Zapomniałeś hasła?</button>
             </form>

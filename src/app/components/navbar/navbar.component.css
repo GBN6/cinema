@@ -54,6 +54,10 @@ h1 {
     border: 1px solid var(--color-border-grey);
 }
 
+.login-button {
+    width: 15rem;
+}
+
 .header-button:hover {
     background-color: var(--color-light-grey);
 }

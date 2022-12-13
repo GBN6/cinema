@@ -23,7 +23,7 @@
         </div>
         <div class="movie-score">
             {{movie.score}}
-            <div class="user-buttons" *ngIf="user.loggedIn">
+            <div class="user-buttons" *ngIf="loggedIn">
                 <button type="button" class="rate-movie-button">Oceń ten film!</button>
                 <button type="button" class="want-to-see-button">Chcę zoaczyć</button>
             </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ReplaySubject, Subject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
 
 export interface User {
   id: number
@@ -26,9 +26,9 @@ export interface UserInvoiceDetail {
 })
 export class LoginService {
 
-  private isUserLoggedIn = false
+  private isUserLoggedIn$$ = new BehaviorSubject<boolean>(false)
   private userUrl = 'http://localhost:3000/users'
-  private user$$ = new ReplaySubject<User>(1)
+  private user$$ = new BehaviorSubject<User>({} as User)
   constructor(private http: HttpClient) { }
 
   getUser() {
@@ -39,6 +39,10 @@ export class LoginService {
     return this.http.get<User>(`${this.userUrl}/${id}`)
   }
 
+  get isUserLoggedIn$() {
+    return this.isUserLoggedIn$$.asObservable()
+  }
+  
   get user$() {
     return this.user$$.asObservable()
   }
@@ -48,10 +52,6 @@ export class LoginService {
   }
 
   userAuthentication() {
-    this.isUserLoggedIn = !this.isUserLoggedIn
-  }
-
-  isUserAuthenticated() {
-    return this.isUserLoggedIn;
+    this.isUserLoggedIn$$.next(true)
   }
 }

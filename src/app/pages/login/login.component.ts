@@ -21,6 +21,7 @@ import { LoginService } from 'src/app/login.service';
 })
 export class LoginComponent implements OnInit {
   forgotPassword = false;
+  invalidUser = false;
 
   passwordRecover() {
     this.forgotPassword = !this.forgotPassword;
@@ -38,6 +39,8 @@ export class LoginComponent implements OnInit {
             this.loginAuth.setCurrentUser(user)
             this.router.navigate(['']);
           }
+        } else {
+          this.invalidUser = true
         }
       })
     });

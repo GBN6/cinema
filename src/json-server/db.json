@@ -1,4 +1,8 @@
 {
+  "twojaStara": [
+
+  ],
+  
   "users": [
     {
       "id": 0,
@@ -15,6 +19,9 @@
           "userPostCode": "",
           "userCity": ""
         }
+      ],
+      "userWishList": [
+
       ]
     },
     {
@@ -32,6 +39,9 @@
           "userPostCode": "12-123",
           "userCity": "Warszawa"
         }
+      ],
+      "userWishList": [
+        
       ]
     }
   ],
@@ -60,6 +70,49 @@
             "positon": "F4",
             "type": "Normalny",
             "price": 50,
+            "special": false
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "userName": "Jan",
+      "userLastName": "Kowalski",
+      "userMail": "dasdadas@gmail.com",
+      "discountCode": "",
+      "userPhoneNumber": "123456745",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paiedAt": "Tue Dec 13 2022 12:09:18 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": 0.9981165037595541,
+          "showId": 0,
+          "title": "Black Panther: Wakanda Forever",
+          "date": "13/12/2022",
+          "hour": "12.30",
+          "seat": {
+            "positon": "B4",
+            "type": "Normalny",
+            "price": 30,
+            "special": false
+          }
+        },
+        {
+          "id": 0.35171326309309214,
+          "showId": 0,
+          "title": "Black Panther: Wakanda Forever",
+          "date": "13/12/2022",
+          "hour": "12.30",
+          "seat": {
+            "positon": "B5",
+            "type": "Normalny",
+            "price": 30,
             "special": false
           }
         }
@@ -136,15 +189,7 @@
         "C5",
         "B7",
         "C7",
-        "A1",
-        "E8",
-        "C1",
-        "C2",
-        "C3",
-        "A5",
-        "A6",
-        "A8",
-        "A9"
+        "A1"
       ],
       "priceList": [
         {

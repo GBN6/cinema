@@ -102,6 +102,8 @@ export class SeatsComponent implements OnInit {
         );
         this.cols = [...Array(this.screen.colu).keys()].map((i) => i + 1);
       });
+
+      console.log(this.show.id)
   }
 
   ngOnDestroy() {}
