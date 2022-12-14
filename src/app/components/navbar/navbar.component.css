@@ -78,7 +78,7 @@ h1 {
     width: 3rem;
     height: 3rem;
     border-radius: 50px;
-    background-color: #32E0C4;
+    background-color: rgb(255, 215, 0);
     font-size: 1.5rem;
     font-weight: bold;
 }

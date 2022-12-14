@@ -7,44 +7,58 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-
-  ticketsInCart = 0
+  ticketsInCart = 0;
   cart = faCartShopping;
 
   private subscriptions = new Subscription();
 
-  loggedIn = false
-  userLoggedIn: Partial<User> = {} 
+  loggedIn = false;
+  userLoggedIn: Partial<User> = {};
 
-  constructor(private ticketService: TicketsService, private loginAuth: LoginService) { 
-  }
+  constructor(
+    private ticketService: TicketsService,
+    private loginService: LoginService
+  ) {}
 
   getUser() {
-    const sub = this.loginAuth.user$.subscribe((response) => {
-      this.userLoggedIn = response
-    })
-    this.subscriptions.add(sub)
+    const sub = this.loginService.user$.subscribe((response) => {
+      this.userLoggedIn = response;
+    });
+    this.subscriptions.add(sub);
   }
 
   getLoginStatus() {
-    const sub = this.loginAuth.isUserLoggedIn$.subscribe((response) => {
-      this.loggedIn = response
-    })
-    this.subscriptions.add(sub)
+    const sub = this.loginService.isUserLoggedIn$.subscribe((response) => {
+      this.loggedIn = response;
+    });
+    this.subscriptions.add(sub);
+  }
+
+  getTicketsAmmount() {
+    const sub = this.ticketService.ticketAmount$.subscribe(
+      ({ ticketsAmount }) => {
+        this.ticketsInCart = ticketsAmount;
+      }
+    );
+    this.subscriptions.add(sub);
+  }
+
+  logoutUser() {
+    this.loginService.userLogout();
   }
 
   ngOnInit(): void {
-    this.getUser()
-    this.getLoginStatus()
+    this.getUser();
+    this.getLoginStatus();
+    this.getTicketsAmmount();
   }
 
-  ngOnChange() {
-  }
+  ngOnChange() {}
 
   ngOnDestroy() {
-    this.subscriptions.unsubscribe()
+    this.subscriptions.unsubscribe();
   }
 }

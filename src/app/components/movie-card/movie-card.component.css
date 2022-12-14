@@ -23,6 +23,7 @@
 
 .movie-hours {
     display: flex;
+    gap: 1rem;
 }
 
 .movie-hours button {

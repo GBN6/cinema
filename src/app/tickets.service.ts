@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Movies } from './movies';
 import { Show } from './movies.service';
 import { SelectedMovieService } from './selected-movie.service';
@@ -29,8 +29,11 @@ export class TicketsService {
   selectedMovie: Movies;
   selectedShow: Show;
 
-  // private ticketsAmmountSubject$$ = new Subject<number>();
-  // ticketAmount = this.ticketsAmmountSubject$$.asObservable();
+  private ticketsAmmountSubject$$ = new BehaviorSubject({ticketsAmount: 0});
+
+  get ticketAmount$() {
+    return this.ticketsAmmountSubject$$.asObservable()
+  }
 
   clearSelectedTickets() {
     this.selectedTickets = []
@@ -46,6 +49,7 @@ export class TicketsService {
 
   addTicket(item: tickets) {
     this.selectedTickets.push(item);
+    this.ticketsAmmountSubject$$.next({ticketsAmount: this.selectedTickets.length})
   }
 
   getTickets(): tickets[] {
@@ -60,6 +64,7 @@ export class TicketsService {
         ticket.hour === this.selectedShow.hour
       ) {
         this.selectedTickets.splice(index, 1);
+        this.ticketsAmmountSubject$$.next({ticketsAmount: this.selectedTickets.length})
       }
     });
   }

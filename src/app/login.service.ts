@@ -51,6 +51,12 @@ export class LoginService {
     this.user$$.next(user)
   }
 
+
+  userLogout() {
+    this.isUserLoggedIn$$.next(false)
+    this.user$$.next({} as User)
+  }
+
   userAuthentication() {
     this.isUserLoggedIn$$.next(true)
   }
