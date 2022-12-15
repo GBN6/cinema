@@ -16,6 +16,8 @@ import { TicketSelectionComponent } from './components/ticket-selection/ticket-s
 import { LoginComponent } from './pages/login/login.component';
 import { SummarizeComponent } from './pages/summarize/summarize.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { CartComponent } from './components/cart/cart.component';
+import { CartItemComponent } from './components/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     LoginComponent,
     SummarizeComponent,
     UserFormComponent,
+    CartComponent,
+    CartItemComponent,
   ],
   imports: [
     BrowserModule,

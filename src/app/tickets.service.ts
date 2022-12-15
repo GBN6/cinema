@@ -29,10 +29,23 @@ export class TicketsService {
   selectedMovie: Movies;
   selectedShow: Show;
 
+  private isCartOpen$$ = new BehaviorSubject({cartOpen: false})
   private ticketsAmmountSubject$$ = new BehaviorSubject({ticketsAmount: 0});
+
+  get cartStatus$() {
+    return this.isCartOpen$$.asObservable();
+  }
 
   get ticketAmount$() {
     return this.ticketsAmmountSubject$$.asObservable()
+  }
+
+  openCart() {
+    this.isCartOpen$$.next({cartOpen: true})
+  }
+
+  closeCart() {
+    this.isCartOpen$$.next({cartOpen: false})
   }
 
   clearSelectedTickets() {

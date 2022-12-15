@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
 
   loggedIn = false;
   userLoggedIn: Partial<User> = {};
+  cartStatus: boolean = false
 
   constructor(
     private ticketService: TicketsService,
@@ -28,6 +29,22 @@ export class NavbarComponent implements OnInit {
       this.userLoggedIn = response;
     });
     this.subscriptions.add(sub);
+  }
+
+  openCart() {
+    if (this.cartStatus) {
+      this.ticketService.closeCart()
+    } else {
+      this.ticketService.openCart()
+    }
+  }
+
+  getCartStatus() {
+    const sub = this.ticketService.cartStatus$.subscribe(({cartOpen}) => {
+      this.cartStatus = cartOpen
+    })
+
+    this.subscriptions.add(sub)
   }
 
   getLoginStatus() {
@@ -54,6 +71,7 @@ export class NavbarComponent implements OnInit {
     this.getUser();
     this.getLoginStatus();
     this.getTicketsAmmount();
+    this.getCartStatus()
   }
 
   ngOnChange() {}

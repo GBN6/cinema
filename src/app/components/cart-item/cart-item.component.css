@@ -1,0 +1,29 @@
+.card-item-container, .ticket-when, .ticket-pay  {
+    display: flex;
+}
+
+.ticket-details {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 2rem;
+}
+
+.ticket-title {
+    height: 3rem;
+  font-weight: bold;
+  overflow: hidden;
+}
+.ticket-when, .ticket-pay {
+    gap: 2rem;
+}
+
+.remove-ticket-btn {
+    background-color: inherit;
+}
+
+.ng-fa-icon {
+    font-size: 3rem;
+}
