@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     const userEmail = this.loginForm.get('userEmail')?.value;
     const userPassword = this.loginForm.get('userPassword')?.value;
 
-    this.loginAuth.getUser().subscribe((response) => {
+    this.loginAuth.getUsers().subscribe((response) => {
       response.forEach((user) => {
         if (userEmail === user.userEmail && userPassword === user.userPassword) {
           if (user.role === 'User') {

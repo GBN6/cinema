@@ -31,7 +31,7 @@ export class LoginService {
   private user$$ = new BehaviorSubject<User>({} as User)
   constructor(private http: HttpClient) { }
 
-  getUser() {
+  getUsers() {
     return this.http.get<User[]>(this.userUrl)
   }
 

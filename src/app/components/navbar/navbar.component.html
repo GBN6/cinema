@@ -9,7 +9,7 @@
             <ng-container *ngIf="loggedIn; else defaultLog" >
               <button class="header-button login-button" type="button">{{ userLoggedIn.userName }}</button>
               <div class="login-dropdown-content">
-                <a [routerLinkActive]="['active']" class="dropdown-link" routerLink="/my-tickets">Moje Bilety</a>
+                <a [routerLinkActive]="['active']" class="dropdown-link" routerLink="/my-tickets/{{userLoggedIn.id}}">Moje Bilety</a>
                 <a [routerLinkActive]="['active']" class="dropdown-link" routerLink="/to-watch">Chcę obejrzeć</a>
                 <a [routerLinkActive]="['active']" class="dropdown-link" routerLink="/settings">Ustawienia</a>
                 <a [routerLinkActive]="['active']" class="dropdown-link" routerLink="" (click)="logoutUser()" >Wyloguj</a>
