@@ -19,6 +19,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { UserOrdersComponent } from './pages/user-orders/user-orders.component';
+import { TicketItemComponent } from './components/ticket-item/ticket-item.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { UserOrdersComponent } from './pages/user-orders/user-orders.component';
     CartComponent,
     CartItemComponent,
     UserOrdersComponent,
+    TicketItemComponent,
   ],
   imports: [
     BrowserModule,

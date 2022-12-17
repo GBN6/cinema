@@ -43,7 +43,7 @@ export interface UserOrdersSeat {
 })
 export class UserDataService {
 
-  private userUrl = 'http://localhost:3000/user'
+  private userUrl = 'http://localhost:3000/users'
 
   constructor(private http: HttpClient) { }
 

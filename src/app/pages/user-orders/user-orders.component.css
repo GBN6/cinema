@@ -1,0 +1,10 @@
+.user-orders-container {
+    max-width: 80vw;
+    margin: 0 auto;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+}
+h1 {
+    text-align: center;
+}

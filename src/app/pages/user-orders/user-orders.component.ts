@@ -7,27 +7,43 @@ import { UserOrders } from 'src/app/user-data.service';
 @Component({
   selector: 'app-user-orders',
   templateUrl: './user-orders.component.html',
-  styleUrls: ['./user-orders.component.css']
+  styleUrls: ['./user-orders.component.css'],
 })
 export class UserOrdersComponent implements OnInit {
+  constructor(
+    private route: ActivatedRoute,
+    private userDataService: UserDataService
+  ) {}
 
-  constructor(private route: ActivatedRoute, private userDataService: UserDataService) {
-    this.route.params.subscribe((params) => console.log(params));
+  private userId = 0;
+  private subscriptions = new Subscription();
+  userOrders: UserOrders[] = [];
+
+  getIdFromUrl() {
+    const sub = this.route.params.subscribe(({ id }) => {
+      this.userId = id;
+    });
     // console.log(this.route.snapshot.params['id']);
     // console.log(this.route.data);
-   }
 
-  private subscriptions = new Subscription
-  userOrders: UserOrders[] = []
-
-  getUserOrders() {
-    const sub = this.userDataService.getUserOrders(this.route.snapshot.params['id']).subscribe((response) => {
-      this.userOrders = response
-    })
+    this.subscriptions.add(sub);
   }
 
+  getOrders() {
+    const sub = this.userDataService.getUserOrders(this.userId).subscribe(
+      (response) => {
+        this.userOrders = response;
+        console.log(this.userOrders)
+      });
+    this.subscriptions.add(sub);
+  }
 
   ngOnInit(): void {
+    this.getIdFromUrl();
+    this.getOrders();
   }
 
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
+  }
 }

@@ -1,0 +1,13 @@
+.order-ticket {
+    display: flex;
+}
+
+.ticket-details, .ticket-pay {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ticket-when {
+    display: flex;
+    gap: 3rem;
+}
