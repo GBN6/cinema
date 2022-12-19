@@ -1,10 +1,25 @@
 .watchlist-movie {
     display: flex;
     justify-content: space-between;
+    font-size: 1.8rem;
 }
 
 .movie-details {
     display: flex;
     width: 100%;
     gap: 3rem;
+}
+
+.detail-cate {
+    font-weight: 600;
+}
+
+.remove-watchlist-btn {
+    align-self: center;
+    padding: 1rem;
+    font-size: 2rem;
+    border-radius: 20px;
+    font-weight: 600;
+    background-color: rgb(255, 215, 0, 0.6);
+    border: 2px solid rgb(255, 215, 0);
 }

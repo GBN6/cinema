@@ -20,15 +20,15 @@ export interface TicketType {
 })
 export class TicketSelectionComponent implements OnInit {
   @Input() selected: string = '';
-  @Input() index: number = 0
-  @Input() specialSeats: string[] = []
+  @Input() index: number = 0;
+  @Input() specialSeats: string[] = [];
 
   constructor(
     private movieService: SelectedMovieService,
     private ticketService: TicketsService
   ) {}
 
-  ticketsTyped: boolean = false
+  ticketsTyped: boolean = false;
   ticketSelection: PriceList[] = [];
 
   trashCanIcon = faTrashCan;
@@ -36,35 +36,34 @@ export class TicketSelectionComponent implements OnInit {
   selectedTicket: string = '';
 
   selectTicketPrice(value: string) {
-    let price = 0
-    this.ticketSelection.forEach((ticket) =>{
+    let price = 0;
+    this.ticketSelection.forEach((ticket) => {
       if (ticket.type === value) {
         if (this.isSelectedSeatSpecial()) {
-          price = ticket.price + 5
+          price = ticket.price + 5;
         } else {
-          price = ticket.price
+          price = ticket.price;
         }
       }
-    })
-    return price
-  }
-
-
-  handleTicketTypeChange(seat: string, type: string, price: number) {
-    this.ticketService.updateSeatTypeAndPrice( seat, type, price);
+    });
+    return price;
   }
 
   removeTicket(seat: string) {
     this.movieService.removeSeat(seat);
-    this.ticketService.removeTicket(seat)
+    this.ticketService.removeTicket(seat);
+  }
+
+  handleTicketTypeChange(seat: string, type: string, price: number) {
+    this.ticketService.updateSeatTypeAndPrice(seat, type, price);
   }
 
   isSelectedSeatSpecial() {
-    return this.specialSeats.includes(this.selected)
+    return this.specialSeats.includes(this.selected);
   }
 
   ngOnInit(): void {
-    this.ticketSelection = this.movieService.getSelectedShow().priceList
-    this.selectedTicket = this.ticketService.getTicketType(this.selected)
+    this.ticketSelection = this.movieService.getSelectedShow().priceList;
+    this.selectedTicket = this.ticketService.getTicketType(this.selected);
   }
 }

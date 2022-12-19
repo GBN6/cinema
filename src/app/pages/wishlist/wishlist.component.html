@@ -1,4 +1,4 @@
 <div class="watchlist-container">
     <h1>Filmy do obejrzenia</h1>
-    <app-watchlist-movie *ngFor="let movie of userMovieWatchList" [movie]="movie"></app-watchlist-movie>
+    <app-watchlist-movie *ngFor="let movie of userMovieWatchList" [movie]="movie" [userId]="this.userId"></app-watchlist-movie>
 </div>

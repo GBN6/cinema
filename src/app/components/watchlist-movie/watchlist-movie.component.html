@@ -1,12 +1,12 @@
 <div class="watchlist-movie">
     <div class="movie">
         <h3>{{ movie.title }}</h3>
+        <div class="movie-desc"><span class="detail-cate">Opis:</span> {{ movie.description }} </div>
         <div class="movie-details">
-            <div class="movie-genre">{{ movie.genre }}</div>
-            <div class="movie-ageRest"> {{ movie.ageRest }} </div>
-            <div class="movie-length"> {{ movie.length }} </div>
+            <div class="movie-genre"><span class="detail-cate">Kategoria:</span> {{ movie.genre }}</div>
+            <div class="movie-ageRest"><span class="detail-cate">Restrykcje wiekowe:</span> {{ movie.ageRest }} </div>
         </div>
-        <div class="movie-desc">  {{ movie.description }} </div>
+        <div class="movie-length"><span class="detail-cate">Czas trwania:</span> {{ movie.length }} </div>
     </div>
-    <button type="button" class="remove-watchlist-btn">Obejrzałem!</button>
+    <button (click)="removeMovieFromWatchList()" type="button" class="remove-watchlist-btn">Obejrzałem!</button>
 </div>

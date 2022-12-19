@@ -12,7 +12,7 @@ import { UserDataService } from 'src/app/user-data.service';
 export class WishlistComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private userDataService: UserDataService) { }
-  private userId = 0;
+  userId = 0;
   private subscriptions = new Subscription
   userMovieWatchList: Movies[] = []
 

@@ -36,25 +36,6 @@
       ],
       "userWishList": [
         {
-          "id": 0,
-          "img": "assets/wakanda_poster.jpg",
-          "title": "Black Panther: Wakanda Forever",
-          "genre": "Action, Super hero",
-          "length": "130 min",
-          "ageRest": "PG-13",
-          "description": "Whenever i have time i will add some description",
-          "score": "8/10",
-          "director": "Ryan Coogler",
-          "actors": [
-            "Maciek",
-            "Janek",
-            "Ktos",
-            "Leszek"
-          ],
-          "boxOff": 200,
-          "premier": true
-        },
-        {
           "id": 1,
           "img": "assets/apokawixa_poster.jpeg",
           "title": "Apokawixa",
@@ -72,6 +53,25 @@
           ],
           "boxOff": 10,
           "premier": false
+        },
+        {
+          "id": 0,
+          "img": "assets/wakanda_poster.jpg",
+          "title": "Black Panther: Wakanda Forever",
+          "genre": "Action, Super hero",
+          "length": "130 min",
+          "ageRest": "PG-13",
+          "description": "Whenever i have time i will add some description",
+          "score": "8/10",
+          "director": "Ryan Coogler",
+          "actors": [
+            "Maciek",
+            "Janek",
+            "Ktos",
+            "Leszek"
+          ],
+          "boxOff": 200,
+          "premier": true
         }
       ]
     }
