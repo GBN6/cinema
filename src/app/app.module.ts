@@ -20,6 +20,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { UserOrdersComponent } from './pages/user-orders/user-orders.component';
 import { TicketItemComponent } from './components/ticket-item/ticket-item.component';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
+import { WatchlistMovieComponent } from './components/watchlist-movie/watchlist-movie.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { TicketItemComponent } from './components/ticket-item/ticket-item.compon
     CartItemComponent,
     UserOrdersComponent,
     TicketItemComponent,
+    WishlistComponent,
+    WatchlistMovieComponent,
   ],
   imports: [
     BrowserModule,
