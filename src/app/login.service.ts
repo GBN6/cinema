@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
+import { Movies } from './movies';
 
 export interface User {
   id: number
@@ -11,6 +12,7 @@ export interface User {
   role: string
   userPhoneNumber: string
   userInvoiceDetails: UserInvoiceDetail[]
+  userWishList: Movies[]
 }
 
 export interface UserInvoiceDetail {

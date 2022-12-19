@@ -3,8 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { UserFormValue } from './pages/form/form.component';
 import { UserData } from './components/user-form/user-form.component';
 import { tickets } from './tickets.service';
-import { BehaviorSubject, map, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, map, ReplaySubject, Subscription } from 'rxjs';
 import { Show } from './movies.service';
+import { LoginService } from './login.service';
 
 export interface Order {
   id: number;
@@ -38,6 +39,8 @@ export class OrderService {
   private orderUrl = 'http://localhost:3000/orders';
   private showUrl = 'http://localhost:3000/show';
   private orderEmail$$ = new ReplaySubject<string>(1);
+  private userLoggedIn = false;
+  private subscriptions = new Subscription
 
   get orderEmail$() {
     return this.orderEmail$$.asObservable();
@@ -45,7 +48,21 @@ export class OrderService {
 
   orderId?: number = 0;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private loginService: LoginService) {
+    this.getUserStatus()
+  }
+
+  getUserStatus() {
+    const sub = this.loginService.isUserLoggedIn$.subscribe((response) => {
+      this.userLoggedIn = response
+    })
+
+    this.subscriptions.add(sub)
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe()
+  }
 
   addOrder(userData: UserData, tickets: tickets[]) {
     const {

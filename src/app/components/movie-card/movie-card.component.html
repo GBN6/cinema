@@ -6,7 +6,7 @@
         <div class="movie-description">
             <div class="movie-title">{{movie.title}}</div>
             <div class="movie-info"><span>{{movie.genre}} | </span><span>{{movie.length}} | </span> <span>{{movie.ageRest}} </span></div>
-            <div class="movie-desc">{{movie.description}} </div>
+            <div class="movie-desc">{{movie.description }} </div>
             <button type="button" class="show-info-button" (click)="showMoreInfo($event, movie)" >Więcej</button>
             <div class="more-info" *ngIf="selectedMovie">
                 <div class="director"> Reżyser: {{selectedMovie.director}}</div>
@@ -25,7 +25,8 @@
             {{movie.score}}
             <div class="user-buttons" *ngIf="loggedIn">
                 <button type="button" class="rate-movie-button">Oceń ten film!</button>
-                <button type="button" class="want-to-see-button">Chcę zobaczyć</button>
+                <ng-container *ngIf="isMovieInWishList; else addMovieToWishList"><button type="button" (click)="removeFromWishList(userId, movie.id)" class="want-to-see-button">Obejrzałem!</button></ng-container>
+                <ng-template #addMovieToWishList><button type="button" (click)="addToWishlist(userId, movie)" class="want-to-see-button">Chcę zobaczyć</button></ng-template>
             </div>
         </div>
     </div>

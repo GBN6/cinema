@@ -6,6 +6,7 @@ import { MoviesService } from 'src/app/movies.service';
 import { Show } from 'src/app/movies.service';
 import { LoginService } from 'src/app/login.service';
 import { Subscription } from 'rxjs';
+import { UserDataService } from 'src/app/user-data.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -13,11 +14,13 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./movie-card.component.css'],
 })
 export class MovieCardComponent implements OnInit {
-  @Input() movie: any;
+  @Input() movie: Movies = {} as Movies;
   private subscriptions = new Subscription();
+  isMovieInWishList = false;
   shows: Show[] = [];
   selectedMovie?: Movies;
   loggedIn = false;
+  userId = 0;
 
   showMoreInfo(event: Event, movie: Movies) {
     const buttonText = (event.target as HTMLElement).textContent;
@@ -43,7 +46,24 @@ export class MovieCardComponent implements OnInit {
       this.loggedIn = response;
     });
 
+    const sub2 = this.loginService.user$.subscribe(({ id }) => {
+      this.userId = id;
+    });
+
     this.subscriptions.add(sub);
+    this.subscriptions.add(sub2);
+  }
+
+  getMovieWishListStatus() {
+    if (this.loggedIn) {
+      const sub = this.userDataService
+        .isMovieInWishList(this.userId, this.movie.id)
+        .subscribe((response) => {
+          this.isMovieInWishList = response;
+          console.log(this.isMovieInWishList);
+        });
+      this.subscriptions.add(sub);
+    }
   }
 
   getShow() {
@@ -56,16 +76,28 @@ export class MovieCardComponent implements OnInit {
     this.subscriptions.add(sub);
   }
 
+  addToWishlist(id: number, movie: Movies) {
+    this.userDataService.addMovieToWishlist(id, movie);
+    this.isMovieInWishList = true
+  }
+
+  removeFromWishList(userId: number, movieId: number) {
+    this.userDataService.removeFromWishList(userId, movieId);
+    this.isMovieInWishList = false
+  }
+
   constructor(
     private movieService: SelectedMovieService,
     private ticketService: TicketsService,
     private moviesService: MoviesService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private userDataService: UserDataService
   ) {}
 
   ngOnInit(): void {
     this.getLoggedInStatus();
     this.getShow();
+    this.getMovieWishListStatus();
   }
 
   ngOnDestroy() {
