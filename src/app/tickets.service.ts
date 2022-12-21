@@ -50,6 +50,7 @@ export class TicketsService {
 
   clearSelectedTickets() {
     this.selectedTickets = []
+    this.ticketsAmmountSubject$$.next({ticketsAmount: this.selectedTickets.length})
   }
 
   updateSelectedMovie() {

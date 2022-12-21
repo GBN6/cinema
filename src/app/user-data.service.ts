@@ -57,6 +57,10 @@ export class UserDataService {
     return this.http.get<UserOrders[]>(`${this.userUrl}/${id}/orders`);
   }
 
+  getUserWatchList$(userId: number) {
+    return this.getUser(userId).pipe(map(({userWishList}) => userWishList ))
+  }
+
   isMovieInWishList(userId: number, movieId: number) {
     return this.getUser(userId).pipe(map(({ userWishList }) => {
         return userWishList.some((movie) => {
@@ -74,7 +78,7 @@ export class UserDataService {
       console.log(newWishList)
       this.http
         .patch(`${this.userUrl}/${userId}`, { userWishList: [...newWishList] })
-        .subscribe((response) => console.log(response));
+        .subscribe();
     });
   }
 
@@ -84,9 +88,7 @@ export class UserDataService {
         .patch(`${this.userUrl}/${userId}`, {
           userWishList: [...userWishList, movie],
         })
-        .subscribe((response) => {
-          console.log(response);
-        });
+        .subscribe();
     });
   }
 }

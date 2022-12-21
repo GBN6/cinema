@@ -36,25 +36,6 @@
       ],
       "userWishList": [
         {
-          "id": 1,
-          "img": "assets/apokawixa_poster.jpeg",
-          "title": "Apokawixa",
-          "genre": "Horro",
-          "length": "110 min",
-          "ageRest": "PG-13",
-          "description": "Whenever i have time i will add some description",
-          "score": "6/10",
-          "director": "James Cameron",
-          "actors": [
-            "Artut",
-            "Ziemowit",
-            "Wiesiek",
-            "Leszek"
-          ],
-          "boxOff": 10,
-          "premier": false
-        },
-        {
           "id": 0,
           "img": "assets/wakanda_poster.jpg",
           "title": "Black Panther: Wakanda Forever",
@@ -72,6 +53,25 @@
           ],
           "boxOff": 200,
           "premier": true
+        },
+        {
+          "id": 1,
+          "img": "assets/apokawixa_poster.jpeg",
+          "title": "Apokawixa",
+          "genre": "Horro",
+          "length": "110 min",
+          "ageRest": "PG-13",
+          "description": "Whenever i have time i will add some description",
+          "score": "6/10",
+          "director": "James Cameron",
+          "actors": [
+            "Artut",
+            "Ziemowit",
+            "Wiesiek",
+            "Leszek"
+          ],
+          "boxOff": 10,
+          "premier": false
         }
       ]
     }
@@ -153,46 +153,160 @@
     },
     {
       "id": 3,
-      "userName": "Grzegorz",
-      "userLastName": "Bandyra",
-      "userMail": "grzegorzbandyra@gmail.com",
+      "userName": "Jan",
+      "userLastName": "Kowalski",
+      "userMail": "kowalski@gmail.com",
       "discountCode": "",
-      "userPhoneNumber": "",
+      "userPhoneNumber": "900800700",
       "userInvoiceForm": {
         "userNIP": "",
         "userStreet": "",
         "userPostCode": "",
         "userCity": ""
       },
-      "paiedAt": "Wed Dec 14 2022 09:41:37 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "paiedAt": "Wed Dec 21 2022 09:41:29 GMT+0100 (czas środkowoeuropejski standardowy)",
       "ticket": [
         {
-          "id": 0.9490932803718635,
-          "showId": 2,
+          "id": 0.01158443953502375,
+          "showId": 0,
           "title": "Black Panther: Wakanda Forever",
-          "date": "14/12/2022",
-          "hour": "20.30",
+          "date": "21/12/2022",
+          "hour": "12.30",
           "seat": {
-            "positon": "A16",
-            "type": "Normalny",
-            "price": 20,
+            "positon": "A9",
+            "type": "Ulgowy",
+            "price": 15,
             "special": false
           }
         },
         {
-          "id": 0.15425553516516755,
-          "showId": 5,
-          "title": "Apokawixa",
-          "date": "14/12/2022",
-          "hour": "18.30",
+          "id": 0.8013570558275647,
+          "showId": 0,
+          "title": "Black Panther: Wakanda Forever",
+          "date": "21/12/2022",
+          "hour": "12.30",
           "seat": {
-            "positon": "A9",
+            "positon": "B9",
+            "type": "Normalny",
+            "price": 30,
+            "special": false
+          }
+        }
+      ],
+      "userId": 1
+    },
+    {
+      "id": 4,
+      "userName": "Ziemowit",
+      "userLastName": "Nowak",
+      "userMail": "nowakz@gmail.com",
+      "discountCode": "",
+      "userPhoneNumber": "123456789",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paiedAt": "Wed Dec 21 2022 09:42:55 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": 0.5548489620700421,
+          "showId": 1,
+          "title": "Black Panther: Wakanda Forever",
+          "date": "21/12/2022",
+          "hour": "16.30",
+          "seat": {
+            "positon": "A11",
+            "type": "Normalny",
+            "price": 30,
+            "special": false
+          }
+        },
+        {
+          "id": 0.8981693261497339,
+          "showId": 1,
+          "title": "Black Panther: Wakanda Forever",
+          "date": "21/12/2022",
+          "hour": "16.30",
+          "seat": {
+            "positon": "A12",
             "type": "Normalny",
             "price": 30,
             "special": false
           }
         }
       ]
+    },
+    {
+      "id": 5,
+      "userName": "Jan",
+      "userLastName": "Kowalski",
+      "userMail": "kowalski@gmail.com",
+      "discountCode": "",
+      "userPhoneNumber": "900800700",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paiedAt": "Wed Dec 21 2022 09:45:05 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": 0.7756482992905653,
+          "showId": 2,
+          "title": "Black Panther: Wakanda Forever",
+          "date": "21/12/2022",
+          "hour": "20.30",
+          "seat": {
+            "positon": "G10",
+            "type": "Ulgowy",
+            "price": 10,
+            "special": false
+          }
+        },
+        {
+          "id": 0.6645127213296025,
+          "showId": 2,
+          "title": "Black Panther: Wakanda Forever",
+          "date": "21/12/2022",
+          "hour": "20.30",
+          "seat": {
+            "positon": "G11",
+            "type": "Senior",
+            "price": 15,
+            "special": false
+          }
+        },
+        {
+          "id": 0.29279794100439704,
+          "showId": 2,
+          "title": "Black Panther: Wakanda Forever",
+          "date": "21/12/2022",
+          "hour": "20.30",
+          "seat": {
+            "positon": "G13",
+            "type": "Normalny",
+            "price": 20,
+            "special": false
+          }
+        },
+        {
+          "id": 0.2514776739006386,
+          "showId": 2,
+          "title": "Black Panther: Wakanda Forever",
+          "date": "21/12/2022",
+          "hour": "20.30",
+          "seat": {
+            "positon": "G12",
+            "type": "Normalny",
+            "price": 20,
+            "special": false
+          }
+        }
+      ],
+      "userId": 1
     }
   ],
   "blik": [
@@ -265,7 +379,9 @@
         "C5",
         "B7",
         "C7",
-        "A1"
+        "A1",
+        "A9",
+        "B9"
       ],
       "priceList": [
         {
@@ -296,7 +412,8 @@
         "C7",
         "C8",
         "C9",
-        "C10"
+        "C10",
+        "A11"
       ],
       "priceList": [
         {
@@ -326,7 +443,11 @@
         "E7",
         "E10",
         "F1",
-        "A16"
+        "A16",
+        "G10",
+        "G11",
+        "G13",
+        "G12"
       ],
       "priceList": [
         {

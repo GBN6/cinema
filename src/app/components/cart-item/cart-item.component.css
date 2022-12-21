@@ -3,21 +3,24 @@
 }
 
 .ticket-details {
-    display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  font-size: 2rem;
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    justify-content: space-between;
+    width: 100%;
+    font-size: 2rem;
 }
 
 .ticket-title {
     height: 3rem;
-  font-weight: bold;
-  overflow: hidden;
+    font-weight: bold;
+    overflow: hidden;
 }
 .ticket-when, .ticket-pay {
     gap: 2rem;
+}
+.ticket-position {
+    font-weight: 900;
 }
 
 .remove-ticket-btn {

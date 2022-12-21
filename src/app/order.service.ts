@@ -11,7 +11,9 @@ export interface Order {
   id: number;
   userName: string;
   userLastName: string;
-  userEmail: string;
+  userMail: string;
+  discountCode: string | undefined;
+  userPhoneNumber: string | undefined;
   invoice: Invoice[];
   date: string;
   paied: boolean;
@@ -40,7 +42,8 @@ export class OrderService {
   private showUrl = 'http://localhost:3000/show';
   private orderEmail$$ = new ReplaySubject<string>(1);
   private userLoggedIn = false;
-  private subscriptions = new Subscription
+  private userId = 0;
+  private subscriptions = new Subscription();
 
   get orderEmail$() {
     return this.orderEmail$$.asObservable();
@@ -49,19 +52,27 @@ export class OrderService {
   orderId?: number = 0;
 
   constructor(private http: HttpClient, private loginService: LoginService) {
-    this.getUserStatus()
+    this.getUserStatus();
+  }
+
+  getUserId() {
+    const sub = this.loginService.user$.subscribe(({ id }) => {
+      this.userId = id;
+    });
+
+    this.subscriptions.add(sub);
   }
 
   getUserStatus() {
     const sub = this.loginService.isUserLoggedIn$.subscribe((response) => {
-      this.userLoggedIn = response
-    })
+      this.userLoggedIn = response;
+    });
 
-    this.subscriptions.add(sub)
+    this.subscriptions.add(sub);
   }
 
   ngOnDestroy() {
-    this.subscriptions.unsubscribe()
+    this.subscriptions.unsubscribe();
   }
 
   addOrder(userData: UserData, tickets: tickets[]) {
@@ -86,17 +97,31 @@ export class OrderService {
       ticket: tickets,
     };
 
-    this.orderEmail$$.next(userMail);
-    console.log(orderDTO);
+    if (this.userLoggedIn) {
+      this.getUserId();
+      const userOrderDTO = {
+        ...orderDTO,
+        userId: this.userId,
+      };
+      this.orderEmail$$.next(userMail);
+      console.log(userOrderDTO);
 
-    this.http
-      .post<any>(this.orderUrl, orderDTO)
-      .subscribe((data) => (this.orderId = data.id));
+      this.http
+        .post<Order>(this.orderUrl, userOrderDTO)
+        .subscribe((data) => (this.orderId = data.id));
+    } else {
+      this.orderEmail$$.next(userMail);
+      console.log(orderDTO);
+
+      this.http
+        .post<Order>(this.orderUrl, orderDTO)
+        .subscribe((data) => (this.orderId = data.id));
+    }
   }
 
   addToReservedSeats(tickets: tickets[]) {
     const copyTickets = [...tickets];
-    console.log(copyTickets)
+    console.log(copyTickets);
     if (copyTickets.length === 0) return;
     this.getCurrentReservedSeats(copyTickets[0].showId).subscribe(
       ({ reservedSeats }) => {
@@ -105,12 +130,12 @@ export class OrderService {
             reservedSeats: [...reservedSeats, copyTickets[0].seat.positon],
           })
           .subscribe((data) => {
-            console.log(data)
-            copyTickets.splice(0, 1) 
-            this.addToReservedSeats(copyTickets)});
+            console.log(data);
+            copyTickets.splice(0, 1);
+            this.addToReservedSeats(copyTickets);
+          });
       }
     );
-    
   }
 
   private getCurrentReservedSeats(number: number) {
