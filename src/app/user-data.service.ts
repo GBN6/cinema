@@ -45,9 +45,13 @@ export interface UserOrdersSeat {
 })
 export class UserDataService {
   private userUrl = 'http://localhost:3000/users';
-  private userWishList$$ = new BehaviorSubject([]);
+  private userWishList$$ = new BehaviorSubject<Movies[]>([]);
 
   constructor(private http: HttpClient) {}
+
+  get userWishList$() {
+    return this.userWishList$$.asObservable();
+  }
 
   getUser(id: number) {
     return this.http.get<User>(`${this.userUrl}/${id}`);
@@ -57,12 +61,15 @@ export class UserDataService {
     return this.http.get<UserOrders[]>(`${this.userUrl}/${id}/orders`);
   }
 
-  getUserWatchList$(userId: number) {
-    return this.getUser(userId).pipe(map(({userWishList}) => userWishList ))
+  getUserWatchList(userId: number) {
+    this.getUser(userId).subscribe(({ userWishList }) => {
+      this.userWishList$$.next(userWishList);
+    });
   }
 
   isMovieInWishList(userId: number, movieId: number) {
-    return this.getUser(userId).pipe(map(({ userWishList }) => {
+    return this.getUser(userId).pipe(
+      map(({ userWishList }) => {
         return userWishList.some((movie) => {
           return movie.id === movieId;
         });
@@ -75,10 +82,12 @@ export class UserDataService {
       const newWishList = userWishList.filter((movie) => {
         return movie.id !== movieId;
       });
-      console.log(newWishList)
+      console.log(newWishList);
       this.http
         .patch(`${this.userUrl}/${userId}`, { userWishList: [...newWishList] })
-        .subscribe();
+        .subscribe(() => {
+          this.userWishList$$.next(newWishList)
+        });
     });
   }
 

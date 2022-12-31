@@ -17,7 +17,7 @@ export class WishlistComponent implements OnInit {
   ) {}
   userId = 0;
   private subscriptions = new Subscription();
-  userMovieWatchList$!: Observable<Movies[]>;
+  userMovieWatchList$ = this.userDataService.userWishList$
   getIdFromUrl() {
     const sub = this.route.params.subscribe(({ id }) => {
       this.userId = id;
@@ -26,21 +26,14 @@ export class WishlistComponent implements OnInit {
   }
 
   // getUserWatchList() {
-  //   const sub = this.userDataService
-  //     .getUser(this.userId)
-  //     .subscribe(({ userWishList }) => {
-  //       this.userMovieWatchList$ = userWishList;
-  //       console.log(userWishList);
-  //     });
+  //   const sub = this.userDataService.userWishList$
 
   //   this.subscriptions.add(sub);
   // }
 
   ngOnInit(): void {
     this.getIdFromUrl();
-    this.userMovieWatchList$ = this.userDataService.getUserWatchList$(
-      this.userId
-    );
+    this.userDataService.getUserWatchList(this.userId)
   }
 
   ngOnDestroy() {

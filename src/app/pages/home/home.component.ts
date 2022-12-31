@@ -12,18 +12,44 @@ import { LoginService } from 'src/app/login.service';
 })
 export class HomeComponent implements OnInit {
   movies: Movies[] = [];
-  week: Date[] = [];
+  week: string[] = [];
   clickedIndex = 0;
+  currentIndex = 0;
   private subscriptions = new Subscription();
   loggedIn = false;
 
   getDates(n: number) {
-    for (let i: number = 0; i < n; i++) {
-      let today = new Date();
-      today.setDate(today.getDate() + i);
-      this.week.push(today);
+    let curr = new Date();
+    for (let i = 1; i <= 7; i++) {
+      let first = curr.getDate() - curr.getDay() + i;
+      let day = new Date(curr.setDate(first))
+        .toLocaleDateString('en-GB')
+        .slice(0, 10);
+      this.week.push(day);
     }
+    console.log(this.week);
   }
+
+  setDefaultDate() {
+    let today = new Date().toLocaleDateString('en-GB').slice(0, 10);
+    this.week.forEach((date, index) => {
+      if (date === today) {
+        this.clickedIndex = index;
+        this.currentIndex = index;
+      }
+    });
+    console.log(today);
+  }
+
+  disableDateButtons() {}
+
+  // getDates(n: number) {
+  //   for (let i: number = 0; i < n; i++) {
+  //     let today = new Date();
+  //     today.setDate(today.getDate() + i);
+  //     this.week.push(today);
+  //   }
+  // }
 
   changeState(index: number) {
     this.clickedIndex = index;
@@ -45,7 +71,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getMovies();
     this.getDates(7);
-    this.movieService.selectedDate = this.week[0].toLocaleDateString('en-GB');
+    this.setDefaultDate();
+    this.movieService.selectedDate = this.week[this.clickedIndex];
+    console.log(this.week[0] > this.week[this.clickedIndex]);
   }
 
   ngOnDestroy() {
