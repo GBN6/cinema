@@ -32,6 +32,11 @@
 .date-button:disabled {
     opacity: 20%;
 }
+
+.date-button:disabled:hover {
+    background-color: inherit;
+    color: inherit;
+}
 .date-button.active {
     background-color: rgb(0, 89, 255);
     color: white;

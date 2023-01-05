@@ -53,12 +53,15 @@ export class HomeComponent implements OnInit {
 
   changeState(index: number) {
     this.clickedIndex = index;
+    this.getMovies();
   }
 
   getMovies() {
-    const sub = this.moviesService.getMovies().subscribe((response) => {
-      this.movies = response;
-    });
+    const sub = this.moviesService
+      .getMovies(this.clickedIndex)
+      .subscribe((response) => {
+        this.movies = response;
+      });
     this.subscriptions.add(sub);
   }
 
