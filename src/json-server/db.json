@@ -549,9 +549,107 @@
       ],
       "boxOff": 200,
       "premier": true,
-      "dateId": 6,
-      "dateId": 5
-
+      "dateId": 0
+    },
+    {
+      "id": 0,
+      "img": "assets/wakanda_poster.jpg",
+      "title": "Black Panther: Wakanda Forever",
+      "genre": "Action, Super hero",
+      "length": "130 min",
+      "ageRest": "PG-13",
+      "description": "Whenever i have time i will add some description",
+      "score": "8/10",
+      "director": "Ryan Coogler",
+      "actors": [
+        "Maciek",
+        "Janek",
+        "Ktos",
+        "Leszek"
+      ],
+      "boxOff": 200,
+      "premier": true,
+      "dateId": 1
+    },
+    {
+      "id": 0,
+      "img": "assets/wakanda_poster.jpg",
+      "title": "Black Panther: Wakanda Forever",
+      "genre": "Action, Super hero",
+      "length": "130 min",
+      "ageRest": "PG-13",
+      "description": "Whenever i have time i will add some description",
+      "score": "8/10",
+      "director": "Ryan Coogler",
+      "actors": [
+        "Maciek",
+        "Janek",
+        "Ktos",
+        "Leszek"
+      ],
+      "boxOff": 200,
+      "premier": true,
+      "dateId": 2
+    },
+    {
+      "id": 0,
+      "img": "assets/wakanda_poster.jpg",
+      "title": "Black Panther: Wakanda Forever",
+      "genre": "Action, Super hero",
+      "length": "130 min",
+      "ageRest": "PG-13",
+      "description": "Whenever i have time i will add some description",
+      "score": "8/10",
+      "director": "Ryan Coogler",
+      "actors": [
+        "Maciek",
+        "Janek",
+        "Ktos",
+        "Leszek"
+      ],
+      "boxOff": 200,
+      "premier": true,
+      "dateId": 3
+    },
+    {
+      "id": 0,
+      "img": "assets/wakanda_poster.jpg",
+      "title": "Black Panther: Wakanda Forever",
+      "genre": "Action, Super hero",
+      "length": "130 min",
+      "ageRest": "PG-13",
+      "description": "Whenever i have time i will add some description",
+      "score": "8/10",
+      "director": "Ryan Coogler",
+      "actors": [
+        "Maciek",
+        "Janek",
+        "Ktos",
+        "Leszek"
+      ],
+      "boxOff": 200,
+      "premier": true,
+      "dateId": 4
+    },
+    {
+      "id": 0,
+      "img": "assets/wakanda_poster.jpg",
+      "title": "Black Panther: Wakanda Forever",
+      "genre": "Action, Super hero",
+      "length": "130 min",
+      "ageRest": "PG-13",
+      "description": "Whenever i have time i will add some description",
+      "score": "8/10",
+      "director": "Ryan Coogler",
+      "actors": [
+        "Maciek",
+        "Janek",
+        "Ktos",
+        "Leszek"
+      ],
+      "boxOff": 200,
+      "premier": true,
+      "dateId": 6
     },
     {
       "id": 1,
@@ -571,7 +669,7 @@
       ],
       "boxOff": 10,
       "premier": false,
-      "dateId": 0
+      "dateId": 3
     },
     {
       "id": 2,
@@ -592,9 +690,6 @@
       ],
       "boxOff": 1000,
       "premier": false,
-      "dateId": 2,
-      "dateId": 5,
-      "dateId": 4,
       "dateId": 6
     },
     {
@@ -616,7 +711,6 @@
       ],
       "boxOff": 1000,
       "premier": false,
-      "dateId": 0,
       "dateId": 6
     }
   ],

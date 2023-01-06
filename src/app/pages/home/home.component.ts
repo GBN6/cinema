@@ -54,6 +54,7 @@ export class HomeComponent implements OnInit {
   changeState(index: number) {
     this.clickedIndex = index;
     this.getMovies();
+    this.movieService.selectedDate = this.week[this.clickedIndex];
   }
 
   getMovies() {
@@ -72,9 +73,9 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getMovies();
     this.getDates(7);
     this.setDefaultDate();
+    this.getMovies();
     this.movieService.selectedDate = this.week[this.clickedIndex];
     console.log(this.week[0] > this.week[this.clickedIndex]);
   }
