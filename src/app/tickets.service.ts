@@ -8,7 +8,7 @@ export interface seat {
   positon: string;
   type: string;
   price: number;
-  special: boolean
+  special: boolean;
 }
 
 export interface tickets {
@@ -17,6 +17,7 @@ export interface tickets {
   title: string;
   date: string;
   hour: string;
+  screen: string;
   seat: seat;
 }
 
@@ -29,28 +30,30 @@ export class TicketsService {
   selectedMovie: Movies;
   selectedShow: Show;
 
-  private isCartOpen$$ = new BehaviorSubject({cartOpen: false})
-  private ticketsAmmountSubject$$ = new BehaviorSubject({ticketsAmount: 0});
+  private isCartOpen$$ = new BehaviorSubject({ cartOpen: false });
+  private ticketsAmmountSubject$$ = new BehaviorSubject({ ticketsAmount: 0 });
 
   get cartStatus$() {
     return this.isCartOpen$$.asObservable();
   }
 
   get ticketAmount$() {
-    return this.ticketsAmmountSubject$$.asObservable()
+    return this.ticketsAmmountSubject$$.asObservable();
   }
 
   openCart() {
-    this.isCartOpen$$.next({cartOpen: true})
+    this.isCartOpen$$.next({ cartOpen: true });
   }
 
   closeCart() {
-    this.isCartOpen$$.next({cartOpen: false})
+    this.isCartOpen$$.next({ cartOpen: false });
   }
 
   clearSelectedTickets() {
-    this.selectedTickets = []
-    this.ticketsAmmountSubject$$.next({ticketsAmount: this.selectedTickets.length})
+    this.selectedTickets = [];
+    this.ticketsAmmountSubject$$.next({
+      ticketsAmount: this.selectedTickets.length,
+    });
   }
 
   updateSelectedMovie() {
@@ -63,7 +66,9 @@ export class TicketsService {
 
   addTicket(item: tickets) {
     this.selectedTickets.push(item);
-    this.ticketsAmmountSubject$$.next({ticketsAmount: this.selectedTickets.length})
+    this.ticketsAmmountSubject$$.next({
+      ticketsAmount: this.selectedTickets.length,
+    });
   }
 
   getTickets(): tickets[] {
@@ -78,7 +83,9 @@ export class TicketsService {
         ticket.hour === this.selectedShow.hour
       ) {
         this.selectedTickets.splice(index, 1);
-        this.ticketsAmmountSubject$$.next({ticketsAmount: this.selectedTickets.length})
+        this.ticketsAmmountSubject$$.next({
+          ticketsAmount: this.selectedTickets.length,
+        });
       }
     });
   }
@@ -104,7 +111,7 @@ export class TicketsService {
         ticket.title === this.selectedMovie.title &&
         ticket.hour === this.selectedShow.hour
       ) {
-        if (ticket.seat.type !== ''){
+        if (ticket.seat.type !== '') {
           type = ticket.seat.type;
         }
       }
@@ -126,13 +133,13 @@ export class TicketsService {
   }
 
   isTicketTypeSlected() {
-    let ticketTypeSelected = false
+    let ticketTypeSelected = false;
     this.getTickets().forEach((ticket) => {
       if (ticket.seat.type !== '') {
-        ticketTypeSelected = true
+        ticketTypeSelected = true;
       }
-    })
-    return ticketTypeSelected
+    });
+    return ticketTypeSelected;
   }
 
   constructor(private movieService: SelectedMovieService) {

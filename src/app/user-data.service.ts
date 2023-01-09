@@ -30,6 +30,7 @@ export interface UserOrdersTicket {
   title: string;
   date: string;
   hour: string;
+  screen: string;
   seat: UserOrdersSeat;
 }
 
@@ -86,7 +87,7 @@ export class UserDataService {
       this.http
         .patch(`${this.userUrl}/${userId}`, { userWishList: [...newWishList] })
         .subscribe(() => {
-          this.userWishList$$.next(newWishList)
+          this.userWishList$$.next(newWishList);
         });
     });
   }

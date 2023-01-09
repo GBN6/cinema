@@ -28,7 +28,7 @@ export class SeatsComponent implements OnInit {
     id: 0,
     name: '',
     rows: 0,
-    specialSeats: []
+    specialSeats: [],
   };
 
   rows: string[] = [];
@@ -45,7 +45,7 @@ export class SeatsComponent implements OnInit {
       return 'selected';
     } else if (this.screen.specialSeats.indexOf(seatPos) !== -1) {
       return 'special';
-    } 
+    }
     return 'freeSeat';
   }
 
@@ -70,7 +70,13 @@ export class SeatsComponent implements OnInit {
             title: title,
             date: this.date,
             hour: hour,
-            seat: { positon: seatPos, type: this.show.priceList[0].type, price: this.show.priceList[0].price + 5, special: true },
+            screen: this.show.screen,
+            seat: {
+              positon: seatPos,
+              type: this.show.priceList[0].type,
+              price: this.show.priceList[0].price + 5,
+              special: true,
+            },
           });
         } else {
           this.movieService.addSeat(seatPos);
@@ -80,7 +86,13 @@ export class SeatsComponent implements OnInit {
             title: title,
             date: this.date,
             hour: hour,
-            seat: { positon: seatPos, type: this.show.priceList[0].type, price: this.show.priceList[0].price, special: false },
+            screen: this.show.screen,
+            seat: {
+              positon: seatPos,
+              type: this.show.priceList[0].type,
+              price: this.show.priceList[0].price,
+              special: false,
+            },
           });
         }
       }
@@ -103,7 +115,7 @@ export class SeatsComponent implements OnInit {
         this.cols = [...Array(this.screen.colu).keys()].map((i) => i + 1);
       });
 
-      console.log(this.show.id)
+    console.log(this.show.id);
   }
 
   ngOnDestroy() {}
