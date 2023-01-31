@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { Movies } from './movies';
-import { Show } from './movies.service';
-import { SelectedMovieService } from './selected-movie.service';
+import { BehaviorSubject } from 'rxjs';
+import { Movies } from './feature/home/movies.service';
+import { Show } from './feature/home/movies.service';
+import { SelectedMovieService } from './feature/home/selected-movie.service';
 
 export interface seat {
   positon: string;

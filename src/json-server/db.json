@@ -36,23 +36,24 @@
       ],
       "userWishList": [
         {
-          "id": 1,
-          "img": "assets/apokawixa_poster.jpeg",
-          "title": "Apokawixa",
-          "genre": "Horro",
-          "length": "110 min",
+          "id": 0,
+          "img": "assets/wakanda_poster.jpg",
+          "title": "Black Panther: Wakanda Forever",
+          "genre": "Action, Super hero",
+          "length": "130 min",
           "ageRest": "PG-13",
           "description": "Whenever i have time i will add some description",
-          "score": "6/10",
-          "director": "James Cameron",
+          "score": "8/10",
+          "director": "Ryan Coogler",
           "actors": [
-            "Artut",
-            "Ziemowit",
-            "Wiesiek",
+            "Maciek",
+            "Janek",
+            "Ktos",
             "Leszek"
           ],
-          "boxOff": 10,
-          "premier": false
+          "boxOff": 200,
+          "premier": true,
+          "dateId": 1
         }
       ]
     }
@@ -296,6 +297,37 @@
         }
       ],
       "userId": 1
+    },
+    {
+      "id": 6,
+      "userName": "Grzegorz",
+      "userLastName": "Bandyra",
+      "userMail": "grzegorzbandyra@gmail.com",
+      "discountCode": "",
+      "userPhoneNumber": "",
+      "userInvoiceForm": {
+        "userNIP": "",
+        "userStreet": "",
+        "userPostCode": "",
+        "userCity": ""
+      },
+      "paiedAt": "Fri Jan 13 2023 12:47:53 GMT+0100 (czas środkowoeuropejski standardowy)",
+      "ticket": [
+        {
+          "id": 0.6657626995603592,
+          "showId": 0,
+          "title": "Black Panther: Wakanda Forever",
+          "date": "13/01/2023",
+          "hour": "12.30",
+          "screen": "B",
+          "seat": {
+            "positon": "E6",
+            "type": "Normalny",
+            "price": 30,
+            "special": false
+          }
+        }
+      ]
     }
   ],
   "blik": [
@@ -370,7 +402,8 @@
         "C7",
         "A1",
         "A9",
-        "B9"
+        "B9",
+        "E6"
       ],
       "priceList": [
         {

@@ -1,27 +1,29 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent } from './feature/home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MovieCardComponent } from './components/movie-card/movie-card.component';
-import { SeatsComponent } from './pages/seats/seats.component';
-import { FormComponent } from './pages/form/form.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { TicketSelectionComponent } from './components/ticket-selection/ticket-selection.component';
-import { LoginComponent } from './pages/login/login.component';
-import { SummarizeComponent } from './pages/summarize/summarize.component';
-import { UserFormComponent } from './components/user-form/user-form.component';
-import { CartComponent } from './components/cart/cart.component';
-import { CartItemComponent } from './components/cart-item/cart-item.component';
-import { UserOrdersComponent } from './pages/user-orders/user-orders.component';
-import { TicketItemComponent } from './components/ticket-item/ticket-item.component';
-import { WishlistComponent } from './pages/wishlist/wishlist.component';
-import { WatchlistMovieComponent } from './components/watchlist-movie/watchlist-movie.component';
+import { MovieCardComponent } from './feature/home/home-movie-card/home-movie-card.component';
+import { SeatsComponent } from './feature/seats/seats.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { TicketSelectionComponent } from './feature/seats/seat-ticket/seat-ticket.component';
+import { LoginComponent } from './feature/auth/login/login.component';
+import { SummarizeComponent } from './feature/summarize/summarize.component';
+import { UserFormComponent } from './feature/order/order-user-form/order-form.component';
+import { CartItemComponent } from './feature/user/user-cart/user-cart-item/user-cart-item.component';
+import { UserOrdersComponent } from './feature/user/user-orders/user-orders.component';
+import { TicketItemComponent } from './feature/user/user-orders/user-order-item/user-order-item.component';
+import { WatchlistMovieComponent } from './feature/user/user-watchlist/user-watchlist-movie/user-watchlist-movie.component';
+import { WishlistComponent } from './feature/user/user-watchlist/user-watchlist.component';
+import { CartComponent } from './feature/user/user-cart/user-cart.component';
+import { FormComponent } from './feature/order/order.component';
+import { RouterModule } from '@angular/router';
+import HomeModule from './feature/home/home.module';
 
 @NgModule({
   declarations: [
@@ -49,9 +51,24 @@ import { WatchlistMovieComponent } from './components/watchlist-movie/watchlist-
     FontAwesomeModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
+
+// RouterModule.forRoot([
+//   {
+//     path: '',
+//     children: [
+//       {
+//         path: '',
+//         loadChildren: () => import('./feature/home/home.module')
+//       },
+//       {
+//         path: '**',
+//       },
+//     ],
+//   },
+// ]),
