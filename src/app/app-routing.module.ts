@@ -23,3 +23,7 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
+
+// loadChildren: async () =>
+//       (await import('./app.module')).AppModule,
+//   },

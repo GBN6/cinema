@@ -6,11 +6,15 @@ import { Show } from 'src/app/feature/home/movies.service';
 import { LoginService } from 'src/app/feature/auth/login.service';
 import { Subscription } from 'rxjs';
 import { UserDataService } from 'src/app/feature/user/user-data.service';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-movie-card',
+  standalone: true,
   templateUrl: './home-movie-card.component.html',
   styleUrls: ['./home-movie-card.component.css'],
+  imports: [CommonModule, RouterModule],
 })
 export class MovieCardComponent implements OnInit {
   @Input() movie: Movies = {} as Movies;

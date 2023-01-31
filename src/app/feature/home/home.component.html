@@ -1,6 +1,6 @@
 <div class="home-container">
   <div class="dates">
-    <button
+    <!-- <button
       type="button"
       class="date-button"
       *ngFor="let date of week; let i = index"
@@ -9,10 +9,10 @@
       [ngClass]="clickedIndex === i ? 'active' : ''"
     >
       {{ date.slice(0, 5) }}
-    </button>
+    </button> -->
   </div>
   <div class="movies" *ngFor="let movie of movies">
-    <app-movie-card [movie]="movie"></app-movie-card>
+    <!-- <app-movie-card [movie]="movie"></app-movie-card> -->
   </div>
 </div>
 

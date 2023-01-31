@@ -5,9 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './feature/home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MovieCardComponent } from './feature/home/home-movie-card/home-movie-card.component';
 import { SeatsComponent } from './feature/seats/seats.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -23,13 +21,10 @@ import { WishlistComponent } from './feature/user/user-watchlist/user-watchlist.
 import { CartComponent } from './feature/user/user-cart/user-cart.component';
 import { FormComponent } from './feature/order/order.component';
 import { RouterModule } from '@angular/router';
-import HomeModule from './feature/home/home.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    MovieCardComponent,
     SeatsComponent,
     FormComponent,
     FooterComponent,
